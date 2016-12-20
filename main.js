@@ -59,12 +59,15 @@ cc.game.onStart = function(){
     cc.view.setDesignResolutionSize(540, 960, cc.ResolutionPolicy.SHOW_ALL);
     // The game will be resized when browser size change
     cc.view.resizeWithBrowserSize(true);
+    //init global var
+    GV.WIN_SIZE = cc.winSize;
+    GV.MODULE_MGR = new ModuleMgr();
+    GV.SCENE_MGR = new SceneMgr();
+    GV.POPUP_MGR = new PopupsMgr();
+
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
-        cc.director.runScene(new HelloWorldScene());
-        //var pTransition = new cc.TransitionFade(1.0, new HelloWorldScene(), cc.color(0,0,0,255));
-        //cc.director.runScene(pTransition);
+        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.LOBBY, true);
     }, this);
-    GV.WIN_SIZE = cc.winSize;
 };
 cc.game.run();

@@ -12,14 +12,24 @@
         "external"
     ],
     "jsListOrder": [
-        "src/*.js"
+        "src/*.js",
+        "src/modules/*.js",
+        "src/modules/battle/*.js",
+        "src/modules/lobby/*.js",
+        "src/modules/popup/*.js"
     ],
     "jsList": [
-        "src/app.js",
+        "src/BaseGui.js",
         "src/GlobalVar.js",
         "src/resource.js",
-        "src/RowNodeMusic.js",
-        "src/SceneBattle.js",
-        "src/TileMusicObject.js"
+        "src/SceneMgr.js",
+        "src/Utility.js",
+        "src/modules/ModuleMgr.js",
+        "src/modules/battle/RowNodeMusic.js",
+        "src/modules/battle/SceneBattle.js",
+        "src/modules/battle/TileMusicObject.js",
+        "src/modules/lobby/SceneLobby.js",
+        "src/modules/popup/GuiPopup.js",
+        "src/modules/popup/PopupMgr.js"
     ]
 }

@@ -5,7 +5,10 @@ var res = {
     tile_music_undefined_png : "res/perlin_noise.png",
 
     //plist
-    plist_1: "res/plist/1.plist"
+    plist_1: "res/plist/1.plist",
+
+    //GUI
+    GUI_POPUP: "res/popup/GuiPopup.json"
 };
 
 var g_resources = [];
