@@ -1,0 +1,15 @@
+var GV = GV || {};
+GV.WIN_SIZE = null;
+GV.NUM_COL = 4;
+GV.MOVE_SPEED = 5;
+GV.TILE_TYPE = {
+    UNDEFINED: -1,
+    SHORT: 0,
+    NORMAL: 1,
+    LONG: 2
+};
+GV.UP_SPEED_DURATION = 100;
+GV.END_GAME = false;
+
+var SCENE_MGR = SCENE_MGR || {};
+SCENE_MGR.BATTLE = null;
