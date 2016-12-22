@@ -1,14 +1,19 @@
 var res = {
     //png
-    Battle_Background_png : "res/xmas_map_bg.png",
+    battle_background_png : "res/xmas_map_bg.png",
     tile_music_png : "res/1.png",
     tile_music_undefined_png : "res/perlin_noise.png",
+
+    bg_loading_png: "res/resource/UIOpenning/bg_small.jpg",
+    bg_lobby_png: "res/resource/UIOpenning/bg_small_f.png",
 
     //plist
     plist_1: "res/plist/1.plist",
 
-    //GUI
-    GUI_POPUP: "res/popup/GuiPopup.json"
+    //font
+    FONT_ARIAL: "res/fonts/arial.ttf",
+    FONT_FUTURA_CONDENSED: "res/fonts/futura_condensed.ttf",
+    FONT_MARKER_FELT: "res/fonts/marker_felt.ttf",
 };
 
 var g_resources = [];

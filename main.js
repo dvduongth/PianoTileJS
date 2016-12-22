@@ -59,6 +59,10 @@ cc.game.onStart = function(){
     cc.view.setDesignResolutionSize(540, 960, cc.ResolutionPolicy.SHOW_ALL);
     // The game will be resized when browser size change
     cc.view.resizeWithBrowserSize(true);
+    //default values
+    var searchPaths = jsb.fileUtils.getSearchPaths();
+    searchPaths.push("src");
+    searchPaths.push("res");
     //init global var
     GV.WIN_SIZE = cc.winSize;
     GV.MODULE_MGR = new ModuleMgr();
@@ -67,7 +71,7 @@ cc.game.onStart = function(){
 
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
-        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.LOBBY, true);
+        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.LOADING, true);
     }, this);
 };
 cc.game.run();
