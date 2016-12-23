@@ -104,7 +104,7 @@ var SceneBattle = BaseScene.extend({
         }
     },
     gameOver: function () {
-        GV.MODULE_MGR._gameState = GV.GAME_STATE.END;
+        GV.MODULE_MGR.endGame();
     },
     actionFocusRowMiss: function () {
         var len = this.list_node_music.length;

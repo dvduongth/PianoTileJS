@@ -14,5 +14,8 @@ var ModuleMgr = cc.Class.extend({
             this.guiStartBattle = new GuiStartBattle();
         }
         this.guiStartBattle.showGui();
+    },
+    endGame: function () {
+        GV.MODULE_MGR._gameState = GV.GAME_STATE.END;
     }
 });
