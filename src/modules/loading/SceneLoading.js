@@ -61,7 +61,7 @@ var SceneLoading = BaseScene.extend({
         this.runAction(cc.sequence(
             cc.delayTime(1),
             cc.callFunc(function () {
-                GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.BATTLE);
+                GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.LOBBY);
             })
         ));
     },

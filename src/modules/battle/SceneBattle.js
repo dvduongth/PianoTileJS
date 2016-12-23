@@ -155,14 +155,14 @@ var SceneBattle = BaseScene.extend({
     },
     onEnter: function () {
         this._super();
-        //GV.MODULE_MGR.showGuiStartBattle();
-        //var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
-        var minPos = 500;
+        GV.MODULE_MGR.showGuiStartBattle();
+        var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
+        //var minPos = 500;
         this.createStartGameState(minPos);
     },
     onEnterTransitionDidFinish: function () {
         this._super();
-        GV.MODULE_MGR._gameState = GV.GAME_STATE.RUNNING;
+        //GV.MODULE_MGR._gameState = GV.GAME_STATE.RUNNING;
     },
     update: function (dt) {
         this._super(dt);

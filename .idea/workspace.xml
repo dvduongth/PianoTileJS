@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4d55f2b-12a8-484d-a811-f49e89a3e91c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/battle/SceneBattle.js" afterPath="$PROJECT_DIR$/src/modules/battle/SceneBattle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/loading/SceneLoading.js" afterPath="$PROJECT_DIR$/src/modules/loading/SceneLoading.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloJavascript.iws" />
@@ -68,7 +70,17 @@
         <entry file="file://$PROJECT_DIR$/src/modules/battle/SceneBattle.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="12" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="12" />
+              <caret line="160" column="42" selection-start-line="160" selection-start-column="42" selection-end-line="160" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SceneLoading.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/modules/loading/SceneLoading.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.39490446">
+              <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -84,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TileMusicObject.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TileMusicObject.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/modules/battle/TileMusicObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62217194">
-              <caret line="105" column="11" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
+            <state vertical-scroll-proportion="-12.655172">
+              <caret line="109" column="36" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -198,12 +210,12 @@
         <option value="$PROJECT_DIR$/src/base_class/Utility.js" />
         <option value="$PROJECT_DIR$/src/modules/battle/GuiStartBattle.js" />
         <option value="$PROJECT_DIR$/main.js" />
-        <option value="$PROJECT_DIR$/src/modules/loading/SceneLoading.js" />
         <option value="$PROJECT_DIR$/src/resource.js" />
         <option value="$PROJECT_DIR$/src/modules/battle/RowNodeMusic.js" />
         <option value="$PROJECT_DIR$/src/GlobalVar.js" />
-        <option value="$PROJECT_DIR$/src/modules/battle/SceneBattle.js" />
         <option value="$PROJECT_DIR$/src/modules/battle/TileMusicObject.js" />
+        <option value="$PROJECT_DIR$/src/modules/battle/SceneBattle.js" />
+        <option value="$PROJECT_DIR$/src/modules/loading/SceneLoading.js" />
       </list>
     </option>
   </component>
@@ -324,7 +336,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="battle" />
+              <option name="myItemId" value="loading" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -773,7 +785,7 @@
       <workItem from="1482371493710" duration="4720000" />
       <workItem from="1482378312731" duration="1631000" />
       <workItem from="1482380299319" duration="9977000" />
-      <workItem from="1482458125188" duration="27403000" />
+      <workItem from="1482458125188" duration="27483000" />
     </task>
     <task id="LOCAL-00001" summary="edit code">
       <created>1482404598736</created>
@@ -805,11 +817,17 @@
       <option name="project" value="LOCAL" />
       <updated>1482496146346</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="code loi, edit sau">
+      <created>1482496157587</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1482496157587</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1657014000" />
+    <option name="totallyTimeSpent" value="1657094000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -822,7 +840,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22941822" sideWeight="0.4892704" order="6" side_tool="false" content_ui="tabs" />
@@ -831,7 +849,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3293011" sideWeight="0.5025707" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3293011" sideWeight="0.4974293" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3293011" sideWeight="0.4974293" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2099567" sideWeight="0.22228146" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32258064" sideWeight="0.67994857" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1247,14 +1265,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/loading/SceneLoading.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54011744">
-          <caret line="63" column="62" selection-start-line="63" selection-start-column="62" selection-end-line="63" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/lobby/SceneLobby.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.5851272">
@@ -1268,29 +1278,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="44" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="44" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/battle/GuiStartBattle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-          <folding>
-            <element signature="e#1065#1384#0" expanded="false" />
-            <element signature="e#1463#1536#0" expanded="false" />
-            <element signature="e#1572#1702#0" expanded="false" />
-            <element signature="e#2184#2216#0" expanded="false" />
-            <element signature="e#2374#2506#0" expanded="false" />
-            <element signature="e#2969#3000#0" expanded="false" />
-            <element signature="e#3038#3117#0" expanded="false" />
-            <element signature="e#3156#3289#0" expanded="false" />
-            <element signature="e#3736#3765#0" expanded="false" />
-            <element signature="e#3795#4352#0" expanded="false" />
-            <element signature="e#4393#4444#0" expanded="false" />
-            <element signature="e#4484#4535#0" expanded="false" />
-            <element signature="e#4574#4623#0" expanded="false" />
-            <element signature="e#4629#4658#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1318,22 +1305,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/battle/RowNodeMusic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-64.24138">
-          <caret line="102" column="31" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/battle/SceneBattle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/layers/CCLayer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6477495">
@@ -1342,10 +1313,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/battle/RowNodeMusic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-64.24138">
+          <caret line="102" column="31" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/battle/TileMusicObject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62217194">
-          <caret line="105" column="11" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
+        <state vertical-scroll-proportion="-12.655172">
+          <caret line="109" column="36" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/battle/GuiStartBattle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+          <folding>
+            <element signature="e#1065#1384#0" expanded="false" />
+            <element signature="e#1463#1536#0" expanded="false" />
+            <element signature="e#1572#1702#0" expanded="false" />
+            <element signature="e#2184#2216#0" expanded="false" />
+            <element signature="e#2374#2506#0" expanded="false" />
+            <element signature="e#2969#3000#0" expanded="false" />
+            <element signature="e#3038#3117#0" expanded="false" />
+            <element signature="e#3156#3289#0" expanded="false" />
+            <element signature="e#3736#3765#0" expanded="false" />
+            <element signature="e#3795#4352#0" expanded="false" />
+            <element signature="e#4393#4444#0" expanded="false" />
+            <element signature="e#4484#4535#0" expanded="false" />
+            <element signature="e#4574#4623#0" expanded="false" />
+            <element signature="e#4629#4658#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/battle/SceneBattle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="160" column="42" selection-start-line="160" selection-start-column="42" selection-end-line="160" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/loading/SceneLoading.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39490446">
+          <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
           <folding />
         </state>
       </provider>
