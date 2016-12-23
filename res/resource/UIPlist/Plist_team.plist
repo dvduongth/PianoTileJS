@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>icon_like_disable.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{4,369},{70,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{70,60}</string>
+			</dict>
+			<key>icon_like_enable.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{4,437},{70,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{70,60}</string>
+			</dict>
+			<key>icon_team_head.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{4,142},{111,111}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{111,111}</string>
+			</dict>
+			<key>icon_team_detail.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{4,261},{100,100}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{100,100}</string>
+			</dict>
+			<key>icon_team_border.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{4,505},{128,2}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{128,2}</string>
+			</dict>
+			<key>bg_team_card.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{4,4},{130,130}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{130,130}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>Plist_team.png</string>
+			<key>realTextureFileName</key>
+			<string>Plist_team.png</string>
+			<key>size</key>
+			<string>{256,512}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>256</integer>
+			<key>height</key>
+			<integer>512</integer>
+		</dict>
+	</dict>
+</plist>
