@@ -14,6 +14,7 @@
     "jsListOrder": [
         "src/*.js",
         "src/base_class/*.js",
+        "src/data/*.js",
         "src/modules/*.js",
         "src/modules/battle/*.js",
         "src/modules/loading/*.js",
@@ -22,12 +23,14 @@
     ],
     "jsList": [
         "src/GlobalVar.js",
-        "src/Resource.js",
+        "src/resource.js",
         "src/SceneMgr.js",
         "src/base_class/BaseGUI.js",
         "src/base_class/BaseScene.js",
         "src/base_class/Utility.js",
+        "src/data/MyInfoData.js",
         "src/modules/ModuleMgr.js",
+        "src/modules/battle/GuiStartBattle.js",
         "src/modules/battle/RowNodeMusic.js",
         "src/modules/battle/SceneBattle.js",
         "src/modules/battle/TileMusicObject.js",

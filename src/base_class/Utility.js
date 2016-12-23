@@ -1,16 +1,17 @@
 var Utility = Utility || {};
 Utility.executeFunction = function (cbFunc) {
-    if (cbFunc) {
-        if (
-            cbFunc.hasOwnProperty('caller')
-            && cbFunc.hasOwnProperty('funcName')
-            && cbFunc.hasOwnProperty('args')
-        ) {
-            cbFunc.funcName.apply(cbFunc.caller, cbFunc.args);
-            cbFunc = null;
-        } else {
-            cbFunc();
-        }
+    if (!cbFunc) {
+        return null;
+    }
+    if (cbFunc.hasOwnProperty('caller')
+        && cbFunc.hasOwnProperty('funcName')
+        && cbFunc.hasOwnProperty('args')) {
+        cbFunc.funcName.apply(cbFunc.caller, cbFunc.args);
+        cbFunc = null;
+    } else if (cbFunc instanceof Function) {
+        cbFunc();
+    } else {
+        cc.error("execute call back with none type function");
     }
 };
 Utility.getColorByName = function (name) {
@@ -132,7 +133,7 @@ Utility.getColorByName = function (name) {
 
     return color;
 };
-Utility.getLabel = function (fontName, fontSize, color, isHasStroke) {
+Utility.getLabel = function (fontName, fontSize, color, isSkipStroke) {
     if (!fontName) {
         fontName = res.FONT_ARIAL;
     }
@@ -146,9 +147,100 @@ Utility.getLabel = function (fontName, fontSize, color, isHasStroke) {
     label.color = color;
     label.setTextHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
     label.setTextVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
-    label.enableShadow(Utility.getColorByName('black'), {width: 0, height: -2}, 1);
-    if (isHasStroke) {
+    label.enableShadow(Utility.getColorByName('grey'), {width: 0, height: -2}, 1);
+    if (!isSkipStroke) {
         label.enableOutline(Utility.getColorByName('stroke'), 1);
     }
     return label;
+};
+Utility.numToStr = function (num, separator) {
+    if (num === undefined) {
+        cc.error("numToStr with undefined");
+        return "0";
+    }
+    if(!separator) {
+        separator = ",";
+    }
+    if(!Utility.listSeparatorNumString) {
+        Utility.listSeparatorNumString = [];
+    }
+    var isExisted = Utility.listSeparatorNumString.find(function (obj) {
+        return obj == separator;
+    });
+    if(!isExisted){
+        Utility.listSeparatorNumString.push(separator);
+    }
+    var strNum = "";
+    var strNumOrigin = num.toString();
+    var isNegative = false;
+    if (num < 0) {
+        isNegative = true;
+        strNumOrigin = strNumOrigin.slice(1, strNumOrigin.length);
+    }
+    var lengthStrExp = strNumOrigin.length;
+    var numOfDot = Math.floor(lengthStrExp / 3 - 0.1);
+    switch (numOfDot) {
+        case 0:
+            strNum = strNumOrigin;
+            break;
+        case 1:
+            strNum = strNumOrigin.slice(0, strNumOrigin.length - 3) + separator + strNumOrigin.slice(strNumOrigin.length - 3, strNumOrigin.length);
+            break;
+        case 2:
+            strNum = strNumOrigin.slice(0, strNumOrigin.length - 6) + separator + strNumOrigin.slice(strNumOrigin.length - 6, strNumOrigin.length - 3)
+                + separator + strNumOrigin.slice(strNumOrigin.length - 3, strNumOrigin.length);
+            break;
+        case 3:
+            strNum = strNumOrigin.slice(0, strNumOrigin.length - 9) + separator + strNumOrigin.slice(strNumOrigin.length - 9, strNumOrigin.length - 6)
+                + separator + strNumOrigin.slice(strNumOrigin.length - 6, strNumOrigin.length - 3) + separator + strNumOrigin.slice(strNumOrigin.length - 3, strNumOrigin.length);
+            break;
+        default:
+            strNum += "1.000.000.000";
+
+            break;
+    }
+
+    if (isNegative) {
+        strNum = "-" + strNum;
+    }
+    return strNum;
+};
+Utility.strToNum = function (str) {
+    var list = Utility.listSeparatorNumString;
+    var len = list.length;
+    for(var i = 0; i < len; ++i) {
+        var s = list[i];
+        while (str.search(s) > 0) {
+            str.replace(s, "");
+        }
+    }
+    return str;
+};
+Utility.getActionLoading = function (obj, content) {
+    var delayTime = 0.3;
+    obj && obj.stopAllActions && obj.stopAllActions();
+    return cc.sequence(
+        cc.spawn(
+            cc.callFunc(function () {
+                obj && obj.setString && obj.setString(content + "");
+            }),
+            cc.fadeIn(delayTime)
+        ),
+        cc.delayTime(delayTime),
+        cc.callFunc(function () {
+            obj && obj.setString && obj.setString(content + ".");
+        }),
+        cc.delayTime(delayTime),
+        cc.callFunc(function () {
+            obj && obj.setString && obj.setString(content + "..");
+        }),
+        cc.delayTime(delayTime),
+        cc.spawn(
+            cc.callFunc(function () {
+                obj && obj.setString && obj.setString(content + "...");
+            }),
+            cc.fadeOut(delayTime)
+        ),
+        cc.delayTime(delayTime)
+    ).repeatForever();
 };

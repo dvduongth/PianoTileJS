@@ -27,4 +27,8 @@ GV.TILE_TYPE = {
     LONG: 3
 };
 GV.UP_SPEED_DURATION = 100;
-GV.END_GAME = false;
+GV.GAME_STATE = {
+    START: 0,
+    RUNNING: 1,
+    END: 2
+};

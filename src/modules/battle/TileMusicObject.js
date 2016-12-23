@@ -35,7 +35,7 @@ var TileMusicObject = cc.Node.extend({
                 url = "#tile_black.png";
                 break;
             //case GV.TILE_TYPE.UNDEFINED:
-            //    url = res.tile_music_undefined_png;
+            //    url = res.tile_white_png;
                 //url = "#2.png";
                 //break;
             default :
@@ -66,7 +66,7 @@ var TileMusicObject = cc.Node.extend({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: true,
             onTouchBegan: function (touch, event) {
-                if(GV.END_GAME) {
+                if(GV.MODULE_MGR._gameState == GV.GAME_STATE.END) {
                     return false;
                 }
                 var target = event.getCurrentTarget();
@@ -123,18 +123,21 @@ var TileMusicObject = cc.Node.extend({
         this.initGui();
     },
     touchFail: function (touch, event) {
-        if(GV.END_GAME) {
+        if(GV.MODULE_MGR._gameState == GV.GAME_STATE.END) {
             return false;
         }
+
         GV.SCENE_MGR._currentScene.gameOver();
         this.createIcon("#tile_miss.png");
         this.iconActionFocus();
     },
     touchSuccess: function (touch, event) {
-        if(GV.END_GAME) {
+        if(GV.MODULE_MGR._gameState == GV.GAME_STATE.END) {
             return false;
         }
+
         this.isTouchSuccess = true;
+        GV.MODULE_MGR._myInfo.curScore++;
         if(this._sprIcon) {
             this._sprIcon.runAction(cc.sequence(
                 cc.fadeOut(0.5),
@@ -163,21 +166,6 @@ var TileMusicObject = cc.Node.extend({
                     cc.fadeTo(ACTION_TIME * 0.5, 255)
                 )
             ).repeatForever());
-        }
-    },
-    executeCallBack: function (cbFunc) {
-        if (!cbFunc) {
-            return null;
-        }
-        if (cbFunc.hasOwnProperty('caller')
-            && cbFunc.hasOwnProperty('funcName')
-            && cbFunc.hasOwnProperty('args')) {
-            cbFunc.funcName.apply(cbFunc.caller, cbFunc.args);
-            cbFunc = null;
-        } else if (cbFunc instanceof Function) {
-            cbFunc();
-        } else {
-            cc.error("execute call back with none type function");
         }
     }
 });

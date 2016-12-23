@@ -5,14 +5,21 @@ var SceneLobby = BaseScene.extend({
         return true;
     },
     initGui: function () {
-        this._sprBg = new cc.Sprite(res.bg_lobby_png);
+        this._sprBg = new cc.Scale9Sprite(res.bg_lobby_png);
         this.addChild(this._sprBg);
         this._sprBg.attr({
             x: GV.WIN_SIZE.width >> 1,
-            y: GV.WIN_SIZE.height >> 1,
-            width: GV.WIN_SIZE.width,
-            height: GV.WIN_SIZE.height
+            y: GV.WIN_SIZE.height >> 1
         });
+        this._sprBg.setContentSize(GV.WIN_SIZE);
+        //add label
+        this._lbText = Utility.getLabel(res.FONT_MARKER_FELT, 72);
+        this.addChild(this._lbText);
+        this._lbText.attr({
+            x: GV.WIN_SIZE.width >>1,
+            y: GV.WIN_SIZE.height >>1
+        });
+        this._lbText.setString("Scene Lobby Here");
     },
     onEnter:function () {
         this._super();

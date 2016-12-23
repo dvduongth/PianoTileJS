@@ -95,7 +95,7 @@ var RowNodeMusic = cc.Node.extend({
         this.runAction(cc.sequence(
             cc.moveBy(ACTION_TIME,0,height),
             cc.callFunc(function () {
-                this.executeCallBack(callFunc);
+                Utility.executeFunction(callFunc);
             }.bind(this))
         ));
     },
@@ -106,21 +106,6 @@ var RowNodeMusic = cc.Node.extend({
             if(element) {
                 element.actionFocusMiss();
             }
-        }
-    },
-    executeCallBack: function (cbFunc) {
-        if (!cbFunc) {
-            return null;
-        }
-        if (cbFunc.hasOwnProperty('caller')
-            && cbFunc.hasOwnProperty('funcName')
-            && cbFunc.hasOwnProperty('args')) {
-            cbFunc.funcName.apply(cbFunc.caller, cbFunc.args);
-            cbFunc = null;
-        } else if (cbFunc instanceof Function) {
-            cbFunc();
-        } else {
-            cc.error("execute call back with none type function");
         }
     }
 });

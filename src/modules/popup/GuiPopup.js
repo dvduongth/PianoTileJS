@@ -8,7 +8,7 @@ var GuiPopup = BaseGUI.extend({
         this._btnCancel = null;
         this._btnOther = null;
 
-        this._imgBg = null;
+        this._sprBg = null;
         this._lbTitle = null;
         this._lbMsg = null;
 
@@ -34,8 +34,9 @@ var GuiPopup = BaseGUI.extend({
 
     initGui: function () {
         //background
-        this._imgBg = new cc.Sprite(res.tile_music_undefined_png);
-        this.addChild(this._imgBg);
+        this._sprBg = new cc.Scale9Sprite(res.tile_white_png);
+        this._sprBg.setScale9Enabled(true);
+        this.addChild(this._sprBg);
         //button
         this._btnOk = new ccui.Button();
         this.addChild(this._btnOk);
@@ -84,8 +85,8 @@ var GuiPopup = BaseGUI.extend({
         this._btnOther.y -= deltaHeight * 0.5;
 
         //message size
-        this._imgBg.height += deltaHeight;
-        this._imgBg.width += deltaWidth;
+        this._sprBg.height += deltaHeight;
+        this._sprBg.width += deltaWidth;
         this._lbMsg.height += deltaHeight;
         this._lbMsg.width += deltaWidth;
 

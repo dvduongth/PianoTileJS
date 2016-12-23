@@ -2,28 +2,38 @@ var SceneBattle = BaseScene.extend({
     ctor: function () {
         this._super();
         //variables
+        this.curScore = 0;
         this.count_time = 0;
-        this.bg_battle = null;
+        this._sprBg = null;
         this.list_node_music = [];
         this.initGui();
         this.SPEED = GV.MOVE_SPEED;
         return true;
     },
-    onEnter: function () {
-        this._super();
-    },
-    onEnterTransitionDidFinish: function () {
-        this._super();
-    },
     initGui: function () {
         var size = GV.WIN_SIZE;
         //background
-        this.bg_battle = new cc.Sprite(res.battle_background_png);
-        this.bg_battle.attr({
+        this._sprBg = new cc.Scale9Sprite(res.battle_background_png);
+        this._sprBg.attr({
+            anchorX: 0.5,
+            anchorY: 0.5,
             x: size.width / 2,
             y: size.height / 2
         });
-        this.addChild(this.bg_battle);
+        this._sprBg.setContentSize(size);
+        this.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
+
+        //label score
+        this._lbScore = Utility.getLabel(res.FONT_MARKER_FELT, 72, Utility.getColorByName("red"));
+        this._lbScore.setString(Utility.numToStr(this.curScore));
+        this.addChild(this._lbScore, GV.ZORDER_LEVEL.GUI);
+        this._lbScore.attr({
+            anchorX: 0.5,
+            anchorY: 1,
+            x: size.width >> 1,
+            y: size.height * 15 / 16
+        });
+
         this.createListNodeMusic();
         this.schedule(this.update);
     },
@@ -35,6 +45,7 @@ var SceneBattle = BaseScene.extend({
             }
         }
         this.list_node_music.splice(0);
+        this.list_node_music = [];
         this.nextRow();
     },
     nextRow: function () {
@@ -45,31 +56,31 @@ var SceneBattle = BaseScene.extend({
         //var numTile = Math.random() > 0.5 ? 2 : 1;
         var numTile = 1;
         var list_type = [];
-        for(var i = 0; i < numTile; ++i) {
+        for (var i = 0; i < numTile; ++i) {
             var type, index;
             var rd1 = Math.random();
             var rd2 = Math.random();
             //type
-            if(rd1 > 0.6) {
+            if (rd1 > 0.6) {
                 type = GV.TILE_TYPE.LONG;
-            }else if(rd1 > 0.3) {
+            } else if (rd1 > 0.3) {
                 type = GV.TILE_TYPE.NORMAL;
-            }else{
+            } else {
                 type = GV.TILE_TYPE.SHORT;
             }
             //index
-            if(rd2 > 0.75) {
+            if (rd2 > 0.75) {
                 index = 3;
-            }else if(rd2 > 0.5) {
+            } else if (rd2 > 0.5) {
                 index = 2;
-            }else if(rd2 > 0.25) {
+            } else if (rd2 > 0.25) {
                 index = 1;
-            }else{
+            } else {
                 index = 0;
             }
             //push info into list
             var info = {
-                "type":type,
+                "type": type,
                 "index": index
             };
             list_type.push(info);
@@ -81,33 +92,33 @@ var SceneBattle = BaseScene.extend({
         });
     },
     deleteDownRow: function () {
-        if(this.list_node_music.length > 0) {
+        if (this.list_node_music.length > 0) {
             var nodeMusic = this.list_node_music[0];
-            if(nodeMusic.checkMissActionTouch()) {
+            if (nodeMusic.checkMissActionTouch()) {
                 cc.error("miss action");
                 this.actionFocusRowMiss();
                 this.gameOver();
-            }else{
+            } else {
                 nodeMusic.removeFromParent(true);
                 this.list_node_music.splice(0, 1);
             }
         }
     },
     gameOver: function () {
-        GV.END_GAME = true;
+        GV.MODULE_MGR._gameState = GV.GAME_STATE.END;
     },
     actionFocusRowMiss: function () {
         var len = this.list_node_music.length;
-        if(len > 0) {
+        if (len > 0) {
             var upHeight;
-            if(this.list_node_music[0]) {
-                upHeight= this.list_node_music[0].getRowHeight();
+            if (this.list_node_music[0]) {
+                upHeight = this.list_node_music[0].getRowHeight();
             }
-            for(var i = 0; i < len; ++i) {
+            for (var i = 0; i < len; ++i) {
                 var cb;
                 var row = this.list_node_music[i];
-                if(row) {
-                    if(i == 0) {
+                if (row) {
+                    if (i == 0) {
                         cb = {
                             "caller": row,
                             "funcName": row.runActionFocusMissElement,
@@ -119,36 +130,69 @@ var SceneBattle = BaseScene.extend({
             }
         }
     },
+    onEnter: function () {
+        GV.MODULE_MGR.showGuiStartBattle();
+        this._super();
+    },
+    onEnterTransitionDidFinish: function () {
+        this._super();
+    },
     update: function (dt) {
         this._super(dt);
-        if(GV.END_GAME) {
+        switch (GV.MODULE_MGR._gameState) {
+            case GV.GAME_STATE.START:
+            case GV.GAME_STATE.END:
+                return false;
+            case GV.GAME_STATE.RUNNING:
+                this.moveTile(dt);
+                break
+        }
+        this.updateResource(dt);
+    },
+    updateResource: function (dt) {
+        if (!GV.MODULE_MGR._myInfo) {
             return false;
         }
+        var curScore = GV.MODULE_MGR._myInfo.curScore;
+        var d = 2;
+
+        if (this.curScore != curScore) {
+            if (curScore > this.curScore) {
+                //this.curScore += Math.round((curScore - this.curScore) / d);
+                this.curScore++;
+            } else {
+                //this.curScore -= Math.round((this.curScore - curScore) / d);
+                this.curScore--;
+            }
+            this._lbScore.setString(Utility.numToStr(this.curScore));
+        }
+    },
+    moveTile: function (dt) {
         var len = this.list_node_music.length;
-        for(var i = 0; i < len; ++i) {
+        for (var i = 0; i < len; ++i) {
             var ndObject = this.list_node_music[i];
-            if(ndObject) {
+            if (ndObject) {
                 ndObject.y -= this.SPEED;
             }
         }
-        if(len > 0) {
+        if (len > 0) {
             var ndObj = this.list_node_music[len - 1];
-            if(ndObj) {
+            if (ndObj) {
                 var maxY = GV.WIN_SIZE.height - ndObj.getRowHeight() * 0.5;
-                if(ndObj.y <= maxY){
+                if (ndObj.y <= maxY) {
                     this.nextRow();
                 }
             }
             ndObj = this.list_node_music[0];
-            if(ndObj) {
+            if (ndObj) {
                 var minY = -(ndObj.getRowHeight() * 0.5);
-                if(ndObj.y <= minY){
+                if (ndObj.y <= minY) {
                     this.deleteDownRow();
                 }
             }
         }
         this.count_time++;
-        if(this.count_time % GV.UP_SPEED_DURATION == 0) {
+        if (this.count_time % GV.UP_SPEED_DURATION == 0) {
             this.count_time = 1;
             this.upSpeed();
         }

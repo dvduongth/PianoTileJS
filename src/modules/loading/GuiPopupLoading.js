@@ -1,5 +1,5 @@
-var GuiPoppLoading = BaseGUI.extend({
-    _className: "GuiPoppLoading",
+var GuiPopupLoading = BaseGUI.extend({
+    _className: "GuiPopupLoading",
 
     ctor: function () {
         this._super();
@@ -8,8 +8,8 @@ var GuiPoppLoading = BaseGUI.extend({
 
     initGui: function () {
         //background
-        this._imgBg = new cc.Sprite(res.tile_music_undefined_png);
-        this.addChild(this._imgBg);
+        this._sprBg = new cc.Scale9Sprite(res.tile_white_png);
+        this.addChild(this._sprBg);
 
         //sync
         this.syncAllChildren();

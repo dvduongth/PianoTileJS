@@ -1,8 +1,9 @@
 var res = {
     //png
-    battle_background_png : "res/xmas_map_bg.png",
+    battle_background_png : "res/resource/UIOpenning/opening_commonplaybg2.png",
     tile_music_png : "res/1.png",
-    tile_music_undefined_png : "res/perlin_noise.png",
+    tile_white_png : "res/resource/GameImage/tile_white.png",
+    gui_start_battle_bg_png : "res/resource/UITeam/classroom/item_rand_bg.png",
 
     bg_loading_png: "res/resource/UIOpenning/bg_small.jpg",
     bg_lobby_png: "res/resource/UIOpenning/bg_small_f.png",
