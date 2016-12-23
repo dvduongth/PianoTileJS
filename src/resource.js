@@ -10,6 +10,7 @@ var res = {
 
     //plist
     plist_1: "res/plist/1.plist",
+    plist_band: "res/resource/UIPlist/Plist_band.plist",
 
     //font
     FONT_ARIAL: "res/fonts/arial.ttf",

@@ -23,6 +23,20 @@ var GuiStartBattle = BaseGUI.extend({
         this._rootNode.retain();
         this._rootNode.setPosition(GV.WIN_SIZE.width >> 1, 0);
     },
+    getGuiHeight: function () {
+        return this.BACK_GROUND_SIZE.height;
+    },
+    createLeftIcon: function (url, y) {
+        var icon = new cc.Sprite(url);
+        this.addChild(icon);
+        icon.attr({
+            anchorX: 0,
+            anchorY: 0,
+            x: 20 - GV.WIN_SIZE.width * 0.5,
+            y: y
+        });
+        return icon;
+    },
     createBackground: function () {
         //background
         this._sprBg = new cc.Scale9Sprite(res.gui_start_battle_bg_png);
@@ -35,24 +49,21 @@ var GuiStartBattle = BaseGUI.extend({
         });
         this._sprBg.setContentSize(this.BACK_GROUND_SIZE);
     },
+    /**
+     * notice title
+     * */
     createNoticeTitleInfo: function () {
         this.createNoticeIcon();
         this.createNoticeText();
     },
     createNoticeIcon: function () {
-        this._sprNoticeIcon = new cc.Sprite()
-    },
-    createMusicTitleInfo: function () {
-        this.createMusicTitleText();
-    },
-    createBestScoreInfo: function () {
-        this.createBestScoreText();
+        this._sprNoticeIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 0.75);
     },
     createNoticeText: function () {
         //notice text
-        this._lbNoticeTitle = Utility.getLabel(res.FONT_MARKER_FELT, 28,Utility.getColorByName("cyan"));
+        this._lbNoticeTitle = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 36,Utility.getColorByName("blue"),true);
         this.addChild(this._lbNoticeTitle);
-        var bgSize = this._sprBg.getContentSize();
+        var bgSize = this.BACK_GROUND_SIZE;
         this._lbNoticeTitle.attr({
             anchorX: 0.5,
             anchorY: 0,
@@ -61,9 +72,19 @@ var GuiStartBattle = BaseGUI.extend({
         });
         this.setNoticeTitleText("Best With Headphones");
     },
+    /**
+     * music title
+     * */
+    createMusicTitleInfo: function () {
+        this.createMusicTileIcon();
+        this.createMusicTitleText();
+    },
+    createMusicTileIcon: function () {
+        this._sprMusicTileIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 0.5);
+    },
     createMusicTitleText: function () {
         //music title text
-        this._lbMusiceTitle = Utility.getLabel(res.FONT_MARKER_FELT, 28,Utility.getColorByName("black"));
+        this._lbMusiceTitle = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 36,Utility.getColorByName("black"),true);
         this.addChild(this._lbMusiceTitle);
         this._lbMusiceTitle.attr({
             anchorX: 0.5,
@@ -73,9 +94,19 @@ var GuiStartBattle = BaseGUI.extend({
         });
         this.setMusicTitleText("Music: Ngay Tet Que Em");
     },
+    /**
+     * best score
+     * */
+    createBestScoreInfo: function () {
+        this.createBestScoreIcon();
+        this.createBestScoreText();
+    },
+    createBestScoreIcon: function () {
+        this._sprBestScoreIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 0.25);
+    },
     createBestScoreText: function () {
         //best score text
-        this._lbBestScore = Utility.getLabel(res.FONT_MARKER_FELT, 28,Utility.getColorByName("black"));
+        this._lbBestScore = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 36,Utility.getColorByName("black"),true);
         this.addChild(this._lbBestScore);
         this._lbBestScore.attr({
             anchorX: 0.5,
@@ -86,7 +117,9 @@ var GuiStartBattle = BaseGUI.extend({
         this.setBestScoreText("Best Score: 0");
 
     },
-
+    /**
+     * set info
+     * */
     setInfo: function (data) {
         if(!data) {
             cc.error("set info gui start battle with null data");
@@ -110,17 +143,22 @@ var GuiStartBattle = BaseGUI.extend({
         this._lbNoticeTitle.setString(str);
     },
     setMusicTitleText: function (str) {
-        this._lbNoticeTitle.setString(str);
+        this._lbMusiceTitle.setString(str);
     },
     setBestScoreText: function (str) {
-        this._lbNoticeTitle.setString(str);
+        this._lbBestScore.setString(str);
     },
-
+    /**
+     * show gui
+     * */
     showGui: function (eff) {
         if(!this.isShowGui()) {
             this._super(eff);
         }
     },
+    /**
+     * hide gui
+     * */
     hideGui: function () {
         if(this.isShowGui()) {
             this._super();

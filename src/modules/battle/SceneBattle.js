@@ -34,7 +34,6 @@ var SceneBattle = BaseScene.extend({
             y: size.height * 15 / 16
         });
 
-        this.createListNodeMusic();
         this.schedule(this.update);
     },
     createListNodeMusic: function () {
@@ -130,12 +129,40 @@ var SceneBattle = BaseScene.extend({
             }
         }
     },
+    calculateTotalTileRowHeight: function () {
+        var result = 0;
+        var len = this.list_node_music.length;
+        for (var i = 0; i < len; ++i) {
+            if (this.list_node_music[i]) {
+                result += this.list_node_music[i].getRowHeight();
+            }
+        }
+        return result;
+    },
+    createStartGameState: function (minPos) {
+        var totalHeightMax = GV.WIN_SIZE.height - minPos;
+        this.createListNodeMusic();
+        var totalTileHeight = this.calculateTotalTileRowHeight();
+        while(totalTileHeight < totalHeightMax){
+            this.nextRow();
+            totalTileHeight += this.list_node_music[this.list_node_music.length - 1].getRowHeight();
+        }
+
+        var posY = minPos;
+        posY = posY + this.list_node_music[0].getRowHeight() * 0.5;
+        this.list_node_music[0].y = posY;
+        this.followFirstRow();
+    },
     onEnter: function () {
-        GV.MODULE_MGR.showGuiStartBattle();
         this._super();
+        //GV.MODULE_MGR.showGuiStartBattle();
+        //var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
+        var minPos = 500;
+        this.createStartGameState(minPos);
     },
     onEnterTransitionDidFinish: function () {
         this._super();
+        GV.MODULE_MGR._gameState = GV.GAME_STATE.RUNNING;
     },
     update: function (dt) {
         this._super(dt);
@@ -167,14 +194,25 @@ var SceneBattle = BaseScene.extend({
             this._lbScore.setString(Utility.numToStr(this.curScore));
         }
     },
-    moveTile: function (dt) {
+    followFirstRow: function () {
+        var ndObject, temp;
         var len = this.list_node_music.length;
-        for (var i = 0; i < len; ++i) {
-            var ndObject = this.list_node_music[i];
+        for (var i = 1; i < len; ++i) {
+            ndObject = this.list_node_music[i];
             if (ndObject) {
-                ndObject.y -= this.SPEED;
+                temp = this.list_node_music[i-1];
+                ndObject.y = temp.y + (temp.getRowHeight() + ndObject.getRowHeight()) * 0.5 ;
             }
         }
+    },
+    moveTile: function (dt) {
+        var ndObject = this.list_node_music[0];
+        if(ndObject) {
+            ndObject.y -= GV.MOVE_SPEED;
+            this.followFirstRow();
+        }
+
+        var len = this.list_node_music.length;
         if (len > 0) {
             var ndObj = this.list_node_music[len - 1];
             if (ndObj) {

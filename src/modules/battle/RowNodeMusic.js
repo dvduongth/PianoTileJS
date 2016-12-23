@@ -4,22 +4,37 @@ var RowNodeMusic = cc.Node.extend({
         //variables
         if(!num) {
             num = GV.NUM_COL;
+        }else{
+            GV.NUM_COL = num;
         }
         this.NUM_NODE = num;
         GV.NUM_COL = num;
         this.list_element = [];
         this.list_type = [];
         this.TOTAL_WIDTH_SIZE = 0;
+        this.rowHeightType = GV.TILE_TYPE.UNDEFINED;
         return true;
     },
     initGui: function () {
+        if(this.inited) {
+            return null;
+        }else{
+            this.inited = true;
+        }
         //music tile
         for(var j = 0; j < this.NUM_NODE; ++j) {
             var tileMusic = new TileMusicObject();
             this.addChild(tileMusic);
             this.list_element.push(tileMusic);
         }
-        this.TOTAL_WIDTH_SIZE = this.list_element[0].getSize().width * this.NUM_NODE;
+    },
+    calculateTotalTileWidth: function () {
+        var t = 0;
+        var len = this.list_element.length;
+        for(var i = 0; i < len; ++i) {
+            t += this.list_element[i].getSize().width;
+        }
+        this.TOTAL_WIDTH_SIZE = t;
     },
     /**
      * @param data with list_type
@@ -35,18 +50,37 @@ var RowNodeMusic = cc.Node.extend({
             this.list_type = data["list_type"];
         }
         this.initGui();
+        this.updateChildInfo();
+        this.updateChildSizeAndPos();
+    },
+    updateChildInfo: function () {
         var len = this.list_element.length;
-        var margin = 0;
         for(var i = 0; i < len; ++i) {
             var info = this.findDataForIndex(i);
             var tileMusic = this.list_element[i];
             if(tileMusic) {
                 if(info) {
                     tileMusic.setInfo(info);
+                    var h = tileMusic.getSize().height;
+                    if(h > GV.TILE_TYPE_HEIGHT[this.rowHeightType]) {
+                        this.rowHeightType = info["type"];
+                    }
                 }else{
                     tileMusic.setInfo({"type": GV.TILE_TYPE.UNDEFINED});
                 }
-                var x = tileMusic.getSize().width * 0.5 + margin + this.TOTAL_WIDTH_SIZE * (i / this.NUM_NODE - 0.5);
+            }
+        }
+    },
+    updateChildSizeAndPos: function () {
+        this.calculateTotalTileWidth();
+        var len = this.list_element.length;
+        var margin = 0;
+        for(var i = 0; i < len; ++i) {
+            var tileMusic = this.list_element[i];
+            if(tileMusic) {
+                var tileWidth = tileMusic.getSize().width;
+                tileMusic.updateTileSize(cc.size(tileWidth, GV.TILE_TYPE_HEIGHT[this.rowHeightType]));
+                var x = tileWidth * 0.5 + margin + this.TOTAL_WIDTH_SIZE * (i / this.NUM_NODE - 0.5);
                 tileMusic.attr({
                     x: x,
                     y: 0
@@ -67,12 +101,7 @@ var RowNodeMusic = cc.Node.extend({
         return null;
     },
     getRowHeight: function () {
-        var len = this.list_element.length;
-        if(len > 0) {
-            return this.list_element[0].getSize().height;
-        }else{
-            return 0;
-        }
+        return GV.TILE_TYPE_HEIGHT[this.rowHeightType];
     },
     checkMissActionTouch: function () {
         var len = this.list_element.length;
