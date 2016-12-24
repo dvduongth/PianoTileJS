@@ -15,6 +15,7 @@ var TileMusicObject = cc.Node.extend({
         this._isRequireScale = true;
         this.extraScore = 3;
         this.deltaTouchPosY = 50;
+        this.listDotScore = [];
         return true;
     },
     initGui: function () {
@@ -40,11 +41,13 @@ var TileMusicObject = cc.Node.extend({
                 cc.error("tile normal here");
                 urlIcon = "#long_head.png";
                 this._isRequireScale = false;
+                this.extraScore = 2;
                 break;
             case GV.TILE_TYPE.LONG:
                 cc.error("tile long here");
                 urlIcon = "#long_head.png";
                 this._isRequireScale = false;
+                this.extraScore = 3;
                 break;
             case GV.TILE_TYPE.UNDEFINED:
                 urlBg = res.tile_white_png;
@@ -75,12 +78,13 @@ var TileMusicObject = cc.Node.extend({
             var minRect = cc.rect(0,0,this._sprIcon.width * 0.5,this._sprIcon.height * 0.5);
             var offsetRect = cc.rect(10,10,10,10);
             this._sprIcon = new cc.Scale9Sprite(this._sprIcon.getSpriteFrame(),minRect,offsetRect);
+            this.createLongTileLightIcon();
         }
         this.addChild(this._sprIcon, GV.ZORDER_LEVEL.GUI);
         if(this.type == GV.TILE_TYPE.START) {
             var lbStart = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 70,Utility.getColorByName('white'),true,true);
             lbStart.setString("START");
-            this._sprIcon.addChild(lbStart);
+            this._sprIcon.addChild(lbStart,GV.ZORDER_LEVEL.GUI);
             lbStart.attr({
                 anchorX: 0.5,
                 anchorY: 0.5,
@@ -88,6 +92,10 @@ var TileMusicObject = cc.Node.extend({
                 y: this._sprIcon.height * 0.5
             });
         }
+    },
+    createLongTileLightIcon: function () {
+        this._sprLongTileLight = new cc.Sprite("#black.png");
+        this.addChild(this._sprLongTileLight, this._sprIcon.getLocalZOrder() - 1);
     },
     updateTileSize: function (size, height) {
         if (size === undefined) {
@@ -142,7 +150,17 @@ var TileMusicObject = cc.Node.extend({
                 this._sprIcon["oldScale"] = cc.p(delta_ratio_x, delta_ratio_y);
             }else{
                 this._sprIcon.setContentSize(this.tileSize);
+                this.updateSpriteLongTileLightSize();
             }
+        }
+    },
+    updateSpriteLongTileLightSize: function () {
+        if(this._sprLongTileLight) {
+            var iconSize = this._sprLongTileLight.getContentSize();
+            var delta_ratio_x = this.tileSize.width / iconSize.width;
+            var delta_ratio_y = this.tileSize.height / iconSize.height;
+            this._sprLongTileLight.setScale(delta_ratio_x, delta_ratio_y);
+            this._sprLongTileLight["oldScale"] = cc.p(delta_ratio_x, delta_ratio_y);
         }
     },
     addListenerForTile: function (obj) {
@@ -230,17 +248,28 @@ var TileMusicObject = cc.Node.extend({
                 return false;
             }
         }
-
+        //hide bottom info if has
         if(!this.isHidePopup){
             this.isHidePopup = true;
             GV.MODULE_MGR.guiStartBattle.hideGui();
         }
+        //update game state
         GV.MODULE_MGR._gameState = GV.GAME_STATE.RUNNING;
         GV.SCENE_MGR.getCurrentScene().isRequireUpSpeed = true;
         this.isTouchSuccess = true;
+        //increase score
         GV.MODULE_MGR._myInfo.curScore++;
+        //update icon action
+        if(this.type == GV.TILE_TYPE.NORMAL || this.type == GV.TILE_TYPE.LONG) {
+            this.createEffectTouchLong(touch, event);
+        }else{
+            this.fadeOutIcon();
+        }
+		return true;
+    },
+    fadeOutIcon: function () {
         if (this._sprIcon) {
-            var timeFadeOut = 0.3;
+            var timeFadeOut = 0.2;
             this._sprIcon.runAction(cc.sequence(
                 cc.fadeOut(timeFadeOut),
                 cc.callFunc(function () {
@@ -249,13 +278,8 @@ var TileMusicObject = cc.Node.extend({
                 }.bind(this))
             ));
         }
-        if(this.type == GV.TILE_TYPE.NORMAL || this.type == GV.TILE_TYPE.LONG) {
-            this.createEffectTouchLong(touch, event);
-        }
-		return true;
     },
     createEffectTouchLong: function (touch, event) {
-        this.extraScore = this.type == GV.TILE_TYPE.NORMAL ? 2 : 3;
         var minHeight = 50;
         var minRect = cc.rect(minHeight,minHeight,minHeight,this.getSize().width);
         var offsetRect = cc.rect(minHeight,minHeight,minHeight,minHeight);
@@ -277,6 +301,35 @@ var TileMusicObject = cc.Node.extend({
         }
         this._sprTouchLong.height = h;
         this._sprTouchLong.y = h - this.getSize().height * 0.5;
+        this.createDotScore();
+    },
+
+    createDotScore: function () {
+        this.clearSpriteDot();
+        var space = this.getSize().height * 0.5 / this.extraScore;
+        for(var i = 0; i < this.extraScore; ++i) {
+            var sprDot = new cc.Sprite("#dot.png");
+            this.addChild(sprDot, this._sprTouchLong.getLocalZOrder() + 1);
+            sprDot.attr({
+                anchorX: 0.5,
+                anchorY: 0.5,
+                x: 0,
+                y: space * i
+            });
+            sprDot.setBlendFunc(cc.ONE, cc.ONE);
+            this.listDotScore.push(sprDot);
+        }
+    },
+    clearSpriteDot: function () {
+        var len = this.listDotScore.length;
+        for(var i = 0; i < len; ++i) {
+            var sprDot = this.listDotScore[i];
+            if(sprDot) {
+                sprDot.removeFromParent(true);
+            }
+        }
+        this.listDotScore.splice(0);
+        this.listDotScore = [];
     },
 
     updateTouchLong: function (dt) {
@@ -284,9 +337,32 @@ var TileMusicObject = cc.Node.extend({
             this._sprTouchLong.y += GV.SCENE_MGR.getCurrentScene().curSpeed;
             this._sprTouchLong.height += GV.SCENE_MGR.getCurrentScene().curSpeed;
             if(this._sprTouchLong.height >= this.getSize().height) {
+                this._sprIcon.removeFromParent(true);
+                this._sprIcon = null;
                 this._sprTouchLong.removeFromParent(true);
                 this._sprTouchLong = null;
+                this._sprLongTileLight.removeFromParent(true);
+                this._sprLongTileLight = null;
+                this.clearSpriteDot();
+                //show effect add score
                 this.showEffectScoreAddMore(this.extraScore);
+            }else{
+                var len = this.listDotScore.length;
+                for(var i = 0; i < len; ++i) {
+                    var sprDot = this.listDotScore[i];
+                    if(sprDot) {
+                        if(sprDot.y <= this._sprTouchLong.y){
+                            var actionTime = 0.2;
+                            sprDot.runAction(cc.sequence(
+                                cc.scaleTo(actionTime,6),
+                                cc.fadeOut(actionTime * 0.5),
+                                cc.callFunc(sprDot.removeFromParent,sprDot)
+                            ));
+                            this.listDotScore[i] = null;
+                            this.listDotScore.splice(i, 1);
+                        }
+                    }
+                }
             }
         }
     },
@@ -300,33 +376,17 @@ var TileMusicObject = cc.Node.extend({
         if (this._sprIcon) {
             var ACTION_TIME = 1;
             this._sprIcon.stopAllActions();
-            var oldRatioScale = this._sprIcon["oldScale"];
-            if (!oldRatioScale) {
-                oldRatioScale = cc.p(1, 1);
-            }
-            var ratioX = oldRatioScale.x;
-            var ratioY = oldRatioScale.y;
-            this._sprIcon.runAction(cc.spawn(
-                cc.sequence(
-                    cc.scaleTo(ACTION_TIME * 0.35, ratioX - 0.02, ratioY - 0.02),
-                    cc.scaleTo(ACTION_TIME * 0.35, ratioX + 0.02, ratioY + 0.02),
-                    cc.scaleTo(ACTION_TIME * 0.3, ratioX, ratioY)
-                ),
-                cc.sequence(
-                    cc.fadeTo(ACTION_TIME * 0.5, 230),
-                    cc.fadeTo(ACTION_TIME * 0.5, 255)
-                )
-            ).repeatForever());
+            this._sprIcon.runAction(cc.blink(ACTION_TIME,3).repeatForever());
         }
     },
     showEffectScoreAddMore: function (score) {
-        var lbScoreExtra = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 50, Utility.getColorByName("cyan"));
+        var lbScoreExtra = Utility.getLabel(res.FONT_ARIAL, 50, Utility.getColorByName("text_green"),true);
         lbScoreExtra.setString("+" + Utility.numToStr(score));
         lbScoreExtra.attr({
             anchorX: 0.5,
             anchorY: 0.5,
             x: 0,
-            y: this.getSize().height * 0.5 + lbScoreExtra.height + this.deltaTouchPosY
+            y: this.getSize().height * 0.5 + lbScoreExtra.height + this.deltaTouchPosY * 0.5
         });
         lbScoreExtra.runAction(Utility.getActionScaleForAppear(lbScoreExtra, function () {
             GV.MODULE_MGR._myInfo.curScore += score;

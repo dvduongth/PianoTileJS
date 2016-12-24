@@ -30,10 +30,10 @@ GV.TILE_TYPE = {
  * and calculate in main.js file on function cc.game.onStart
  * */
 GV.TILE_HEIGHT_TYPE = {
-    UNDEFINED: 20,
-    START: 20,
-    SHORT: 20,
-    NORMAL: 30,
+    UNDEFINED: 25,
+    START: 25,
+    SHORT: 25,
+    NORMAL: 35,
     LONG: 50
 };
 /**

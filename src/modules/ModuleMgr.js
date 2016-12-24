@@ -18,7 +18,7 @@ var ModuleMgr = cc.Class.extend({
     endGame: function () {
         this._gameState = GV.GAME_STATE.END;
         cc.error("Game Over");
-        var timeWait = 5;
+        var timeWait = 3;
         var curScene = GV.SCENE_MGR.getCurrentScene();
         curScene.runAction(cc.sequence(
             cc.delayTime(timeWait),

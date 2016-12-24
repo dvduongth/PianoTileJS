@@ -257,15 +257,23 @@ Utility.getActionScaleForAppear = function (element_, callFunction) {
     var SMALL_SCALE_TIME = 0.2;
     var BIG_SCALE_TIME = SMALL_SCALE_TIME * 0.75;
     var NORMAL_SCALE_TIME = BIG_SCALE_TIME * 0.75;
+    var ratio_scale = cc.p(1,1);
     if (element_) {
         element_.setCascadeOpacityEnabled(true);
         element_.setOpacity(0);
+        if(element_["oldScale"]){
+            ratio_scale = element_["oldScale"];
+        }else{
+            ratio_scale = cc.p(element_.getScaleX(), element_.getScaleY());
+        }
         element_.setScale(1);
         element_.setVisible(true);
     }
-    var scaleOut = cc.scaleTo(BIG_SCALE_TIME, 1.1, 1.1);
-    var scaleIn = cc.scaleTo(SMALL_SCALE_TIME, 0.9, 0.9);
-    var scaleReverse = cc.scaleTo(NORMAL_SCALE_TIME, 1, 1);
+    var ratio_scale_x = ratio_scale.x;
+    var ratio_scale_y = ratio_scale.y;
+    var scaleOut = cc.scaleTo(BIG_SCALE_TIME, ratio_scale_x + 0.1, ratio_scale_y + 0.1);
+    var scaleIn = cc.scaleTo(SMALL_SCALE_TIME, ratio_scale_x - 0.1, ratio_scale_y - 0.1);
+    var scaleReverse = cc.scaleTo(NORMAL_SCALE_TIME, ratio_scale_x, ratio_scale_y);
     return cc.spawn(
         cc.fadeIn(BIG_SCALE_TIME),
         cc.sequence(

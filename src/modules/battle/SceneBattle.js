@@ -43,9 +43,28 @@ var SceneBattle = BaseScene.extend({
         var delta_ratio_x = GV.WIN_SIZE.width / bgSize.width;
         var delta_ratio_y = GV.WIN_SIZE.height / bgSize.height;
         this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
+    },
+    createEffectBall: function () {
         //effect ball
-        this._sprEffectBall = new cc.Sprite();
-        this.addChild(this._sprEffectBall, GV.ZORDER_LEVEL.BG);
+        if(!this._sprEffectBall) {
+            this._sprEffectBall = new cc.Sprite(res.ball_small_dot_png);
+            this.addChild(this._sprEffectBall, GV.ZORDER_LEVEL.BG);
+            this._sprEffectBall.setBlendFunc(cc.ONE, cc.ONE);
+            this._sprEffectBall.attr({
+                anchorX: 0.5,
+                anchorY: 0.5,
+                x: GV.WIN_SIZE.width / 2,
+                y: GV.WIN_SIZE.height / 2
+            });
+            var ballSize = this._sprEffectBall.getContentSize();
+            //var delta_ratio_x = GV.WIN_SIZE.width / ballSize.width;
+            var delta_ratio_y = GV.WIN_SIZE.height / ballSize.height;
+            this._sprEffectBall.setScale(delta_ratio_y);
+            this._sprEffectBall["oldScale"] = cc.p(delta_ratio_y,delta_ratio_y);
+        }else{
+            this._sprEffectBall.stopAllActions();
+        }
+        this._sprEffectBall.runAction(cc.rotateBy(1, -10).repeatForever());
     },
     createTextScore: function () {
         this._lbScore = Utility.getLabel(res.FONT_MARKER_FELT, 72, Utility.getColorByName("red"));
@@ -204,6 +223,7 @@ var SceneBattle = BaseScene.extend({
     onEnter: function () {
         this._super();
         this.createStartGameState();
+        this.createEffectBall();
     },
     onEnterTransitionDidFinish: function () {
         this._super();
@@ -318,6 +338,12 @@ var SceneBattle = BaseScene.extend({
         this._lbScore.visible = true;
         //this._ndStar.visible = false;
         this._lbScore.runAction(Utility.getActionScaleForAppear());
+        this.playEffectBackgroundBall();
+    },
+    playEffectBackgroundBall: function () {
+        if(this._sprEffectBall) {
+            this._sprEffectBall.runAction(Utility.getActionScaleForAppear(this._sprEffectBall));
+        }
     },
 
     playEffectUpStar: function () {
