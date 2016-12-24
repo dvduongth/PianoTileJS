@@ -15,6 +15,15 @@ var ModuleMgr = cc.Class.extend({
         }
         this.guiStartBattle.showGui();
     },
+    showGuiEndBattle: function () {
+        if(!this.guiEndBattle){
+            this.guiEndBattle = new GuiEndBattle();
+        }
+        this.guiEndBattle.setInfo(this._myInfo);
+        GV.SCENE_MGR.showFog();
+        this.guiEndBattle.showGui(true);
+    },
+
     endGame: function () {
         this._gameState = GV.GAME_STATE.END;
         cc.error("Game Over");
@@ -23,9 +32,7 @@ var ModuleMgr = cc.Class.extend({
         curScene.runAction(cc.sequence(
             cc.delayTime(timeWait),
             cc.callFunc(function () {
-                this.resetValues();
-                curScene.createStartGameState();
-                curScene.resetValues();
+                this.showGuiEndBattle();
             }.bind(this))
         ))
     }

@@ -316,7 +316,7 @@ var TileMusicObject = cc.Node.extend({
                 x: 0,
                 y: space * i
             });
-            sprDot.setBlendFunc(cc.ONE, cc.ONE);
+            //sprDot.setBlendFunc(cc.ONE, cc.ONE);
             this.listDotScore.push(sprDot);
         }
     },
@@ -352,12 +352,26 @@ var TileMusicObject = cc.Node.extend({
                     var sprDot = this.listDotScore[i];
                     if(sprDot) {
                         if(sprDot.y <= this._sprTouchLong.y){
-                            var actionTime = 0.2;
-                            sprDot.runAction(cc.sequence(
-                                cc.scaleTo(actionTime,6),
-                                cc.fadeOut(actionTime * 0.5),
+                            sprDot.setTexture(res.dot_light_png);
+                            var dot = new cc.Sprite(res.dot_light_png);
+                            dot.attr({
+                               x: sprDot.width >> 1,
+                               y: sprDot.height >> 1
+                            });
+                            sprDot.addChild(dot);
+                            var actionTime = 0.1;
+                            var animation = new cc.Animation();
+                            animation.addSpriteFrameWithFile(res.circle_light_png);
+                            animation.addSpriteFrameWithFile(res.glow_png);
+                            animation.setDelayPerUnit(actionTime);
+                            animation.setRestoreOriginalFrame(true);
+                            var action = cc.animate(animation);
+                            //run action
+                            dot.runAction(cc.sequence(
+                                action,
                                 cc.callFunc(sprDot.removeFromParent,sprDot)
                             ));
+                            //clear data
                             this.listDotScore[i] = null;
                             this.listDotScore.splice(i, 1);
                         }
@@ -376,7 +390,7 @@ var TileMusicObject = cc.Node.extend({
         if (this._sprIcon) {
             var ACTION_TIME = 1;
             this._sprIcon.stopAllActions();
-            this._sprIcon.runAction(cc.blink(ACTION_TIME,3).repeatForever());
+            this._sprIcon.runAction(cc.blink(ACTION_TIME,3).repeat(3));
         }
     },
     showEffectScoreAddMore: function (score) {

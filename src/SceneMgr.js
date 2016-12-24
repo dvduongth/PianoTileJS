@@ -70,7 +70,7 @@ var SceneMgr = cc.Class.extend({
             var fog = this.getFog();
             //update view
             fog.setVisible(true);
-            this.updateParent(fog, GV.ZORDER_LEVEL.GUI);
+            this.updateParent(fog, GV.ZORDER_LEVEL.POPUP - 1);
             if (opacity !== undefined) {
                 fog.setOpacity(opacity);
             } else {

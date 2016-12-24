@@ -4,6 +4,7 @@ var MyInfoData = cc.Class.extend({
         this.uName = "";
         this.curScore = 0;
         this.bestScore = 0;
+        this.myStar = 0;
         return true;
     }
 });

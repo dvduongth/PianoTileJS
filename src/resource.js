@@ -9,10 +9,17 @@ var res = {
     star_png: "res/resource/UIBattleMaster/star.png",
     star_light_png: "res/resource/UIBattleMaster/starlight.png",
     ball_small_dot_png: "res/resource/UIBattle/Effect/ballballball_smalldot.png",
+    dot_light_png: "res/resource/Animation/dot_light.png",
+    circle_light_png: "res/resource/Animation/circle_light.png",
+    crazy_circle_png: "res/resource/Animation/crazy_circle.png",
+    glow_png: "res/resource/GameImage/glow.png",
 
     //plist
     plist_1: "res/plist/1.plist",
     plist_band: "res/resource/UIPlist/Plist_band.plist",
+    plist_content: "res/resource/UIPlist/Plist_content.plist",
+    plist_battle_result: "res/resource/UIPlist/Battle_Result/Battle_Result.plist",
+    plist_opening: "res/resource/UIOpenning/Plist_openning.plist",
 
     //font
     FONT_ARIAL: "res/fonts/arial.ttf",

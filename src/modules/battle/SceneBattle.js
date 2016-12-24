@@ -67,14 +67,15 @@ var SceneBattle = BaseScene.extend({
         this._sprEffectBall.runAction(cc.rotateBy(1, -10).repeatForever());
     },
     createTextScore: function () {
-        this._lbScore = Utility.getLabel(res.FONT_MARKER_FELT, 72, Utility.getColorByName("red"));
+        var fontSize = Math.floor(GV.WIN_SIZE.height * 0.1);
+        this._lbScore = Utility.getLabel(res.FONT_FUTURA_CONDENSED, fontSize, Utility.getColorByName("red"));
         this._lbScore.setString(Utility.numToStr(this.curScore));
         this.addChild(this._lbScore, GV.ZORDER_LEVEL.EFFECT);
         this._lbScore.attr({
             anchorX: 0.5,
-            anchorY: 1,
+            anchorY: 0.5,
             x: GV.WIN_SIZE.width >> 1,
-            y: GV.WIN_SIZE.height * 15 / 16
+            y: GV.WIN_SIZE.height - fontSize
         });
     },
     createNodeStar: function () {
@@ -357,6 +358,7 @@ var SceneBattle = BaseScene.extend({
         this._ndStar.addChild(sprStarIcon, 0);
         this.listStar.push(sprStarIcon);
         var len = this.listStar.length;
+        GV.MODULE_MGR._myInfo.myStar = this.listStar.length;//save to my info
         var margin = 5;
         var firstStar = this.listStar[0];
         var lineStarWidth = firstStar.width * len + margin * (len - 1);

@@ -30,6 +30,7 @@
         "src/base_class/Utility.js",
         "src/data/MyInfoData.js",
         "src/modules/ModuleMgr.js",
+        "src/modules/battle/GuiEndBattle.js",
         "src/modules/battle/GuiStartBattle.js",
         "src/modules/battle/RowNodeMusic.js",
         "src/modules/battle/SceneBattle.js",
