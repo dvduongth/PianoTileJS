@@ -1,18 +1,35 @@
 var SceneBattle = BaseScene.extend({
     ctor: function () {
         this._super();
+        //element gui
+        this._sprBg = null;
         //variables
         this.curScore = 0;
         this.count_time = 0;
-        this._sprBg = null;
         this.list_node_music = [];
-        this.initGui();
-        this.SPEED = GV.MOVE_SPEED;
         this.marginTop = 0;
         this.createStartState = false;
+        this.isRequireUpSpeed = false;
+        this.starLevel = 0;
+        this.upSpeedDelta = 1;
+        this.moveSpeed = GV.MOVE_SPEED;
+        this.curSpeed = this.moveSpeed;
+        this.distanceUpStar = GV.DISTANCE_UP_STAR_LEVEL;
+        this.listStar = [];
+        this.initGui();
         return true;
     },
     initGui: function () {
+        //background
+        this.createBackground();
+        //label score
+        this.createTextScore();
+        //node star
+        this.createNodeStar();
+        //set schedule update
+        this.schedule(this.update);
+    },
+    createBackground: function () {
         //background
         this._sprBg = new cc.Sprite(res.battle_background_png);
         this.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
@@ -26,19 +43,28 @@ var SceneBattle = BaseScene.extend({
         var delta_ratio_x = GV.WIN_SIZE.width / bgSize.width;
         var delta_ratio_y = GV.WIN_SIZE.height / bgSize.height;
         this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
-
-        //label score
+        //effect ball
+        this._sprEffectBall = new cc.Sprite();
+        this.addChild(this._sprEffectBall, GV.ZORDER_LEVEL.BG);
+    },
+    createTextScore: function () {
         this._lbScore = Utility.getLabel(res.FONT_MARKER_FELT, 72, Utility.getColorByName("red"));
         this._lbScore.setString(Utility.numToStr(this.curScore));
-        this.addChild(this._lbScore, GV.ZORDER_LEVEL.GUI);
+        this.addChild(this._lbScore, GV.ZORDER_LEVEL.EFFECT);
         this._lbScore.attr({
             anchorX: 0.5,
             anchorY: 1,
             x: GV.WIN_SIZE.width >> 1,
             y: GV.WIN_SIZE.height * 15 / 16
         });
-
-        this.schedule(this.update);
+    },
+    createNodeStar: function () {
+        this._ndStar = new cc.Node();
+        this.addChild(this._ndStar, GV.ZORDER_LEVEL.EFFECT);
+        this._ndStar.attr({
+            x: GV.WIN_SIZE.width >> 1,
+            y: GV.WIN_SIZE.height * 7 / 8
+        });
     },
     createListNodeMusic: function () {
         var len = this.list_node_music.length;
@@ -53,12 +79,12 @@ var SceneBattle = BaseScene.extend({
     },
     nextRow: function () {
         var rowNodeMusic = new RowNodeMusic();
-        this.addChild(rowNodeMusic);
+        this.addChild(rowNodeMusic, GV.ZORDER_LEVEL.GUI);
         this.list_node_music.push(rowNodeMusic);
         //set info
         var numTile = 1;
         var list_type = [];
-        if(!this.createStartState) {
+        if (!this.createStartState) {
             this.createStartState = true;
             //push info into list
             var startInfo = {
@@ -66,7 +92,7 @@ var SceneBattle = BaseScene.extend({
                 "index": Math.floor(4 * Math.random())
             };
             list_type.push(startInfo);
-        }else{
+        } else {
             //var numTile = Math.random() > 0.5 ? 2 : 1;
 
             for (var i = 0; i < numTile; ++i) {
@@ -155,16 +181,21 @@ var SceneBattle = BaseScene.extend({
         }
         return result;
     },
-    createStartGameState: function (minPos) {
+    createStartGameState: function () {
+        //show game info
+        GV.MODULE_MGR.showGuiStartBattle();
+        var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
+        GV.MODULE_MGR._gameState = GV.GAME_STATE.START;
         this.createStartState = false;
+        //create row tile
         var totalHeightMax = GV.WIN_SIZE.height - minPos;
         this.createListNodeMusic();
         var totalTileHeight = this.calculateTotalTileRowHeight();
-        while(totalTileHeight < totalHeightMax){
+        while (totalTileHeight < totalHeightMax) {
             this.nextRow();
             totalTileHeight += this.list_node_music[this.list_node_music.length - 1].getRowHeight();
         }
-
+        //update view row tile position
         var posY = minPos;
         posY = posY + this.list_node_music[0].getRowHeight() * 0.5;
         this.list_node_music[0].y = posY;
@@ -172,9 +203,7 @@ var SceneBattle = BaseScene.extend({
     },
     onEnter: function () {
         this._super();
-        GV.MODULE_MGR.showGuiStartBattle();
-        var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
-        this.createStartGameState(minPos);
+        this.createStartGameState();
     },
     onEnterTransitionDidFinish: function () {
         this._super();
@@ -196,18 +225,38 @@ var SceneBattle = BaseScene.extend({
         if (!GV.MODULE_MGR._myInfo) {
             return false;
         }
-        var curScore = GV.MODULE_MGR._myInfo.curScore;
-        var d = 2;
-
-        if (this.curScore != curScore) {
-            if (curScore > this.curScore) {
+        //update score
+        this.updateScore(dt);
+        //update speed
+        this.updateMoveSpeed(dt);
+    },
+    updateScore: function (dt) {
+        var myScore = GV.MODULE_MGR._myInfo.curScore;
+        var d = 1;
+        if (this.curScore != myScore) {
+            if (myScore > this.curScore) {
                 //this.curScore += Math.round((curScore - this.curScore) / d);
-                this.curScore++;
+                this.curScore += d;
             } else {
                 //this.curScore -= Math.round((this.curScore - curScore) / d);
-                this.curScore--;
+                this.curScore -= d;
             }
             this._lbScore.setString(Utility.numToStr(this.curScore));
+            this.playEffectScore();
+        }
+        if (this.isRequireUpSpeed && (myScore % this.distanceUpStar == 0)) {
+            this.isRequireUpSpeed = false;
+            this.upSpeed();
+        }
+    },
+    updateMoveSpeed: function (dt) {
+        var d = 0.1;
+        if (this.curSpeed != this.moveSpeed) {
+            if (this.curSpeed > this.moveSpeed) {
+                this.curSpeed -= d;
+            } else {
+                this.curSpeed += d;
+            }
         }
     },
     followFirstRow: function () {
@@ -216,15 +265,15 @@ var SceneBattle = BaseScene.extend({
         for (var i = 1; i < len; ++i) {
             ndObject = this.list_node_music[i];
             if (ndObject) {
-                temp = this.list_node_music[i-1];
-                ndObject.y =this.marginTop + temp.y + (temp.getRowHeight() + ndObject.getRowHeight()) * 0.5 ;
+                temp = this.list_node_music[i - 1];
+                ndObject.y = this.marginTop + temp.y + (temp.getRowHeight() + ndObject.getRowHeight()) * 0.5;
             }
         }
     },
     moveTile: function (dt) {
         var ndObject = this.list_node_music[0];
-        if(ndObject) {
-            ndObject.y -= GV.MOVE_SPEED;
+        if (ndObject) {
+            ndObject.y -= this.curSpeed;
             this.followFirstRow();
         }
 
@@ -245,14 +294,62 @@ var SceneBattle = BaseScene.extend({
                 }
             }
         }
-        this.count_time++;
-        if (this.count_time % GV.UP_SPEED_DURATION == 0) {
-            this.count_time = 1;
-            this.upSpeed();
-        }
     },
     upSpeed: function () {
-        this.SPEED += 0.5;
+        this.moveSpeed += this.upSpeedDelta;
+        this.starLevel++;
+        this.distanceUpStar *= 2;
+        this.playEffectUpStar();
         cc.error("up speed");
+    },
+    resetValues: function () {
+        this.moveSpeed = GV.MOVE_SPEED;
+        this.curSpeed = this.moveSpeed;
+        this.curScore = 0;
+        this.distanceUpStar = GV.DISTANCE_UP_STAR_LEVEL;
+        this._ndStar.removeAllChildren(true);
+        this.listStar = [];
+    },
+    playEffectScore: function () {
+        this._lbScore.visible = true;
+        this._ndStar.visible = false;
+        this._lbScore.runAction(Utility.getActionScaleForAppear());
+    },
+
+    playEffectUpStar: function () {
+        this._lbScore.visible = false;
+        this._lbScore.setLocalZOrder(this._ndStar.getLocalZOrder() + 1);
+        this._ndStar.visible = true;
+        this._ndStar.stopAllActions();
+        this._ndStar.setCascadeOpacityEnabled(true);
+        this._ndStar.setOpacity(255);
+        var sprStarIcon = new cc.Sprite(res.star_light_png);
+        this._ndStar.addChild(sprStarIcon, 0);
+        this.listStar.push(sprStarIcon);
+        var len = this.listStar.length;
+        var margin = 5;
+        var firstStar = this.listStar[0];
+        var lineStarWidth = firstStar.width * len + margin * (len - 1);
+        for (var i = 0; i < len; ++i) {
+            var starIcon = this.listStar[i];
+            if (starIcon) {
+                starIcon.x = -(lineStarWidth - firstStar.width) * 0.5 + (firstStar.width + margin) * i;
+            }
+        }
+        sprStarIcon.setScale(10);
+        sprStarIcon.runAction(Utility.getActionScaleForAppear2(undefined, function () {
+            var starIcon = new cc.Sprite(res.star_png);
+            this._ndStar.addChild(starIcon);
+            starIcon.setPosition(sprStarIcon.getPosition());
+            this.listStar[this.listStar.length -1] = starIcon;
+            sprStarIcon.removeFromParent(true);
+            this._ndStar.runAction(cc.sequence(
+                cc.delayTime(0.5),
+                cc.fadeOut(1),
+                cc.callFunc(function () {
+                    this._lbScore.visible = true;
+                }.bind(this))
+            ));
+        }.bind(this)));
     }
 });

@@ -174,7 +174,6 @@ var TileMusicObject = cc.Node.extend({
     },
     onTouchBeganUI: function (touch, event) {
         if (this.type == GV.TILE_TYPE.UNDEFINED) {
-            cc.error("touch error, don't touch white tile");
             this.touchFail(touch, event);
         } else {
             this.touchSuccess(touch, event);
@@ -199,34 +198,41 @@ var TileMusicObject = cc.Node.extend({
         this.initGui();
     },
     touchFail: function (touch, event) {
-        if (GV.MODULE_MGR._gameState == GV.GAME_STATE.END) {
+        if (GV.MODULE_MGR._gameState == GV.GAME_STATE.END || GV.MODULE_MGR._gameState == GV.GAME_STATE.START) {
             return false;
         }
-
+        cc.error("touch error, don't touch white tile");
         GV.SCENE_MGR._currentScene.gameOver();
         this.createIcon("#tile_miss.png");
         this.updateSpriteIconSize();
         this.iconActionFocus();
     },
     touchSuccess: function (touch, event) {
-        var self = this;
         if (GV.MODULE_MGR._gameState == GV.GAME_STATE.END) {
             return false;
         }
+        if (GV.MODULE_MGR._gameState == GV.GAME_STATE.START) {
+            if (this.type != GV.TILE_TYPE.START) {
+                return false;
+            }
+        }
+
         if(!this.isHidePopup){
             this.isHidePopup = true;
             GV.MODULE_MGR.guiStartBattle.hideGui();
         }
         GV.MODULE_MGR._gameState = GV.GAME_STATE.RUNNING;
+        GV.SCENE_MGR.getCurrentScene().isRequireUpSpeed = true;
         this.isTouchSuccess = true;
         GV.MODULE_MGR._myInfo.curScore++;
         if (this._sprIcon) {
+            var timeFadeOut = 0.5;
             this._sprIcon.runAction(cc.sequence(
-                cc.fadeOut(0.5),
+                cc.fadeOut(timeFadeOut),
                 cc.callFunc(function () {
-                    self._sprIcon.removeFromParent(true);
-                    self._sprIcon = null;
-                })
+                    this._sprIcon.removeFromParent(true);
+                    this._sprIcon = null;
+                }.bind(this))
             ));
         }
     },

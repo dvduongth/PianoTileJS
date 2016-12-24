@@ -16,7 +16,17 @@ var ModuleMgr = cc.Class.extend({
         this.guiStartBattle.showGui();
     },
     endGame: function () {
-        GV.MODULE_MGR._gameState = GV.GAME_STATE.END;
+        this._gameState = GV.GAME_STATE.END;
         cc.error("Game Over");
+        var timeWait = 5;
+        var curScene = GV.SCENE_MGR.getCurrentScene();
+        curScene.runAction(cc.sequence(
+            cc.delayTime(timeWait),
+            cc.callFunc(function () {
+                this.resetValues();
+                curScene.createStartGameState();
+                curScene.resetValues();
+            }.bind(this))
+        ))
     }
 });

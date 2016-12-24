@@ -253,3 +253,50 @@ Utility.getActionLoading = function (obj, content) {
         cc.delayTime(delayTime)
     ).repeatForever();
 };
+Utility.getActionScaleForAppear = function (element_, callFunction) {
+    var SMALL_SCALE_TIME = 0.2;
+    var BIG_SCALE_TIME = SMALL_SCALE_TIME * 0.75;
+    var NORMAL_SCALE_TIME = BIG_SCALE_TIME * 0.75;
+    if (element_) {
+        element_.setCascadeOpacityEnabled(true);
+        element_.setOpacity(0);
+        element_.setScale(1);
+        element_.setVisible(true);
+    }
+    var scaleOut = cc.scaleTo(BIG_SCALE_TIME, 1.1, 1.1);
+    var scaleIn = cc.scaleTo(SMALL_SCALE_TIME, 0.9, 0.9);
+    var scaleReverse = cc.scaleTo(NORMAL_SCALE_TIME, 1, 1);
+    return cc.spawn(
+        cc.fadeIn(BIG_SCALE_TIME),
+        cc.sequence(
+            scaleOut,
+            scaleIn,
+            scaleReverse,
+            cc.callFunc(function () {
+                Utility.executeFunction(callFunction);
+            })
+        )
+    );
+};
+Utility.getActionScaleForAppear2 = function (element_, callFunction) {
+    var BIG_SCALE_TIME = 0.6;
+    if (element_) {
+        element_.setCascadeOpacityEnabled(true);
+        element_.setOpacity(0);
+        element_.setScale(10);
+        element_.setVisible(true);
+    }
+    return cc.spawn(
+        cc.fadeIn(BIG_SCALE_TIME),
+        cc.sequence(
+            cc.scaleTo(BIG_SCALE_TIME * 0.6, 0.9),
+            cc.scaleTo(BIG_SCALE_TIME * 0.1, 1.15),
+            cc.scaleTo(BIG_SCALE_TIME * 0.1, 0.95),
+            cc.scaleTo(BIG_SCALE_TIME * 0.1, 1.1),
+            cc.scaleTo(BIG_SCALE_TIME * 0.1, 1),
+            cc.callFunc(function () {
+                Utility.executeFunction(callFunction);
+            })
+        )
+    );
+};

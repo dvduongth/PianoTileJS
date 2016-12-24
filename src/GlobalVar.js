@@ -9,16 +9,15 @@ GV.SCENE_IDS = {
 };
 GV.ZORDER_LEVEL = {
     BG: 0,
-    GUI: 1,
-    EFFECT: 2,
-    POPUP: 3,
-    LOADING: 4,
-    CURSOR: 5
+    GUI: 100,
+    EFFECT: 200,
+    POPUP: 300,
+    LOADING: 400,
+    CURSOR: 500
 };
 GV.POPUP_MGR = null;
 
 GV.NUM_COL = 4;
-GV.MOVE_SPEED = 6;
 GV.TILE_TYPE = {
     UNDEFINED: "UNDEFINED",
     START: "START",
@@ -37,10 +36,16 @@ GV.TILE_HEIGHT_TYPE = {
     NORMAL: 30,
     LONG: 50
 };
-
-GV.UP_SPEED_DURATION = 100;
+/**
+ * game state
+ * */
 GV.GAME_STATE = {
     START: 0,
     RUNNING: 1,
     END: 2
 };
+/**
+ * distant score to require up star level
+ * */
+GV.DISTANCE_UP_STAR_LEVEL = 10;
+GV.MOVE_SPEED = 10;
