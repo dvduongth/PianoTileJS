@@ -1,7 +1,7 @@
 {
     "init_cfg":{
        "isLandscape": false,
-       "isWindowTop": false,
+       "isWindowTop": true,
        "name": "PianoTileJS",
        "width": 360,
        "height": 640,

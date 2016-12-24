@@ -262,6 +262,7 @@ var SceneBattle = BaseScene.extend({
     followFirstRow: function (dt) {
         var ndObject, temp;
         var len = this.list_node_music.length;
+        this.list_node_music[0].updateChild(dt);
         for (var i = 1; i < len; ++i) {
             ndObject = this.list_node_music[i];
             if (ndObject) {
@@ -311,17 +312,18 @@ var SceneBattle = BaseScene.extend({
         this.distanceUpStar = GV.DISTANCE_UP_STAR_LEVEL;
         this._ndStar.removeAllChildren(true);
         this.listStar = [];
+        this._lbScore.setString("0");
     },
     playEffectScore: function () {
         this._lbScore.visible = true;
-        this._ndStar.visible = false;
+        //this._ndStar.visible = false;
         this._lbScore.runAction(Utility.getActionScaleForAppear());
     },
 
     playEffectUpStar: function () {
         this._lbScore.visible = false;
         this._lbScore.setLocalZOrder(this._ndStar.getLocalZOrder() + 1);
-        this._ndStar.visible = true;
+        //this._ndStar.visible = true;
         this._ndStar.stopAllActions();
         this._ndStar.setCascadeOpacityEnabled(true);
         this._ndStar.setOpacity(255);

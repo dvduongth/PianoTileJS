@@ -13,6 +13,7 @@ var TileMusicObject = cc.Node.extend({
         this.tileSize = cc.size(0, 0);
         this.listenerTag = 2017;
         this._isRequireScale = true;
+        this.extraScore = 3;
         return true;
     },
     initGui: function () {
@@ -177,6 +178,12 @@ var TileMusicObject = cc.Node.extend({
     },
     onTouchBeganUI: function (touch, event) {
         this.isTouching = true;
+        //update parent local zOrder
+        var parent = this.getParent();
+        if(parent) {
+            parent.setLocalZOrder(parent.getLocalZOrder() + 1);
+        }
+        //set action touch
         if (this.type == GV.TILE_TYPE.UNDEFINED) {
             this.touchFail(touch, event);
         } else {
@@ -184,11 +191,11 @@ var TileMusicObject = cc.Node.extend({
         }
     },
     onTouchMovedUI: function (touch, event) {
-        cc.error("onTouchMovedUI");
+        cc.error("touch move");
     },
     onTouchEndedUI: function (touch, event) {
         this.isTouching = false;
-        cc.error("end");
+        cc.error("touch end end");
     },
     /**
      * @param data with type
@@ -241,34 +248,40 @@ var TileMusicObject = cc.Node.extend({
             ));
         }
         if(this.type == GV.TILE_TYPE.NORMAL || this.type == GV.TILE_TYPE.LONG) {
-            this._sprTouchLong = cc.Scale9Sprite((new cc.Sprite("#long_light.png")).getSpriteFrame());
-            this.addChild(this._sprTouchLong, GV.ZORDER_LEVEL.EFFECT);
-            var target = event.getCurrentTarget();
-            var locationInNode = target.convertToNodeSpace(touch.getLocation());
-            this._sprTouchLong.attr({
-                anchorX: 0.5,
-                anchorY: 1,
-                x: 0,
-                width: this.getSize().width
-            });
-            var h = locationInNode.y;
-            if(h < 50) {
-                h = 50;
-            }
-            cc.error("h",h,locationInNode.y);
-            this._sprTouchLong.height = h;
-            this._sprTouchLong.y = locationInNode.y - this.getSize().height * 0.5;
-
+            this.createEffectTouchLong(touch, event);
         }
+    },
+    createEffectTouchLong: function (touch, event) {
+        this.extraScore = this.type == GV.TILE_TYPE.NORMAL ? 2 : 3;
+        var minHeight = 30;
+        var minRect = cc.rect(minHeight,minHeight,minHeight,this.getSize().width);
+        var offsetRect = cc.rect(minHeight,minHeight,minHeight,minHeight);
+        this._sprTouchLong = new cc.Scale9Sprite((new cc.Sprite("#long_light.png")).getSpriteFrame(),minRect,offsetRect);
+        this.addChild(this._sprTouchLong, GV.ZORDER_LEVEL.EFFECT);
+        var target = event.getCurrentTarget();
+        var locationInNode = target.convertToNodeSpace(touch.getLocation());
+        this._sprTouchLong.attr({
+            anchorX: 0.5,
+            anchorY: 1,
+            x: 0,
+            width: this.getSize().width
+        });
+        var h = locationInNode.y;
+        if(h < minHeight) {
+            h = minHeight;
+        }
+        this._sprTouchLong.height = h;
+        this._sprTouchLong.y = locationInNode.y - this.getSize().height * 0.5;
     },
 
     updateTouchLong: function (dt) {
         if(this._sprTouchLong && this.isTouching) {
             this._sprTouchLong.y += GV.SCENE_MGR.getCurrentScene().curSpeed;
             this._sprTouchLong.height += GV.SCENE_MGR.getCurrentScene().curSpeed;
-            if(this._sprTouchLong.height >= this.getSize().height * 0.5) {
+            if(this._sprTouchLong.height >= this.getSize().height) {
                 this._sprTouchLong.removeFromParent(true);
                 this._sprTouchLong = null;
+                this.showEffectScoreAddMore(this.extraScore);
             }
         }
     },
@@ -300,5 +313,23 @@ var TileMusicObject = cc.Node.extend({
                 )
             ).repeatForever());
         }
+    },
+    showEffectScoreAddMore: function (score) {
+        var lbScoreExtra = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 50, Utility.getColorByName("cyan"));
+        lbScoreExtra.setString("+" + Utility.numToStr(score));
+        lbScoreExtra.attr({
+            anchorX: 0.5,
+            anchorY: 0.5,
+            x: 0,
+            y: this.getSize().height * 0.5 + lbScoreExtra.height
+        });
+        lbScoreExtra.runAction(Utility.getActionScaleForAppear(lbScoreExtra, function () {
+            GV.MODULE_MGR._myInfo.curScore += score;
+            lbScoreExtra.runAction(cc.sequence(
+                cc.delayTime(0.2),
+                cc.fadeOut(0.3)
+            ));
+        }.bind(this)));
+        this.addChild(lbScoreExtra, GV.ZORDER_LEVEL.EFFECT);
     }
 });
