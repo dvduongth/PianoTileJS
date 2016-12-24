@@ -43,6 +43,25 @@ var RowNodeMusic = cc.Node.extend({
         this.initGui();
         this.updateChildInfo();
     },
+    updateChildInfo: function () {
+        var len = this.list_element.length;
+        for(var i = 0; i < len; ++i) {
+            var info = this.findDataForIndex(i);
+            var tileMusic = this.list_element[i];
+            if(tileMusic) {
+                if(info) {
+                    tileMusic.setInfo(info);
+                    var h = GV.TILE_HEIGHT_TYPE[info["type"]];
+                    if(h > GV.TILE_HEIGHT_TYPE[this.heightType]) {
+                        this.heightType = info["type"];
+                    }
+                }else{
+                    tileMusic.setInfo({"type": GV.TILE_TYPE.UNDEFINED});
+                }
+            }
+        }
+        this.updateChildSize();
+    },
     updateChildSize: function () {
         var tileWidth = GV.WIN_SIZE.width / this.NUM_NODE;
         var tileHeight = GV.TILE_HEIGHT_TYPE[this.heightType];
@@ -70,25 +89,6 @@ var RowNodeMusic = cc.Node.extend({
                 tileObj.x = prevTile.x + (prevTile.getSize().width + tileObj.getSize().width) * 0.5;
             }
         }
-    },
-    updateChildInfo: function () {
-        var len = this.list_element.length;
-        for(var i = 0; i < len; ++i) {
-            var info = this.findDataForIndex(i);
-            var tileMusic = this.list_element[i];
-            if(tileMusic) {
-                if(info) {
-                    tileMusic.setInfo(info);
-                    var h = tileMusic.getSize().height;
-                    if(h > GV.TILE_HEIGHT_TYPE[this.heightType]) {
-                        this.heightType = info["type"];
-                    }
-                }else{
-                    tileMusic.setInfo({"type": GV.TILE_TYPE.UNDEFINED});
-                }
-            }
-        }
-        this.updateChildSize();
     },
     findDataForIndex: function (index) {
         var len = this.list_type.length;

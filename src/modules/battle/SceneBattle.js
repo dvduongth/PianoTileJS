@@ -9,6 +9,7 @@ var SceneBattle = BaseScene.extend({
         this.initGui();
         this.SPEED = GV.MOVE_SPEED;
         this.marginTop = 0;
+        this.createStartState = false;
         return true;
     },
     initGui: function () {
@@ -55,38 +56,50 @@ var SceneBattle = BaseScene.extend({
         this.addChild(rowNodeMusic);
         this.list_node_music.push(rowNodeMusic);
         //set info
-        //var numTile = Math.random() > 0.5 ? 2 : 1;
         var numTile = 1;
         var list_type = [];
-        for (var i = 0; i < numTile; ++i) {
-            var type, index;
-            var rd1 = Math.random();
-            var rd2 = Math.random();
-            //type
-            if (rd1 > 0.6) {
-                type = GV.TILE_TYPE.LONG;
-            } else if (rd1 > 0.3) {
-                type = GV.TILE_TYPE.NORMAL;
-            } else {
-                type = GV.TILE_TYPE.SHORT;
-            }
-            //index
-            if (rd2 > 0.75) {
-                index = 3;
-            } else if (rd2 > 0.5) {
-                index = 2;
-            } else if (rd2 > 0.25) {
-                index = 1;
-            } else {
-                index = 0;
-            }
+        if(!this.createStartState) {
+            this.createStartState = true;
             //push info into list
-            var info = {
-                "type": type,
-                "index": index
+            var startInfo = {
+                "type": GV.TILE_TYPE.START,
+                "index": Math.floor(4 * Math.random())
             };
-            list_type.push(info);
+            list_type.push(startInfo);
+        }else{
+            //var numTile = Math.random() > 0.5 ? 2 : 1;
+
+            for (var i = 0; i < numTile; ++i) {
+                var type, index;
+                var rd1 = Math.random();
+                var rd2 = Math.random();
+                //type
+                if (rd1 > 0.6) {
+                    type = GV.TILE_TYPE.LONG;
+                } else if (rd1 > 0.3) {
+                    type = GV.TILE_TYPE.NORMAL;
+                } else {
+                    type = GV.TILE_TYPE.SHORT;
+                }
+                //index
+                if (rd2 > 0.75) {
+                    index = 3;
+                } else if (rd2 > 0.5) {
+                    index = 2;
+                } else if (rd2 > 0.25) {
+                    index = 1;
+                } else {
+                    index = 0;
+                }
+                //push info into list
+                var info = {
+                    "type": type,
+                    "index": index
+                };
+                list_type.push(info);
+            }
         }
+
         rowNodeMusic.setInfo({"list_type": list_type});
         rowNodeMusic.attr({
             x: GV.WIN_SIZE.width * 0.5,
@@ -143,6 +156,7 @@ var SceneBattle = BaseScene.extend({
         return result;
     },
     createStartGameState: function (minPos) {
+        this.createStartState = false;
         var totalHeightMax = GV.WIN_SIZE.height - minPos;
         this.createListNodeMusic();
         var totalTileHeight = this.calculateTotalTileRowHeight();

@@ -10,6 +10,7 @@ var TileMusicObject = cc.Node.extend({
         this.isTouchSuccess = false;
         this.tileSize = cc.size(0, 0);
         this.listenerTag = 2017;
+        this._isRequireScale = true;
         return true;
     },
     initGui: function () {
@@ -19,23 +20,27 @@ var TileMusicObject = cc.Node.extend({
             this.inited = true;
         }
         //update icon
+        this._isRequireScale = true;
         var urlIcon, urlBg;
+        urlBg = "#4.png";
         switch (this.type) {
             case GV.TILE_TYPE.START:
-                urlBg = "#4.png";
-                urlIcon = "#tile_black.png";
+                cc.error("tile start here");
+                urlIcon = "#tile_start.png";
                 break;
             case GV.TILE_TYPE.SHORT:
-                urlBg = "#4.png";
+                cc.error("tile short here");
                 urlIcon = "#tile_black.png";
                 break;
             case GV.TILE_TYPE.NORMAL:
-                urlBg = "#4.png";
-                urlIcon = "#tile_black.png";
+                cc.error("tile normal here");
+                urlIcon = "#long_head.png";
+                this._isRequireScale = false;
                 break;
             case GV.TILE_TYPE.LONG:
-                urlBg = "#4.png";
-                urlIcon = "#tile_black.png";
+                cc.error("tile long here");
+                urlIcon = "#long_head.png";
+                this._isRequireScale = false;
                 break;
             case GV.TILE_TYPE.UNDEFINED:
                 urlBg = res.tile_white_png;
@@ -62,7 +67,23 @@ var TileMusicObject = cc.Node.extend({
             this._sprIcon = null;
         }
         this._sprIcon = new cc.Sprite(url);
+        if(!this._isRequireScale) {
+            var minRect = cc.rect(0,0,this._sprIcon.width * 0.5,this._sprIcon.height * 0.5);
+            var offsetRect = cc.rect(10,10,10,10);
+            this._sprIcon = new cc.Scale9Sprite(this._sprIcon.getSpriteFrame(),minRect,offsetRect);
+        }
         this.addChild(this._sprIcon, GV.ZORDER_LEVEL.GUI);
+        if(this.type == GV.TILE_TYPE.START) {
+            var lbStart = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 70,Utility.getColorByName('white'),true,true);
+            lbStart.setString("START");
+            this._sprIcon.addChild(lbStart);
+            lbStart.attr({
+                anchorX: 0.5,
+                anchorY: 0.5,
+                x: this._sprIcon.width * 0.5,
+                y: this._sprIcon.height * 0.5
+            });
+        }
     },
     updateTileSize: function (size, height) {
         if (size === undefined) {
@@ -77,9 +98,9 @@ var TileMusicObject = cc.Node.extend({
             this.tileSize = cc.size(size, height);
         }
         //update backgound view
-        this.updateSpriteBackground();
+        this.updateSpriteBackgroundSize();
         //update icon view
-        this.updateSpriteIcon();
+        this.updateSpriteIconSize();
         //listener
         if (this.listenerSpr) {
             cc.eventManager.removeListener(this.listenerSpr);
@@ -99,7 +120,7 @@ var TileMusicObject = cc.Node.extend({
         this.addChild(layer, GV.ZORDER_LEVEL.CURSOR);
         this.listenerSpr = this.addListenerForTile(layer);
     },
-    updateSpriteBackground: function () {
+    updateSpriteBackgroundSize: function () {
         if (this._sprBg) {
             var bgSize = this._sprBg.getContentSize();
             var delta_ratio_x = this.tileSize.width / bgSize.width;
@@ -107,13 +128,17 @@ var TileMusicObject = cc.Node.extend({
             this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
         }
     },
-    updateSpriteIcon: function () {
+    updateSpriteIconSize: function () {
         if (this._sprIcon) {
-            var iconSize = this._sprIcon.getContentSize();
-            var delta_ratio_x = this.tileSize.width / iconSize.width;
-            var delta_ratio_y = this.tileSize.height / iconSize.height;
-            this._sprIcon.setScale(delta_ratio_x, delta_ratio_y);
-            this._sprIcon["oldScale"] = cc.p(delta_ratio_x, delta_ratio_y);
+            if(this._isRequireScale) {
+                var iconSize = this._sprIcon.getContentSize();
+                var delta_ratio_x = this.tileSize.width / iconSize.width;
+                var delta_ratio_y = this.tileSize.height / iconSize.height;
+                this._sprIcon.setScale(delta_ratio_x, delta_ratio_y);
+                this._sprIcon["oldScale"] = cc.p(delta_ratio_x, delta_ratio_y);
+            }else{
+                this._sprIcon.setContentSize(this.tileSize);
+            }
         }
     },
     addListenerForTile: function (obj) {
@@ -180,7 +205,7 @@ var TileMusicObject = cc.Node.extend({
 
         GV.SCENE_MGR._currentScene.gameOver();
         this.createIcon("#tile_miss.png");
-        this.updateSpriteIcon();
+        this.updateSpriteIconSize();
         this.iconActionFocus();
     },
     touchSuccess: function (touch, event) {

@@ -133,7 +133,14 @@ Utility.getColorByName = function (name) {
 
     return color;
 };
-Utility.getLabel = function (fontName, fontSize, color, isSkipStroke) {
+/**
+ * @param {string} fontName
+ * @param {number} fontSize
+ * @param {cc.color} color
+ * @param {boolean} isSkipStroke
+ * @param {boolean} isSkipShadow
+ * */
+Utility.getLabel = function (fontName, fontSize, color, isSkipStroke, isSkipShadow) {
     if (!fontName) {
         fontName = res.FONT_ARIAL;
     }
@@ -147,7 +154,9 @@ Utility.getLabel = function (fontName, fontSize, color, isSkipStroke) {
     label.color = color;
     label.setTextHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
     label.setTextVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
-    label.enableShadow(Utility.getColorByName('grey'), {width: 0, height: -2}, 1);
+    if (!isSkipShadow) {
+        label.enableShadow(Utility.getColorByName('grey'), {width: 0, height: -2}, 1);
+    }
     if (!isSkipStroke) {
         label.enableOutline(Utility.getColorByName('stroke'), 1);
     }
