@@ -1,7 +1,755 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4d55f2b-12a8-484d-a811-f49e89a3e91c" name="Default" comment="move file&#10;">
+    <list default="true" id="e4d55f2b-12a8-484d-a811-f49e89a3e91c" name="Default" comment=".">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/10.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/11.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/12.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/13.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/14.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/15.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIStore/4yuetehui.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/CardImage/9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/A.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Battle_Result/Battle_Result.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/Default/Button_Disable.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/Default/Button_Normal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/Default/Button_Press.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattleMaster/Commons/Left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/NullImg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_band.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_battle_result2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_bonus.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_bottomtab.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHoliday/Plist_bottomtab_xmas.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_candy1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_cd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_content.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_content2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_content3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_content_new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_littlestar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_master_hall.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_max_level.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/Plist_openning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_package.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_particle_bgani.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_resource.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_share.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_share2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_social.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_team.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_temporary.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_vip.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_wechat_redpacket.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHoliday/Plist_xmas.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/Plist_xmas_map.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/Plist_xmas_snow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattle/Effect/_5_grad4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ab_share_pack_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ab_share_pack_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ab_share_pack_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ab_share_pack_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ab_share_pack_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ab_share_pack_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ab_share_pack_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ab_share_pack_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_btn_check_to_on_mtrl_000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_btn_check_to_on_mtrl_015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_btn_radio_to_on_mtrl_000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_btn_radio_to_on_mtrl_000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_cab_background_top_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_cab_background_top_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-hdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-mdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xhdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xxhdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xxxhdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_clear_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_clear_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_clear_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_clear_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_ic_clear_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_go_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_go_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_go_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_go_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-hdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-mdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xxxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-hdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-mdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xxxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_menu_share_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_menu_share_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_menu_share_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_ic_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_list_divider_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_list_divider_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_list_divider_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_list_divider_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_list_focused_holo.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_list_focused_holo.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_list_focused_holo.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_list_focused_holo.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_list_longpressed_holo.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_list_longpressed_holo.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_list_longpressed_holo.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_list_pressed_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_list_pressed_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_list_pressed_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_list_pressed_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_list_pressed_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_list_pressed_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_list_pressed_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_list_pressed_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_list_selector_disabled_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_list_selector_disabled_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_list_selector_disabled_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_list_selector_disabled_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_list_selector_disabled_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_list_selector_disabled_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_popup_background_mtrl_mult.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_popup_background_mtrl_mult.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_popup_background_mtrl_mult.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_spinner_mtrl_am_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-hdpi-v4/abc_spinner_mtrl_am_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-mdpi-v4/abc_spinner_mtrl_am_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xhdpi-v4/abc_spinner_mtrl_am_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-ldrtl-xxxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_spinner_mtrl_am_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_spinner_mtrl_am_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_switch_track_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_switch_track_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_switch_track_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_switch_track_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_tab_indicator_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_tab_indicator_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_textfield_activated_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_textfield_activated_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_textfield_activated_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_textfield_activated_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_textfield_default_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_textfield_default_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_textfield_default_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_textfield_default_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/ad_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/ad_cm_log.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/ads_by_cm.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/app_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/app_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/app_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/app_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/app_thumb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/fonts/arial.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattle/Effect/ballballball_smalldot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPause/banner_first_charge.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/bg_ads_collect.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/bg_box_remind.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/bg_cd_tips_xmas.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/newEpoch/bg_newsong_list.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/bg_red_bag.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/bg_red_bag_open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/bg_result_skin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/bg_share.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/bg_share_star.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/bg_share_star_special_music.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHoliday/bg_share_xmas.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/bg_small.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/bg_small_f.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/bg_snow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/bg_tipblack.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITransition/bg_transition.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/bg_updata_song.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/bg_vip_share.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/Animation/bgani_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/bnt_share_xmas_h5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/bnt_share_xmas_h5_normal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/box_remind_time.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/bringdiamond_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/browser_background.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/browser_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/browser_left_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/browser_refresh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/browser_right_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/browser_unleft_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/browser_unright_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/btn_closed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/btn_gray.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/btn_green.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/btn_open_camera.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/btn_open_gallery.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/btn_redbag.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/button_more.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/button_vip_firstpay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/0/card_00.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/1/card_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/2/card_02.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/3/card_03.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/4/card_04.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/5/card_05.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/6/card_06.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/7/card_07.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/8/card_08.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/9/card_09.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/10/card_10.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/11/card_11.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/12/card_12.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/13/card_13.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/14/card_14.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/15/card_15.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/0/card_bg_s_0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/1/card_bg_s_1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/10/card_bg_s_10.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/11/card_bg_s_11.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/12/card_bg_s_12.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/13/card_bg_s_13.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/14/card_bg_s_14.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/15/card_bg_s_15.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/2/card_bg_s_2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/3/card_bg_s_3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/4/card_bg_s_4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/5/card_bg_s_5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/6/card_bg_s_6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/7/card_bg_s_7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/8/card_bg_s_8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIAlbum/9/card_bg_s_9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/cd_default_bg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/cd_default_bg_special_music.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/christmas_button_1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/christmas_button_2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/christmas_cd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/christmas_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/christmas_input.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/christmas_word.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/Animation/circle_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattle/Effect/circle_test.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/classroom_name_image.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cm_vast.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cm_vast_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cm_vast_ico_gp.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cm_vast_ico_install.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cm_vast_ico_renew.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cm_vast_ico_users.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cm_vast_img_ads.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cm_vast_pic_star.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cm_vast_video_download.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cmad_video_cm_tag.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/cmasdk_market_top_gp.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_button_icon_blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_button_icon_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_button_like_icon_selected.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_button_send_icon_blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_button_send_icon_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_favicon_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/com_facebook_profile_picture_blank_portrait.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/com_facebook_profile_picture_blank_square.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_tooltip_black_background.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_tooltip_black_bottomnub.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_tooltip_black_topnub.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_tooltip_black_xout.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_tooltip_blue_background.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_tooltip_blue_bottomnub.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_tooltip_blue_topnub.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/com_facebook_tooltip_blue_xout.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_full_open_on_phone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_full_open_on_phone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-tvdpi-v4/common_full_open_on_phone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_full_open_on_phone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_full_open_on_phone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_ic_googleplayservices.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_icon_disabled_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_icon_disabled_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_icon_disabled_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_icon_disabled_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_icon_disabled_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_icon_disabled_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_icon_disabled_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_icon_disabled_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_icon_disabled_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_icon_disabled_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_icon_disabled_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_icon_disabled_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_icon_disabled_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_icon_disabled_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_icon_disabled_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_icon_disabled_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_icon_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_icon_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_icon_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_icon_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_icon_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_icon_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_icon_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_icon_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_icon_normal_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_icon_normal_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_icon_normal_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_icon_normal_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_icon_normal_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_icon_normal_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_icon_normal_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_icon_normal_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_icon_pressed_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_icon_pressed_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_icon_pressed_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_icon_pressed_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_icon_pressed_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_icon_pressed_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_icon_pressed_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_icon_pressed_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_text_disabled_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_text_disabled_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_text_disabled_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_text_disabled_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_text_disabled_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_text_disabled_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_text_disabled_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_text_disabled_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_text_disabled_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_text_disabled_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_text_disabled_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_text_disabled_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_text_disabled_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_text_disabled_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_text_disabled_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_text_disabled_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_text_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_text_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_text_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_text_focus_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_text_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_text_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_text_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_text_focus_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_text_normal_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_text_normal_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_text_normal_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_text_normal_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_text_normal_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_text_normal_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_text_normal_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_text_normal_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_text_pressed_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_text_pressed_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_text_pressed_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_text_pressed_dark.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/common_signin_btn_text_pressed_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/common_signin_btn_text_pressed_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/common_signin_btn_text_pressed_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/common_signin_btn_text_pressed_light.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/cr_a_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/cr_b_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/cr_c_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/cr_s_y.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/Animation/crazy_circle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/crop__divider.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/crop__ic_cancel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/crop__ic_done.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/crop__tile.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattleMaster/crown.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattleMaster/crownlight.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/dialog_check.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/diamond.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/Animation/dot_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/download_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITemp/fb_user_default_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/fonts/futura_condensed.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/gamebox_problem_btn_green_normal.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/gamebox_problem_btn_green_press.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/gamebox_problem_btn_outline_normal.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/gamebox_problem_btn_outline_press.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/gamebox_tag_gamebox_dialog_title_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/gameproblem_bg_blue.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/gameproblem_bg_white.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/gameproblem_icon_speed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/GameImage/glow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/google_play.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIStore/head_shop_diamond.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIStore/head_shop_diamond_sf.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/heart.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/heart_like.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/heart_shadow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/heart_unlike.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/ic_plusone_medium_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/ic_plusone_medium_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-tvdpi-v4/ic_plusone_medium_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/ic_plusone_medium_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/ic_plusone_medium_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/ic_plusone_small_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/ic_plusone_small_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-tvdpi-v4/ic_plusone_small_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/ic_plusone_small_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/ic_plusone_small_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/ic_plusone_standard_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/ic_plusone_standard_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-tvdpi-v4/ic_plusone_standard_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/ic_plusone_standard_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/ic_plusone_standard_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/ic_plusone_tall_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-mdpi-v4/ic_plusone_tall_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-tvdpi-v4/ic_plusone_tall_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/ic_plusone_tall_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/ic_plusone_tall_off_client.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/ico_cm.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/icon_cd_center.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/icon_crown.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/icon_crown_card.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/icon_crown_shadow_card.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/icon_fingle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/icon_gift.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITemp/icon_mask.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/icon_newstar_shadow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/icon_star.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/icon_star.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIStore/imag_maxlevel_fla.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/image_avatar_dialog.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/image_collect.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/image_quest_tips_dialog_jiao.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/img_interstitial_ads_cm_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/img_interstitial_ads_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/img_interstitial_adsby_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/img_interstitial_close_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/item_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/item_like_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/item_rand_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/j_a.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/j_b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/j_c.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/j_s.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/jiantou.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/lastday_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBgEffect/base/light_5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/load_more_arrow_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/loading.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/loading.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/loading_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/lov_cd_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/love_arrow_left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/love_arrow_right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/love_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/love_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/love_open_camera.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/love_open_gallery.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/love_share_btn.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/love_word.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/fonts/marker_felt.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/mask_black.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/mask_btn_collect.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/mask_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/message_tag_all_bg.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/message_tag_bule_loading.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/message_tag_card_background.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/message_tag_close_button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/message_tag_lc_button_w.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/message_tag_lc_button_w_pressed.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/message_tag_loading_circle_big.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/message_tag_loading_circle_radar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/message_tag_loading_circle_small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/message_tag_no_net.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/message_tag_no_wifi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/message_tag_success.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/message_tag_title_bg.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/messenger_bubble_large_blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/messenger_bubble_large_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/messenger_bubble_small_blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/messenger_bubble_small_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/messenger_button_send_round_shadow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITemp/msg_mask.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/musicnote.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/new8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/new9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-hdpi-v4/notification_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/notification_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxhdpi-v4/notification_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xxxhdpi-v4/notification_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/o_a.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/o_b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/o_c.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/o_s.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_cd1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_cd2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_cd3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_cd4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_cd5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_cd6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_cd7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_cd8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_cd9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_cmlogo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_color_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_commonplaybg2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/opening_commonplaybg3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_coin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelup.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupblue_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupfinally.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupgreen_l.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupred_l.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupred_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupyellow_l.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_life.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_unlock_blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_unlock_green.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_unlock_red.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_unlock_yellow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_yellow_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattle/Effect/perlin_noise.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattle/Effect/polyQuad_chang_small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattle/Effect/polySquare_2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/popup_recommend_background.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/rank_score_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/rank_total_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/rank_total_head.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/reminder_bg.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/resommend_song_notification_bg_en.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/resommend_song_notification_bg_ru.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_bottom_bg.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_float_text_bg.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_icon_facebook_normal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_icon_facebook_pressed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_icon_messager_normal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_icon_messager_pressed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_icon_more_normal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_icon_more_pressed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_icon_twitter_normal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_icon_twitter_pressed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/share_progress_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/sharedialog_bg.9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/GameImage/slide_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/GameImage/slide_tile_base.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/snow1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/snow_big.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/snow_new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/snow_xmas.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/snowbig.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattleMaster/star.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBattleMaster/starlight.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/teammusic_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/teammusic_bg_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/teammusic_go_rank.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/teammusic_lable.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBgEffect/base/tile_3_6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBgEffect/base/tile_3_7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/GameImage/tile_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/time_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/tips_bg1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/tips_bg2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UITeam/classroom/tips_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/vast_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/vast_fullview_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/vast_fullview_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/vast_install.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/vast_install.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/vast_play.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/vast_shrink.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/vast_stranch.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/vast_volume_off.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/vast_volume_off.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/vast_volume_on.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/vast_volume_on.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable/vast_watchagain.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/IconDrawable/drawable-xhdpi-v4/vast_watchagain.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/whitemask.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/xmas_map_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/xmas_map_bg_snow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_particle_snow6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_particle_stex.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_particle_stex2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/xmas_puzzle1_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/xmas_puzzle2_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/xmas_puzzle3_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/xmas_puzzle4_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIBgEffect/holiday/xmas_title_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/base_class/BaseGUI.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/base_class/BaseScene.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Battle_Result/Battle_Result.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/popup/GuiPopup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/loading/GuiPopupLoading.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/battle/GuiStartBattle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/ModuleMgr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/MyInfoData.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_band.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_battle_result2.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_bonus.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_bottomtab.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHoliday/Plist_bottomtab_xmas.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_candy1.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_cd.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_content.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_content2.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_content3.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_content_new.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_littlestar.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_master_hall.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_max_level.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIOpenning/Plist_openning.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_package.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_particle_bgani.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_resource.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_share.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_share2.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_social.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_team.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_temporary.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_vip.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/Plist_wechat_redpacket.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHoliday/Plist_xmas.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/Plist_xmas_map.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIXmas2016/Plist_xmas_snow.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/popup/PopupMgr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/battle/RowNodeMusic.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/battle/SceneBattle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/loading/SceneLoading.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/lobby/SceneLobby.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SceneMgr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/battle/TileMusicObject.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/base_class/Utility.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/heart.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/new8.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/new9.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_coin.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelup.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupblue_r.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupfinally.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupgreen_l.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupred_l.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupred_r.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_levelupyellow_l.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_life.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_unlock_blue.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_unlock_green.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_unlock_red.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_unlock_yellow.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIPlist/particle_yellow_r.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/snow1_1.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/snow_big_xmas.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIHome/snow_new.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/snow_xmas.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/snowbig.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_snow_particle_a6.5.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_snow_particle_a6.6.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_snow_particle_a6.7.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_snow_particle_b2.3.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_snow_particle_c2.3.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_snow_particle_ddd4.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_snow_particle_x.4.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/resource/UIParticle/xmas_snow_particle_x.4_r.plist" />
+      <change type="DELETED" beforePath="D:\ExtraCode\PianoTileJS_Code\.settings\version.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GlobalVar.js" afterPath="$PROJECT_DIR$/src/GlobalVar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.json" afterPath="$PROJECT_DIR$/project.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resource.js" afterPath="$PROJECT_DIR$/src/resource.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -39,8 +787,10 @@
         <entry file="file://$PROJECT_DIR$/src/GlobalVar.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-              <folding />
+              <caret line="38" column="11" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
+              <folding>
+                <marker date="1482551130022" expanded="true" signature="97:105" placeholder="{&quot;LOBBY&quot;: 1...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,8 +798,8 @@
       <file leaf-file-name="SceneLobby.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/modules/lobby/SceneLobby.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36926606">
-              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.24311927">
+              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -136,8 +886,8 @@
         <option value="$PROJECT_DIR$/project.json" />
         <option value="$PROJECT_DIR$/src/modules/popup/GuiPopup.js" />
         <option value="$PROJECT_DIR$/src/BaseGui.js" />
-        <option value="$PROJECT_DIR$/src/modules/lobby/SceneLobby.js" />
         <option value="$PROJECT_DIR$/src/resource.js" />
+        <option value="$PROJECT_DIR$/src/modules/lobby/SceneLobby.js" />
       </list>
     </option>
   </component>
@@ -187,9 +937,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -250,30 +998,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PianoTileJS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PianoTileJS_Code" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="popup" />
+              <option name="myItemId" value="lobby" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -308,16 +1048,16 @@
     </key>
   </component>
   <component name="RunManager" selected="JSBinding.Win32Debug">
+    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" uri="http://localhost:63342/HelloJavascript/index.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
     <configuration default="false" name="InPacketGenerate.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="InPacketFactory.js" working-dir="$PROJECT_DIR$/src/network">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
       <ConfigurationWrapper RunnerId="NodeJS.run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" uri="http://localhost:63342/HelloJavascript/index.html">
-      <RunnerSettings RunnerId="JavascriptDebugRunner" />
-      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
     <configuration default="true" type="#org.ccdt.lua.launch.CocosJSConfigurationType" factoryName="JSBinding">
@@ -596,8 +1336,8 @@
     <list size="4">
       <item index="0" class="java.lang.String" itemvalue="JSBinding.Win32Debug" />
       <item index="1" class="java.lang.String" itemvalue="JSBinding.AndroidDebug" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.InPacketGenerate.js" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      <item index="3" class="java.lang.String" itemvalue="Node.js.InPacketGenerate.js" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -688,7 +1428,10 @@
       <workItem from="1482335453534" duration="431000" />
       <workItem from="1482335922915" duration="416000" />
       <workItem from="1482337457565" duration="331000" />
-      <workItem from="1482337833982" duration="2201000" />
+      <workItem from="1482337833982" duration="4156000" />
+      <workItem from="1482345545564" duration="4987000" />
+      <workItem from="1482551575255" duration="447000" />
+      <workItem from="1482552090116" duration="410000" />
     </task>
     <task id="LOCAL-00001" summary="move file&#10;">
       <created>1482336038998</created>
@@ -696,11 +1439,17 @@
       <option name="project" value="LOCAL" />
       <updated>1482336038998</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=".">
+      <created>1482341050005</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1482341050005</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1616662000" />
+    <option name="totallyTimeSpent" value="1624461000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -718,7 +1467,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22941822" sideWeight="0.4892704" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.275" sideWeight="0.7091603" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.275" sideWeight="0.71603054" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -731,7 +1480,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1719243" sideWeight="0.5054054" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.275" sideWeight="0.2908397" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.275" sideWeight="0.28396946" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -783,7 +1532,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="move file&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="move file&#10;" />
+    <MESSAGE value="&#10;" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -791,7 +1542,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="cocos javascript">
           <url>file://$PROJECT_DIR$/simulator/win32/script/jsb_boot.js</url>
-          <line>448</line>
+          <line>501</line>
           <option name="timeStamp" value="159" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="cocos javascript">
@@ -828,8 +1579,46 @@
     <entry file="file://$PROJECT_DIR$/src/GlobalVar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+          <caret line="38" column="11" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
+          <folding>
+            <marker date="1482551130022" expanded="true" signature="97:105" placeholder="{&quot;LOBBY&quot;: 1...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/lobby/SceneLobby.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GlobalVar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding>
+            <marker date="1482551130022" expanded="true" signature="97:105" placeholder="{&quot;LOBBY&quot;: 1...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/lobby/SceneLobby.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GlobalVar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482551130022" expanded="true" signature="97:105" placeholder="{&quot;LOBBY&quot;: 1...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -840,19 +1629,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BaseGui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/popup/GuiPopup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,7 +1640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="34" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -868,7 +1647,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-          <folding />
+          <folding>
+            <marker date="1482551130022" expanded="true" signature="97:105" placeholder="{&quot;LOBBY&quot;: 1...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -904,7 +1685,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding />
+          <folding>
+            <marker date="1482551130022" expanded="true" signature="97:105" placeholder="{&quot;LOBBY&quot;: 1...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -933,7 +1716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -972,7 +1754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1105,13 +1886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utility.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7123894">
@@ -1126,14 +1900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simulator/win32/script/jsb_boot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.403131">
-          <caret line="655" column="10" selection-start-line="655" selection-start-column="4" selection-end-line="655" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1145,15 +1911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.64908254">
           <caret line="50" column="78" selection-start-line="50" selection-start-column="70" selection-end-line="50" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simulator/win32/script/studio/jsb_studio_load.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80733943">
-          <caret line="144" column="26" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1161,15 +1918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.1444954">
           <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BaseGui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22706422">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1177,15 +1925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47477064">
           <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GlobalVar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1193,14 +1932,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2798165">
           <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GlobalVar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="11" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
+          <folding>
+            <marker date="1482551130022" expanded="true" signature="97:105" placeholder="{&quot;LOBBY&quot;: 1...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/lobby/SceneLobby.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36926606">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.24311927">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
           <folding />
         </state>
       </provider>

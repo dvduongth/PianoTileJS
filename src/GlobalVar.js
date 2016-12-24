@@ -3,18 +3,40 @@ GV.WIN_SIZE = null;
 GV.MODULE_MGR = null;
 GV.SCENE_MGR = null;
 GV.SCENE_IDS = {
+    LOADING: 0,
     LOBBY: 1,
     BATTLE: 2
+};
+GV.ZORDER_LEVEL = {
+    BG: 0,
+    GUI: 1,
+    EFFECT: 2,
+    POPUP: 3,
+    LOADING: 4,
+    CURSOR: 5
 };
 GV.POPUP_MGR = null;
 
 GV.NUM_COL = 4;
 GV.MOVE_SPEED = 5;
 GV.TILE_TYPE = {
-    UNDEFINED: -1,
-    SHORT: 0,
-    NORMAL: 1,
-    LONG: 2
+    UNDEFINED: "UNDEFINED",
+    START: "START",
+    SHORT: "SHORT",
+    NORMAL: "NORMAL",
+    LONG: "LONG"
 };
+GV.TILE_TYPE_HEIGHT = {
+    UNDEFINED: 500,
+    START: 500,
+    SHORT: 500,
+    NORMAL: 500,
+    LONG: 500
+};
+
 GV.UP_SPEED_DURATION = 100;
-GV.END_GAME = false;
+GV.GAME_STATE = {
+    START: 0,
+    RUNNING: 1,
+    END: 2
+};
