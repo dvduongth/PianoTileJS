@@ -18,7 +18,7 @@ GV.ZORDER_LEVEL = {
 GV.POPUP_MGR = null;
 
 GV.NUM_COL = 4;
-GV.MOVE_SPEED = 5;
+GV.MOVE_SPEED = 6;
 GV.TILE_TYPE = {
     UNDEFINED: "UNDEFINED",
     START: "START",
@@ -26,12 +26,16 @@ GV.TILE_TYPE = {
     NORMAL: "NORMAL",
     LONG: "LONG"
 };
-GV.TILE_TYPE_HEIGHT = {
-    UNDEFINED: 500,
-    START: 500,
-    SHORT: 500,
-    NORMAL: 500,
-    LONG: 500
+/**
+ * GV.TILE_HEIGHT_TYPE with values of GV.WIN_SIZE.height percent number
+ * and calculate in main.js file on function cc.game.onStart
+ * */
+GV.TILE_HEIGHT_TYPE = {
+    UNDEFINED: 20,
+    START: 20,
+    SHORT: 20,
+    NORMAL: 30,
+    LONG: 50
 };
 
 GV.UP_SPEED_DURATION = 100;

@@ -11,8 +11,7 @@ var RowNodeMusic = cc.Node.extend({
         GV.NUM_COL = num;
         this.list_element = [];
         this.list_type = [];
-        this.TOTAL_WIDTH_SIZE = 0;
-        this.rowHeightType = GV.TILE_TYPE.UNDEFINED;
+        this.heightType = GV.TILE_TYPE.UNDEFINED;
         return true;
     },
     initGui: function () {
@@ -27,14 +26,6 @@ var RowNodeMusic = cc.Node.extend({
             this.addChild(tileMusic);
             this.list_element.push(tileMusic);
         }
-    },
-    calculateTotalTileWidth: function () {
-        var t = 0;
-        var len = this.list_element.length;
-        for(var i = 0; i < len; ++i) {
-            t += this.list_element[i].getSize().width;
-        }
-        this.TOTAL_WIDTH_SIZE = t;
     },
     /**
      * @param data with list_type
@@ -51,7 +42,34 @@ var RowNodeMusic = cc.Node.extend({
         }
         this.initGui();
         this.updateChildInfo();
-        this.updateChildSizeAndPos();
+    },
+    updateChildSize: function () {
+        var tileWidth = GV.WIN_SIZE.width / this.NUM_NODE;
+        var tileHeight = GV.TILE_HEIGHT_TYPE[this.heightType];
+        var len = this.list_element.length;
+        for(var i = 0; i < len; ++i) {
+            var tileObj = this.list_element[i];
+            if(tileObj) {
+                tileObj.updateTileSize(tileWidth, tileHeight);
+            }
+        }
+        if(len > 0) {
+            var firstTile = this.list_element[0];
+            if(firstTile) {
+                firstTile.x = -(GV.WIN_SIZE.width - firstTile.getSize().width) * 0.5;
+                this.followFirstTile();
+            }
+        }
+    },
+    followFirstTile: function () {
+        var len = this.list_element.length;
+        for(var i = 1; i < len; ++i) {
+            var tileObj = this.list_element[i];
+            if(tileObj) {
+                var prevTile = this.list_element[i - 1];
+                tileObj.x = prevTile.x + (prevTile.getSize().width + tileObj.getSize().width) * 0.5;
+            }
+        }
     },
     updateChildInfo: function () {
         var len = this.list_element.length;
@@ -62,31 +80,15 @@ var RowNodeMusic = cc.Node.extend({
                 if(info) {
                     tileMusic.setInfo(info);
                     var h = tileMusic.getSize().height;
-                    if(h > GV.TILE_TYPE_HEIGHT[this.rowHeightType]) {
-                        this.rowHeightType = info["type"];
+                    if(h > GV.TILE_HEIGHT_TYPE[this.heightType]) {
+                        this.heightType = info["type"];
                     }
                 }else{
                     tileMusic.setInfo({"type": GV.TILE_TYPE.UNDEFINED});
                 }
             }
         }
-    },
-    updateChildSizeAndPos: function () {
-        this.calculateTotalTileWidth();
-        var len = this.list_element.length;
-        var margin = 0;
-        for(var i = 0; i < len; ++i) {
-            var tileMusic = this.list_element[i];
-            if(tileMusic) {
-                var tileWidth = tileMusic.getSize().width;
-                tileMusic.updateTileSize(cc.size(tileWidth, GV.TILE_TYPE_HEIGHT[this.rowHeightType]));
-                var x = tileWidth * 0.5 + margin + this.TOTAL_WIDTH_SIZE * (i / this.NUM_NODE - 0.5);
-                tileMusic.attr({
-                    x: x,
-                    y: 0
-                });
-            }
-        }
+        this.updateChildSize();
     },
     findDataForIndex: function (index) {
         var len = this.list_type.length;
@@ -101,7 +103,7 @@ var RowNodeMusic = cc.Node.extend({
         return null;
     },
     getRowHeight: function () {
-        return GV.TILE_TYPE_HEIGHT[this.rowHeightType];
+        return GV.TILE_HEIGHT_TYPE[this.heightType];
     },
     checkMissActionTouch: function () {
         var len = this.list_element.length;

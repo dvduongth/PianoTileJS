@@ -21,7 +21,6 @@ var GuiStartBattle = BaseGUI.extend({
         this._rootNode = this;
         this._rootNode.visible = false;
         this._rootNode.retain();
-        this._rootNode.setPosition(GV.WIN_SIZE.width >> 1, 0);
     },
     getGuiHeight: function () {
         return this.BACK_GROUND_SIZE.height;
@@ -39,7 +38,7 @@ var GuiStartBattle = BaseGUI.extend({
     },
     createBackground: function () {
         //background
-        this._sprBg = new cc.Scale9Sprite(res.gui_start_battle_bg_png);
+        this._sprBg = new cc.Sprite(res.gui_start_battle_bg_png);
         this.addChild(this._sprBg);
         this._sprBg.attr({
             anchorX: 0.5,
@@ -47,7 +46,10 @@ var GuiStartBattle = BaseGUI.extend({
             x: 0,
             y: 0
         });
-        this._sprBg.setContentSize(this.BACK_GROUND_SIZE);
+        var bgSize = this._sprBg.getContentSize();
+        var delta_ratio_x = this.BACK_GROUND_SIZE.width / bgSize.width;
+        var delta_ratio_y = this.BACK_GROUND_SIZE.height / bgSize.height;
+        this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
     },
     /**
      * notice title
@@ -153,6 +155,7 @@ var GuiStartBattle = BaseGUI.extend({
      * */
     showGui: function (eff) {
         if(!this.isShowGui()) {
+            this._rootNode.setPosition(GV.WIN_SIZE.width >> 1, 0);
             this._super(eff);
         }
     },
@@ -161,7 +164,13 @@ var GuiStartBattle = BaseGUI.extend({
      * */
     hideGui: function () {
         if(this.isShowGui()) {
-            this._super();
+            var time = 5 / GV.MOVE_SPEED;
+            this._rootNode.runAction(cc.sequence(
+                cc.moveBy(time, 0, -this.getGuiHeight()),
+                cc.callFunc(function () {
+                    this._rootNode.visible = false;
+                }.bind(this))
+            ));
         }
     },
     isShowGui: function () {

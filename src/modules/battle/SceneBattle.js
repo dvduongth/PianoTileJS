@@ -8,20 +8,23 @@ var SceneBattle = BaseScene.extend({
         this.list_node_music = [];
         this.initGui();
         this.SPEED = GV.MOVE_SPEED;
+        this.marginTop = 0;
         return true;
     },
     initGui: function () {
-        var size = GV.WIN_SIZE;
         //background
-        this._sprBg = new cc.Scale9Sprite(res.battle_background_png);
+        this._sprBg = new cc.Sprite(res.battle_background_png);
+        this.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
         this._sprBg.attr({
             anchorX: 0.5,
             anchorY: 0.5,
-            x: size.width / 2,
-            y: size.height / 2
+            x: GV.WIN_SIZE.width / 2,
+            y: GV.WIN_SIZE.height / 2
         });
-        this._sprBg.setContentSize(size);
-        this.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
+        var bgSize = this._sprBg.getContentSize();
+        var delta_ratio_x = GV.WIN_SIZE.width / bgSize.width;
+        var delta_ratio_y = GV.WIN_SIZE.height / bgSize.height;
+        this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
 
         //label score
         this._lbScore = Utility.getLabel(res.FONT_MARKER_FELT, 72, Utility.getColorByName("red"));
@@ -30,8 +33,8 @@ var SceneBattle = BaseScene.extend({
         this._lbScore.attr({
             anchorX: 0.5,
             anchorY: 1,
-            x: size.width >> 1,
-            y: size.height * 15 / 16
+            x: GV.WIN_SIZE.width >> 1,
+            y: GV.WIN_SIZE.height * 15 / 16
         });
 
         this.schedule(this.update);
@@ -157,7 +160,6 @@ var SceneBattle = BaseScene.extend({
         this._super();
         GV.MODULE_MGR.showGuiStartBattle();
         var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
-        //var minPos = 500;
         this.createStartGameState(minPos);
     },
     onEnterTransitionDidFinish: function () {
@@ -201,7 +203,7 @@ var SceneBattle = BaseScene.extend({
             ndObject = this.list_node_music[i];
             if (ndObject) {
                 temp = this.list_node_music[i-1];
-                ndObject.y = temp.y + (temp.getRowHeight() + ndObject.getRowHeight()) * 0.5 ;
+                ndObject.y =this.marginTop + temp.y + (temp.getRowHeight() + ndObject.getRowHeight()) * 0.5 ;
             }
         }
     },

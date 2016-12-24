@@ -17,5 +17,6 @@ var ModuleMgr = cc.Class.extend({
     },
     endGame: function () {
         GV.MODULE_MGR._gameState = GV.GAME_STATE.END;
+        cc.error("Game Over");
     }
 });
