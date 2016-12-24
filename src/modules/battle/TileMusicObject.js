@@ -1,10 +1,12 @@
 var TileMusicObject = cc.Node.extend({
     ctor: function () {
         this._super();
-        //variables
-        this.listenerSpr = null;
+        //element gui
         this._sprBg = null;
         this._sprIcon = null;
+        this._sprTouchLong = null;
+        //variables
+        this.listenerSpr = null;
         this.data = null;
         this.type = GV.TILE_TYPE.UNDEFINED;
         this.isTouchSuccess = false;
@@ -143,7 +145,7 @@ var TileMusicObject = cc.Node.extend({
     },
     addListenerForTile: function (obj) {
         var self = this;
-        var listener = cc.EventListener.create({
+        this.listener = cc.EventListener.create({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: true,
             onTouchBegan: function (touch, event) {
@@ -165,14 +167,16 @@ var TileMusicObject = cc.Node.extend({
             },
             onTouchEnded: function (touch, event) {
                 self.onTouchEndedUI(touch, event);
+                cc.eventManager.removeListener(self.listener);
             }
         });
-        cc.eventManager.addListener(listener, obj);
+        cc.eventManager.addListener(this.listener, obj);
     },
     getSize: function () {
         return this.tileSize;
     },
     onTouchBeganUI: function (touch, event) {
+        this.isTouching = true;
         if (this.type == GV.TILE_TYPE.UNDEFINED) {
             this.touchFail(touch, event);
         } else {
@@ -183,6 +187,7 @@ var TileMusicObject = cc.Node.extend({
         cc.error("onTouchMovedUI");
     },
     onTouchEndedUI: function (touch, event) {
+        this.isTouching = false;
         cc.error("end");
     },
     /**
@@ -234,6 +239,37 @@ var TileMusicObject = cc.Node.extend({
                     this._sprIcon = null;
                 }.bind(this))
             ));
+        }
+        if(this.type == GV.TILE_TYPE.NORMAL || this.type == GV.TILE_TYPE.LONG) {
+            this._sprTouchLong = cc.Scale9Sprite((new cc.Sprite("#long_light.png")).getSpriteFrame());
+            this.addChild(this._sprTouchLong, GV.ZORDER_LEVEL.EFFECT);
+            var target = event.getCurrentTarget();
+            var locationInNode = target.convertToNodeSpace(touch.getLocation());
+            this._sprTouchLong.attr({
+                anchorX: 0.5,
+                anchorY: 1,
+                x: 0,
+                width: this.getSize().width
+            });
+            var h = locationInNode.y;
+            if(h < 50) {
+                h = 50;
+            }
+            cc.error("h",h,locationInNode.y);
+            this._sprTouchLong.height = h;
+            this._sprTouchLong.y = locationInNode.y - this.getSize().height * 0.5;
+
+        }
+    },
+
+    updateTouchLong: function (dt) {
+        if(this._sprTouchLong && this.isTouching) {
+            this._sprTouchLong.y += GV.SCENE_MGR.getCurrentScene().curSpeed;
+            this._sprTouchLong.height += GV.SCENE_MGR.getCurrentScene().curSpeed;
+            if(this._sprTouchLong.height >= this.getSize().height * 0.5) {
+                this._sprTouchLong.removeFromParent(true);
+                this._sprTouchLong = null;
+            }
         }
     },
 

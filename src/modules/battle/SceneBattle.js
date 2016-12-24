@@ -259,7 +259,7 @@ var SceneBattle = BaseScene.extend({
             }
         }
     },
-    followFirstRow: function () {
+    followFirstRow: function (dt) {
         var ndObject, temp;
         var len = this.list_node_music.length;
         for (var i = 1; i < len; ++i) {
@@ -267,6 +267,8 @@ var SceneBattle = BaseScene.extend({
             if (ndObject) {
                 temp = this.list_node_music[i - 1];
                 ndObject.y = this.marginTop + temp.y + (temp.getRowHeight() + ndObject.getRowHeight()) * 0.5;
+                //update child
+                ndObject.updateChild(dt);
             }
         }
     },
@@ -274,7 +276,7 @@ var SceneBattle = BaseScene.extend({
         var ndObject = this.list_node_music[0];
         if (ndObject) {
             ndObject.y -= this.curSpeed;
-            this.followFirstRow();
+            this.followFirstRow(dt);
         }
 
         var len = this.list_node_music.length;

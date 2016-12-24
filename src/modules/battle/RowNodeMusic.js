@@ -138,5 +138,14 @@ var RowNodeMusic = cc.Node.extend({
                 element.actionFocusMiss();
             }
         }
+    },
+    updateChild: function (dt) {
+        var len = this.list_element.length;
+        for(var i = 0; i < len; ++i) {
+            var element = this.list_element[i];
+            if(element) {
+                element.updateTouchLong(dt);
+            }
+        }
     }
 });
