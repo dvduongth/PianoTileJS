@@ -47,5 +47,5 @@ GV.GAME_STATE = {
 /**
  * distant score to require up star level
  * */
-GV.DISTANCE_UP_STAR_LEVEL = 10;
-GV.MOVE_SPEED = 2;
+GV.DISTANCE_UP_STAR_LEVEL = 15;
+GV.MOVE_SPEED = 10;

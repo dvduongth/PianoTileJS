@@ -14,6 +14,7 @@ var TileMusicObject = cc.Node.extend({
         this.listenerTag = 2017;
         this._isRequireScale = true;
         this.extraScore = 3;
+        this.deltaTouchPosY = 50;
         return true;
     },
     initGui: function () {
@@ -158,8 +159,8 @@ var TileMusicObject = cc.Node.extend({
                 var s = target.getContentSize();
                 var rect = cc.rect(0, 0, s.width, s.height);
                 if (cc.rectContainsPoint(rect, locationInNode)) {
-                    self.onTouchBeganUI(touch, event);
-                    return true;
+                    return self.onTouchBeganUI(touch, event);
+                    //return true;
                 }
                 return false;
             },
@@ -185,9 +186,9 @@ var TileMusicObject = cc.Node.extend({
         }
         //set action touch
         if (this.type == GV.TILE_TYPE.UNDEFINED) {
-            this.touchFail(touch, event);
+            return this.touchFail(touch, event);
         } else {
-            this.touchSuccess(touch, event);
+            return this.touchSuccess(touch, event);
         }
     },
     onTouchMovedUI: function (touch, event) {
@@ -218,6 +219,7 @@ var TileMusicObject = cc.Node.extend({
         this.createIcon("#tile_miss.png");
         this.updateSpriteIconSize();
         this.iconActionFocus();
+		return true;
     },
     touchSuccess: function (touch, event) {
         if (GV.MODULE_MGR._gameState == GV.GAME_STATE.END) {
@@ -238,7 +240,7 @@ var TileMusicObject = cc.Node.extend({
         this.isTouchSuccess = true;
         GV.MODULE_MGR._myInfo.curScore++;
         if (this._sprIcon) {
-            var timeFadeOut = 0.5;
+            var timeFadeOut = 0.3;
             this._sprIcon.runAction(cc.sequence(
                 cc.fadeOut(timeFadeOut),
                 cc.callFunc(function () {
@@ -250,10 +252,11 @@ var TileMusicObject = cc.Node.extend({
         if(this.type == GV.TILE_TYPE.NORMAL || this.type == GV.TILE_TYPE.LONG) {
             this.createEffectTouchLong(touch, event);
         }
+		return true;
     },
     createEffectTouchLong: function (touch, event) {
         this.extraScore = this.type == GV.TILE_TYPE.NORMAL ? 2 : 3;
-        var minHeight = 30;
+        var minHeight = 50;
         var minRect = cc.rect(minHeight,minHeight,minHeight,this.getSize().width);
         var offsetRect = cc.rect(minHeight,minHeight,minHeight,minHeight);
         this._sprTouchLong = new cc.Scale9Sprite((new cc.Sprite("#long_light.png")).getSpriteFrame(),minRect,offsetRect);
@@ -266,12 +269,14 @@ var TileMusicObject = cc.Node.extend({
             x: 0,
             width: this.getSize().width
         });
-        var h = locationInNode.y;
+        var h = locationInNode.y + this.deltaTouchPosY;
         if(h < minHeight) {
             h = minHeight;
+        }else if(h > this.getSize().height) {
+            h = this.getSize().height;
         }
         this._sprTouchLong.height = h;
-        this._sprTouchLong.y = locationInNode.y - this.getSize().height * 0.5;
+        this._sprTouchLong.y = h - this.getSize().height * 0.5;
     },
 
     updateTouchLong: function (dt) {
@@ -321,7 +326,7 @@ var TileMusicObject = cc.Node.extend({
             anchorX: 0.5,
             anchorY: 0.5,
             x: 0,
-            y: this.getSize().height * 0.5 + lbScoreExtra.height
+            y: this.getSize().height * 0.5 + lbScoreExtra.height + this.deltaTouchPosY
         });
         lbScoreExtra.runAction(Utility.getActionScaleForAppear(lbScoreExtra, function () {
             GV.MODULE_MGR._myInfo.curScore += score;

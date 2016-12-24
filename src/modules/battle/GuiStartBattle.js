@@ -164,7 +164,7 @@ var GuiStartBattle = BaseGUI.extend({
      * */
     hideGui: function () {
         if(this.isShowGui()) {
-            var time = 0.3;
+            var time = 0.25;
             this._rootNode.runAction(cc.sequence(
                 cc.moveBy(time, 0, -this.getGuiHeight()),
                 cc.callFunc(function () {
