@@ -14,7 +14,8 @@ var TileMusicObject = cc.Node.extend({
         this.listenerTag = 2017;
         this._isRequireScale = true;
         this.extraScore = 3;
-        this.deltaTouchPosY = 50;
+        this.getExtraScore = 0;
+        this.deltaTouchPosY = 100;
         this.listDotScore = [];
         return true;
     },
@@ -24,44 +25,57 @@ var TileMusicObject = cc.Node.extend({
         } else {
             this.inited = true;
         }
+        //update background
+        this.updateBackground();
         //update icon
-        this._isRequireScale = true;
-        var urlIcon, urlBg;
+        this.updateIcon();
+    },
+    updateBackground: function () {
+        var urlBg;
         urlBg = "#4.png";
         switch (this.type) {
+            case GV.TILE_TYPE.UNDEFINED:
+                urlBg = res.tile_white_png;
+                break;
+        }
+        this.createBackground(urlBg);
+    },
+    updateIcon: function () {
+        this._isRequireScale = true;
+        var urlIcon;
+        switch (this.type) {
             case GV.TILE_TYPE.START:
-                cc.error("tile start here");
+                cc.log("tile start here");
                 urlIcon = "#tile_start.png";
                 break;
             case GV.TILE_TYPE.SHORT:
-                cc.error("tile short here");
+                cc.log("tile short here");
                 urlIcon = "#tile_black.png";
                 break;
             case GV.TILE_TYPE.NORMAL:
-                cc.error("tile normal here");
+                cc.log("tile normal here");
                 urlIcon = "#long_head.png";
                 this._isRequireScale = false;
                 this.extraScore = 2;
                 break;
             case GV.TILE_TYPE.LONG:
-                cc.error("tile long here");
+                cc.log("tile long here");
                 urlIcon = "#long_head.png";
                 this._isRequireScale = false;
                 this.extraScore = 3;
                 break;
             case GV.TILE_TYPE.UNDEFINED:
-                urlBg = res.tile_white_png;
                 //urlIcon = res.tile_white_png;
                 break;
             default :
                 cc.error("create tile music with type null");
                 return false;
         }
-        if (urlBg) {
-            this.createBackground(urlBg);
-        }
         if (urlIcon) {
             this.createIcon(urlIcon);
+            if (this.type == GV.TILE_TYPE.START) {
+                this.showTextStart();
+            }
         }
     },
     createBackground: function (url) {
@@ -74,18 +88,20 @@ var TileMusicObject = cc.Node.extend({
             this._sprIcon = null;
         }
         this._sprIcon = new cc.Sprite(url);
-        if(!this._isRequireScale) {
-            var minRect = cc.rect(0,0,this._sprIcon.width * 0.5,this._sprIcon.height * 0.5);
-            var offsetRect = cc.rect(10,10,10,10);
-            this._sprIcon = new cc.Scale9Sprite(this._sprIcon.getSpriteFrame(),minRect,offsetRect);
+        if (!this._isRequireScale) {
+            var minRect = cc.rect(0, 0, this._sprIcon.width * 0.5, this._sprIcon.height * 0.5);
+            var offsetRect = cc.rect(10, 10, 10, 10);
+            this._sprIcon = new cc.Scale9Sprite(this._sprIcon.getSpriteFrame(), minRect, offsetRect);
             this.createLongTileLightIcon();
         }
         this.addChild(this._sprIcon, GV.ZORDER_LEVEL.GUI);
-        if(this.type == GV.TILE_TYPE.START) {
-            var lbStart = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 70,Utility.getColorByName('white'),true,true);
-            lbStart.setString("START");
-            this._sprIcon.addChild(lbStart,GV.ZORDER_LEVEL.GUI);
-            lbStart.attr({
+    },
+    showTextStart: function () {
+        if(this._sprIcon && this.type != GV.TILE_TYPE.UNDEFINED) {
+            this.lbStart = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 70, Utility.getColorByName('white'), true, true);
+            this.lbStart.setString("START");
+            this._sprIcon.addChild(this.lbStart, GV.ZORDER_LEVEL.POPUP);
+            this.lbStart.attr({
                 anchorX: 0.5,
                 anchorY: 0.5,
                 x: this._sprIcon.width * 0.5,
@@ -142,20 +158,20 @@ var TileMusicObject = cc.Node.extend({
     },
     updateSpriteIconSize: function () {
         if (this._sprIcon) {
-            if(this._isRequireScale) {
+            if (this._isRequireScale) {
                 var iconSize = this._sprIcon.getContentSize();
                 var delta_ratio_x = this.tileSize.width / iconSize.width;
                 var delta_ratio_y = this.tileSize.height / iconSize.height;
                 this._sprIcon.setScale(delta_ratio_x, delta_ratio_y);
                 this._sprIcon["oldScale"] = cc.p(delta_ratio_x, delta_ratio_y);
-            }else{
+            } else {
                 this._sprIcon.setContentSize(this.tileSize);
                 this.updateSpriteLongTileLightSize();
             }
         }
     },
     updateSpriteLongTileLightSize: function () {
-        if(this._sprLongTileLight) {
+        if (this._sprLongTileLight) {
             var iconSize = this._sprLongTileLight.getContentSize();
             var delta_ratio_x = this.tileSize.width / iconSize.width;
             var delta_ratio_y = this.tileSize.height / iconSize.height;
@@ -199,7 +215,7 @@ var TileMusicObject = cc.Node.extend({
         this.isTouching = true;
         //update parent local zOrder
         var parent = this.getParent();
-        if(parent) {
+        if (parent) {
             parent.setLocalZOrder(parent.getLocalZOrder() + 1);
         }
         //set action touch
@@ -210,16 +226,19 @@ var TileMusicObject = cc.Node.extend({
         }
     },
     onTouchMovedUI: function (touch, event) {
-        cc.error("touch move");
+        cc.log("touch move");
     },
     onTouchEndedUI: function (touch, event) {
         this.isTouching = false;
-        cc.error("touch end end");
+        this.increaseMyScore(this.getExtraScore);
+        this.getExtraScore = 0;
+        cc.log("touch end end");
     },
     /**
      * @param data with type
+     * @param isShowStartText
      * */
-    setInfo: function (data) {
+    setInfo: function (data,isShowStartText) {
         if (!data) {
             cc.error("set info tile music object with null data");
             return null;
@@ -227,29 +246,37 @@ var TileMusicObject = cc.Node.extend({
         this.data = data;
         this.type = data.type;
         this.initGui();
+        if(isShowStartText) {
+            this.showTextStart();
+        }
     },
     touchFail: function (touch, event) {
         if (GV.MODULE_MGR._gameState == GV.GAME_STATE.END || GV.MODULE_MGR._gameState == GV.GAME_STATE.START) {
             return false;
         }
-        cc.error("touch error, don't touch white tile");
+        cc.error("touch fail, don't touch white tile");
         GV.SCENE_MGR._currentScene.gameOver();
         this.createIcon("#tile_miss.png");
         this.updateSpriteIconSize();
-        this.iconActionFocus();
-		return true;
+        this.iconActionFocus(true);
+        return true;
     },
     touchSuccess: function (touch, event) {
         if (GV.MODULE_MGR._gameState == GV.GAME_STATE.END) {
             return false;
         }
         if (GV.MODULE_MGR._gameState == GV.GAME_STATE.START) {
-            if (this.type != GV.TILE_TYPE.START) {
+            if (this.type != GV.TILE_TYPE.START && !this.lbStart) {
                 return false;
             }
         }
+        //hide text start
+        if(this.lbStart) {
+            this.lbStart.removeFromParent(true);
+            this.lbStart = null;
+        }
         //hide bottom info if has
-        if(!this.isHidePopup){
+        if (!this.isHidePopup) {
             this.isHidePopup = true;
             GV.MODULE_MGR.guiStartBattle.hideGui();
         }
@@ -258,14 +285,20 @@ var TileMusicObject = cc.Node.extend({
         GV.SCENE_MGR.getCurrentScene().isRequireUpSpeed = true;
         this.isTouchSuccess = true;
         //increase score
-        GV.MODULE_MGR._myInfo.curScore++;
+        this.increaseMyScore(1);
         //update icon action
-        if(this.type == GV.TILE_TYPE.NORMAL || this.type == GV.TILE_TYPE.LONG) {
+        if (this.type == GV.TILE_TYPE.NORMAL || this.type == GV.TILE_TYPE.LONG) {
             this.createEffectTouchLong(touch, event);
-        }else{
+        } else {
             this.fadeOutIcon();
         }
-		return true;
+        return true;
+    },
+    increaseMyScore: function (num) {
+        if (!num) {
+            num = 0;
+        }
+        GV.MODULE_MGR._myInfo.curScore += num;
     },
     fadeOutIcon: function () {
         if (this._sprIcon) {
@@ -281,9 +314,9 @@ var TileMusicObject = cc.Node.extend({
     },
     createEffectTouchLong: function (touch, event) {
         var minHeight = 50;
-        var minRect = cc.rect(minHeight,minHeight,minHeight,this.getSize().width);
-        var offsetRect = cc.rect(minHeight,minHeight,minHeight,minHeight);
-        this._sprTouchLong = new cc.Scale9Sprite((new cc.Sprite("#long_light.png")).getSpriteFrame(),minRect,offsetRect);
+        var minRect = cc.rect(minHeight, minHeight, minHeight, this.getSize().width);
+        var offsetRect = cc.rect(minHeight, minHeight, minHeight, minHeight);
+        this._sprTouchLong = new cc.Scale9Sprite((new cc.Sprite("#long_light.png")).getSpriteFrame(), minRect, offsetRect);
         this.addChild(this._sprTouchLong, GV.ZORDER_LEVEL.EFFECT);
         var target = event.getCurrentTarget();
         var locationInNode = target.convertToNodeSpace(touch.getLocation());
@@ -294,9 +327,9 @@ var TileMusicObject = cc.Node.extend({
             width: this.getSize().width
         });
         var h = locationInNode.y + this.deltaTouchPosY;
-        if(h < minHeight) {
+        if (h < minHeight) {
             h = minHeight;
-        }else if(h > this.getSize().height) {
+        } else if (h > this.getSize().height) {
             h = this.getSize().height;
         }
         this._sprTouchLong.height = h;
@@ -307,7 +340,7 @@ var TileMusicObject = cc.Node.extend({
     createDotScore: function () {
         this.clearSpriteDot();
         var space = this.getSize().height * 0.5 / this.extraScore;
-        for(var i = 0; i < this.extraScore; ++i) {
+        for (var i = 0; i < this.extraScore; ++i) {
             var sprDot = new cc.Sprite("#dot.png");
             this.addChild(sprDot, this._sprTouchLong.getLocalZOrder() + 1);
             sprDot.attr({
@@ -322,9 +355,9 @@ var TileMusicObject = cc.Node.extend({
     },
     clearSpriteDot: function () {
         var len = this.listDotScore.length;
-        for(var i = 0; i < len; ++i) {
+        for (var i = 0; i < len; ++i) {
             var sprDot = this.listDotScore[i];
-            if(sprDot) {
+            if (sprDot) {
                 sprDot.removeFromParent(true);
             }
         }
@@ -333,10 +366,10 @@ var TileMusicObject = cc.Node.extend({
     },
 
     updateTouchLong: function (dt) {
-        if(this._sprTouchLong && this.isTouching) {
+        if (this._sprTouchLong && this.isTouching) {
             this._sprTouchLong.y += GV.SCENE_MGR.getCurrentScene().curSpeed;
             this._sprTouchLong.height += GV.SCENE_MGR.getCurrentScene().curSpeed;
-            if(this._sprTouchLong.height >= this.getSize().height) {
+            if (this._sprTouchLong.height >= this.getSize().height) {
                 this._sprIcon.removeFromParent(true);
                 this._sprIcon = null;
                 this._sprTouchLong.removeFromParent(true);
@@ -346,39 +379,49 @@ var TileMusicObject = cc.Node.extend({
                 this.clearSpriteDot();
                 //show effect add score
                 this.showEffectScoreAddMore(this.extraScore);
-            }else{
+            } else {
                 var len = this.listDotScore.length;
-                for(var i = 0; i < len; ++i) {
+                var deltaGet = 20;
+                for (var i = 0; i < len; ++i) {
                     var sprDot = this.listDotScore[i];
-                    if(sprDot) {
-                        if(sprDot.y <= this._sprTouchLong.y){
-                            sprDot.setTexture(res.dot_light_png);
-                            var dot = new cc.Sprite(res.dot_light_png);
-                            dot.attr({
-                               x: sprDot.width >> 1,
-                               y: sprDot.height >> 1
-                            });
-                            sprDot.addChild(dot);
-                            var actionTime = 0.1;
-                            var animation = new cc.Animation();
-                            animation.addSpriteFrameWithFile(res.circle_light_png);
-                            animation.addSpriteFrameWithFile(res.glow_png);
-                            animation.setDelayPerUnit(actionTime);
-                            animation.setRestoreOriginalFrame(true);
-                            var action = cc.animate(animation);
-                            //run action
-                            dot.runAction(cc.sequence(
-                                action,
-                                cc.callFunc(sprDot.removeFromParent,sprDot)
-                            ));
-                            //clear data
-                            this.listDotScore[i] = null;
-                            this.listDotScore.splice(i, 1);
+                    if (sprDot) {
+                        if (sprDot.y <= this._sprTouchLong.y) {
+                            this.actionDot(sprDot.y >= (this._sprTouchLong.y - deltaGet), sprDot, i);
                         }
                     }
                 }
             }
         }
+    },
+    actionDot: function (isGet, sprDot, i) {
+        this.getExtraScore++;
+        if (isGet) {
+            sprDot.setTexture(res.dot_light_png);
+            var dot = new cc.Sprite(res.dot_light_png);
+            dot.attr({
+                x: sprDot.width >> 1,
+                y: sprDot.height >> 1
+            });
+            sprDot.addChild(dot);
+            var actionTime = 0.1;
+            var animation = new cc.Animation();
+            animation.addSpriteFrameWithFile(res.circle_light_png);
+            animation.addSpriteFrameWithFile(res.glow_png);
+            animation.setDelayPerUnit(actionTime);
+            animation.setRestoreOriginalFrame(true);
+            var action = cc.animate(animation);
+            //run action
+            dot.runAction(cc.sequence(
+                action,
+                cc.callFunc(sprDot.removeFromParent, sprDot)
+            ));
+            cc.log("get dot here");
+        } else {
+            sprDot.removeFromParent(true);
+        }
+        //clear data
+        this.listDotScore[i] = null;
+        this.listDotScore.splice(i, 1);
     },
 
     actionFocusMiss: function () {
@@ -386,15 +429,23 @@ var TileMusicObject = cc.Node.extend({
             this.iconActionFocus();
         }
     },
-    iconActionFocus: function () {
+    iconActionFocus: function (eff) {
         if (this._sprIcon) {
             var ACTION_TIME = 1;
             this._sprIcon.stopAllActions();
-            this._sprIcon.runAction(cc.blink(ACTION_TIME,3).repeat(3));
+            this._sprIcon.runAction(cc.sequence(
+                cc.blink(ACTION_TIME, 3).repeat(3),
+                cc.callFunc(function () {
+                    if (eff) {
+                        this._sprIcon.removeFromParent(true);
+                        this._sprIcon = null;
+                    }
+                }.bind(this))
+            ));
         }
     },
     showEffectScoreAddMore: function (score) {
-        var lbScoreExtra = Utility.getLabel(res.FONT_ARIAL, 50, Utility.getColorByName("text_green"),true);
+        var lbScoreExtra = Utility.getLabel(res.FONT_ARIAL, 50, Utility.getColorByName("text_green"), true);
         lbScoreExtra.setString("+" + Utility.numToStr(score));
         lbScoreExtra.attr({
             anchorX: 0.5,
@@ -403,7 +454,6 @@ var TileMusicObject = cc.Node.extend({
             y: this.getSize().height * 0.5 + lbScoreExtra.height + this.deltaTouchPosY * 0.5
         });
         lbScoreExtra.runAction(Utility.getActionScaleForAppear(lbScoreExtra, function () {
-            GV.MODULE_MGR._myInfo.curScore += score;
             lbScoreExtra.runAction(cc.sequence(
                 cc.delayTime(0.2),
                 cc.fadeOut(0.3)

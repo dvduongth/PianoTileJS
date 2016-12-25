@@ -23,10 +23,18 @@ var ModuleMgr = cc.Class.extend({
         GV.SCENE_MGR.showFog();
         this.guiEndBattle.showGui(true);
     },
+    showGuiResultBattle: function () {
+        if(!this.guiResultBattle){
+            this.guiResultBattle = new GuiResultBattle();
+        }
+        this.guiResultBattle.setInfo(this._myInfo);
+        GV.SCENE_MGR.showFog();
+        this.guiResultBattle.showGui(true);
+    },
 
     endGame: function () {
         this._gameState = GV.GAME_STATE.END;
-        cc.error("Game Over");
+        cc.log("Game Over");
         var timeWait = 3;
         var curScene = GV.SCENE_MGR.getCurrentScene();
         curScene.runAction(cc.sequence(
@@ -35,5 +43,13 @@ var ModuleMgr = cc.Class.extend({
                 this.showGuiEndBattle();
             }.bind(this))
         ))
+    },
+    restartGame: function () {
+        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.BATTLE);
+        this.resetValues();
+    },
+    continueGame: function () {
+        var curScene = GV.SCENE_MGR.getCurrentScene();
+        curScene.continuePlayGame();
     }
 });

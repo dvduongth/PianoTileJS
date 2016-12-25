@@ -37,8 +37,14 @@ var BaseGUI = cc.Node.extend({
             //cc.log("_syncChildrenInNode",nameChild);
             if (nameChild && this[nameChild]) {
                 if (nameChild.indexOf("btn") != -1) {
-                    cc.error("btn here",nameChild);
-                    this[nameChild].setTouchEnabled(true);
+                    if(!this[nameChild].getTitleRenderer()) {
+                        this[nameChild].setTitleText("    ");
+                        var btnSize = this[nameChild]["contentSize"];
+                        if(btnSize) {
+                            this[nameChild].setContentSize(btnSize);
+                        }
+                    }
+                    this[nameChild].setScale9Enabled(true);
                     this[nameChild].addTouchEventListener(this._onTouchUIEvent, this);
                     this[nameChild].setPressedActionEnabled(true);
                     this[nameChild].setZoomScale(-0.1);
@@ -66,13 +72,9 @@ var BaseGUI = cc.Node.extend({
 
         //if(children.length > 0 && children[0].name.indexOf("lb" == 0)){
         var titleRender = btn.getTitleRenderer();
-        cc.error("enable press button", btn.getName());
         if(!titleRender) {
             cc.error("button is not exist title render");
-            titleRender = btn._titleRenderer;
-            if(!titleRender) {
-                return null;
-            }
+            return null;
         }
         var titleSize = titleRender.getContentSize();
         var labelPos = titleRender.getPosition();

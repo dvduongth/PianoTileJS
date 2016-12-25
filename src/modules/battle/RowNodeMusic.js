@@ -29,19 +29,25 @@ var RowNodeMusic = cc.Node.extend({
     },
     /**
      * @param data with list_type
+     * @param isShowStartText is boolean for continue game
      * list_type is has type and index
      * */
-    setInfo: function (data) {
+    setInfo: function (data, isShowStartText) {
         if(!data) {
             cc.error("set info tile music object with null data");
             return null;
         }
+        this.data = data;
+        this.isShowStartText = isShowStartText;
         this.list_type = [];//luu index co type
         if(data.list_type){
             this.list_type = data["list_type"];
         }
         this.initGui();
         this.updateChildInfo();
+    },
+    getInfo: function () {
+        return this.data;
     },
     updateChildInfo: function () {
         var len = this.list_element.length;
@@ -50,7 +56,7 @@ var RowNodeMusic = cc.Node.extend({
             var tileMusic = this.list_element[i];
             if(tileMusic) {
                 if(info) {
-                    tileMusic.setInfo(info);
+                    tileMusic.setInfo(info,this.isShowStartText);
                     var h = GV.TILE_HEIGHT_TYPE[info["type"]];
                     if(h > GV.TILE_HEIGHT_TYPE[this.heightType]) {
                         this.heightType = info["type"];
@@ -147,5 +153,17 @@ var RowNodeMusic = cc.Node.extend({
                 element.updateTouchLong(dt);
             }
         }
+    },
+    isTouchTileSuccess: function () {
+        var len = this.list_element.length;
+        for(var i = 0; i < len; ++i) {
+            var element = this.list_element[i];
+            if(element) {
+                if(element.isTouchSuccess) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 });

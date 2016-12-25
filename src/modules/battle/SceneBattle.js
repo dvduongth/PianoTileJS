@@ -221,10 +221,33 @@ var SceneBattle = BaseScene.extend({
         this.list_node_music[0].y = posY;
         this.followFirstRow();
     },
+    continuePlayGame: function () {
+        GV.MODULE_MGR._gameState = GV.GAME_STATE.START;
+        //reset state
+        var len = this.list_node_music.length;
+        var showTextStart = !this.list_node_music[0].isTouchTileSuccess();
+        for(var i = 0; i < len; ++i) {
+            var nd = this.list_node_music[i];
+            if(nd) {
+                if(showTextStart) {
+                    nd.setInfo(nd.getInfo(), i == 0);
+                }else{
+                    showTextStart = !nd.isTouchTileSuccess();
+                    nd.setInfo(nd.getInfo(), showTextStart);
+                }
+            }
+        }
+        //update view row tile position
+        this.list_node_music[0].y = this.list_node_music[0].getRowHeight() * 0.5;
+        this.followFirstRow();
+    },
     onEnter: function () {
         this._super();
         this.createStartGameState();
         this.createEffectBall();
+    },
+    onExit: function () {
+        this._super();
     },
     onEnterTransitionDidFinish: function () {
         this._super();
@@ -322,7 +345,7 @@ var SceneBattle = BaseScene.extend({
     upSpeed: function () {
         this.moveSpeed += this.upSpeedDelta;
         this.starLevel++;
-        this.distanceUpStar *= 2;
+        this.distanceUpStar *= 4;//up difficult hard core
         this.playEffectUpStar();
         cc.error("up speed");
     },

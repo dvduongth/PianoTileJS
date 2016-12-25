@@ -27,14 +27,17 @@ var SceneLobby = BaseScene.extend({
     onEnter:function () {
         this._super();
     },
+    onExit: function () {
+        this._super();
+    },
     onEnterTransitionDidFinish: function () {
         this._super();
-        this.runAction(cc.sequence(
-            cc.delayTime(1),
-            cc.callFunc(function () {
-                GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.BATTLE);
-            })
-        ));
+        //this.runAction(cc.sequence(
+        //    cc.delayTime(1),
+        //    cc.callFunc(function () {
+        //        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.BATTLE);
+        //    })
+        //));
     }
 });
 

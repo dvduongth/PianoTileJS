@@ -47,7 +47,7 @@ var GuiStartBattle = BaseGUI.extend({
             y: 0
         });
         var bgSize = this._sprBg.getContentSize();
-        var delta_ratio_x = this.BACK_GROUND_SIZE.width / bgSize.width;
+        var delta_ratio_x = 1.2 * this.BACK_GROUND_SIZE.width / bgSize.width;
         var delta_ratio_y = this.BACK_GROUND_SIZE.height / bgSize.height;
         this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
     },
@@ -59,7 +59,7 @@ var GuiStartBattle = BaseGUI.extend({
         this.createNoticeText();
     },
     createNoticeIcon: function () {
-        this._sprNoticeIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 0.75);
+        this._sprNoticeIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 5 / 7);
     },
     createNoticeText: function () {
         //notice text
@@ -70,7 +70,7 @@ var GuiStartBattle = BaseGUI.extend({
             anchorX: 0.5,
             anchorY: 0,
             x: 0,
-            y: bgSize.height * 0.75
+            y: bgSize.height * 5 /7
         });
         this.setNoticeTitleText("Best With Headphones");
     },
@@ -82,7 +82,7 @@ var GuiStartBattle = BaseGUI.extend({
         this.createMusicTitleText();
     },
     createMusicTileIcon: function () {
-        this._sprMusicTileIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 0.5);
+        this._sprMusicTileIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 3 / 7);
     },
     createMusicTitleText: function () {
         //music title text
@@ -92,7 +92,7 @@ var GuiStartBattle = BaseGUI.extend({
             anchorX: 0.5,
             anchorY: 0,
             x: 0,
-            y: this.BACK_GROUND_SIZE.height * 0.5
+            y: this.BACK_GROUND_SIZE.height * 3 /7
         });
         this.setMusicTitleText("Music: Ngay Tet Que Em");
     },
@@ -104,7 +104,7 @@ var GuiStartBattle = BaseGUI.extend({
         this.createBestScoreText();
     },
     createBestScoreIcon: function () {
-        this._sprBestScoreIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 0.25);
+        this._sprBestScoreIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 1 / 7);
     },
     createBestScoreText: function () {
         //best score text
@@ -114,7 +114,7 @@ var GuiStartBattle = BaseGUI.extend({
             anchorX: 0.5,
             anchorY: 0,
             x: 0,
-            y: this.BACK_GROUND_SIZE.height * 0.25
+            y: this.BACK_GROUND_SIZE.height * 1 /7
         });
         this.setBestScoreText("Best Score: 0");
 

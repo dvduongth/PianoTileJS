@@ -37,6 +37,7 @@
         "src/modules/battle/TileMusicObject.js",
         "src/modules/loading/GuiPopupLoading.js",
         "src/modules/loading/SceneLoading.js",
+        "src/modules/lobby/GuiResultBattle.js",
         "src/modules/lobby/SceneLobby.js",
         "src/modules/popup/GuiPopup.js",
         "src/modules/popup/PopupMgr.js"

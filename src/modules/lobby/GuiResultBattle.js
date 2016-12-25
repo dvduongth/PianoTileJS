@@ -1,5 +1,5 @@
-var GuiEndBattle = BaseGUI.extend({
-    _className: "GuiEndBattle",
+var GuiResultBattle = BaseGUI.extend({
+    _className: "GuiResultBattle",
 
     ctor: function () {
         this._super();
@@ -149,7 +149,7 @@ var GuiEndBattle = BaseGUI.extend({
         }
     },
     clearAllTextSuggest: function () {
-      this._ndStar.y = 0;
+        this._ndStar.y = 0;
         var len = this.listTextSuggest.length;
         for(var i = 0; i < len; ++i) {
             this.listTextSuggest[i].removeFromParent(true);
@@ -267,15 +267,8 @@ var GuiEndBattle = BaseGUI.extend({
         if(!this.listTextSuggest.length){
             this.createTextSuggest();
         }
-        var d_up_star = GV.SCENE_MGR.getCurrentScene().distanceUpStar;
-        var d = this.curScore % d_up_star;
-        if((d != 0) || (this.myStar == 0)) {
-            this.updateNumStar(this.myStar + 1);
-            this.setNumberScoreSuggest(d_up_star - d);
-        }else{
-            this.updateNumStar(this.myStar);
-            this.clearAllTextSuggest();
-        }
+        this.updateNumStar(this.myStar);
+        this.clearAllTextSuggest();
     },
     setLabelTimeText: function (str) {
         this._lbLabelTime.setString(str);
@@ -290,8 +283,7 @@ var GuiEndBattle = BaseGUI.extend({
             this._sprProgress.runAction(cc.progressFromTo(this.timeCountDown, 0, 100));
             var func = function (i) {
                 if(i == 0 ) {
-                    this.hideGui();
-                    this.returnCity();
+                    //this.hideGui();
                     return false;
                 }
                 this._lbLabelTime.setString(Utility.numToStr(i));
@@ -326,16 +318,11 @@ var GuiEndBattle = BaseGUI.extend({
         switch (sender) {
             case this._btnClose:
                 this.hideGui();
-                this.returnCity();
                 break;
             case this._btnContinue:
+                GV.MODULE_MGR.restartGame();
                 this.hideGui();
-                GV.MODULE_MGR.continueGame();
                 break;
         }
-    },
-    returnCity: function () {
-        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.LOBBY);
-        GV.MODULE_MGR.showGuiResultBattle();
     }
 });
