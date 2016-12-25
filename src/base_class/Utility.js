@@ -162,6 +162,43 @@ Utility.getLabel = function (fontName, fontSize, color, isSkipStroke, isSkipShad
     }
     return label;
 };
+/**
+ * @param {String} buttonName
+ * @param {cc.Size} contentSize
+ * @param {String} fileImageNormal
+ * @param {String} fileImagePress
+ * @param {String} fileImageDisable
+ * @param {Number} typeLoadImage with one of values ccui.Widget.LOCAL_TEXTURE or ccui.Widget.PLIST_TEXTURE
+ * */
+Utility.getButton = function (buttonName, contentSize, fileImageNormal, fileImagePress, fileImageDisable, typeLoadImage) {
+    if(!buttonName) {
+        buttonName = "_btn";
+    }
+    if(!contentSize) {
+        contentSize = cc.size(30,30);
+    }
+    if(!fileImageNormal) {
+        fileImageNormal = "";
+    }
+    if(!fileImagePress) {
+        fileImagePress = "";
+    }
+    if(!fileImageDisable) {
+        fileImageDisable = "";
+    }
+    if(!typeLoadImage) {
+        typeLoadImage = ccui.Widget.LOCAL_TEXTURE;
+    }
+    var button = new ccui.Button(fileImageNormal, fileImagePress, fileImageDisable, typeLoadImage);
+    button.setTitleText(" ");
+    button.setName(buttonName);
+    button.setContentSize(contentSize);
+    button["contentSize"] = contentSize;
+    return button;
+};
+/**
+ * convert number to string
+ * */
 Utility.numToStr = function (num, separator) {
     if (num === undefined) {
         cc.error("numToStr with undefined");

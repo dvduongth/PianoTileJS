@@ -343,6 +343,10 @@ var SceneBattle = BaseScene.extend({
         }
     },
     upSpeed: function () {
+        if(this.starLevel >= GV.MAX_NUM_STAR) {
+            cc.log("get max star: ", this.starLevel, " STAR");
+            return false;
+        }
         this.moveSpeed += this.upSpeedDelta;
         this.starLevel++;
         this.distanceUpStar *= 4;//up difficult hard core

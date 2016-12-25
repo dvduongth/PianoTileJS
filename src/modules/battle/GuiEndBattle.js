@@ -24,6 +24,7 @@ var GuiEndBattle = BaseGUI.extend({
         this.syncAllChildren();
         this._rootNode.visible = false;
         this._rootNode.retain();
+        this._rootNode.setPosition(GV.WIN_SIZE.width >> 1, GV.WIN_SIZE.height >> 1);
     },
     getGuiSize: function () {
         return this.BACK_GROUND_SIZE;
@@ -196,10 +197,9 @@ var GuiEndBattle = BaseGUI.extend({
         var BUTTON_SIZE = 52;
         var sprIconClose = new cc.Sprite("#btn_close.png");
         sprIconClose.setBlendFunc(cc.ZERO, cc.ONE_MINUS_SRC_ALPHA);
-        this._btnClose = new ccui.Button("","","",ccui.Widget.LOCAL_TEXTURE);
-        this._btnClose.setContentSize(BUTTON_SIZE,BUTTON_SIZE);
-        this._btnClose["contentSize"] = cc.size(BUTTON_SIZE,BUTTON_SIZE);
+        this._btnClose = Utility.getButton("_btnClose",cc.size(BUTTON_SIZE,BUTTON_SIZE));
         this._btnClose.addChild(sprIconClose, GV.ZORDER_LEVEL.BG);
+        this.addChild(this._btnClose, GV.ZORDER_LEVEL.GUI);
         sprIconClose.attr({
             anchorX: 0.5,
             anchorY: 0.5,
@@ -207,8 +207,6 @@ var GuiEndBattle = BaseGUI.extend({
             y: BUTTON_SIZE * 0.5
         });
         sprIconClose.setScale(BUTTON_SIZE / sprIconClose.width);
-        this.addChild(this._btnClose, GV.ZORDER_LEVEL.BG);
-        this._btnClose.setName("_btnClose");
         this._btnClose.attr({
             anchorX: 0.5,
             anchorY: 0.5,
@@ -218,11 +216,8 @@ var GuiEndBattle = BaseGUI.extend({
     },
     createButtonContinue: function () {
         var button_size = cc.size(this.BACK_GROUND_SIZE.width * 0.9, 50);
-        this._btnContinue = new ccui.Button();
-        this.addChild(this._btnContinue, GV.ZORDER_LEVEL.BG);
-        this._btnContinue.setContentSize(button_size);
-        this._btnContinue["contentSize"] = button_size;
-        this._btnContinue.setName("_btnContinue");
+        this._btnContinue = Utility.getButton("_btnContinue",button_size);
+        this.addChild(this._btnContinue, GV.ZORDER_LEVEL.GUI);
         this._btnContinue.attr({
             anchorX: 0.5,
             anchorY: 0.5,
@@ -285,7 +280,6 @@ var GuiEndBattle = BaseGUI.extend({
      * */
     showGui: function (eff) {
         if(!this.isShowGui()) {
-            this._rootNode.setPosition(GV.WIN_SIZE.width >> 1, GV.WIN_SIZE.height >> 1);
             this._super(eff);
             this._sprProgress.runAction(cc.progressFromTo(this.timeCountDown, 0, 100));
             var func = function (i) {

@@ -29,7 +29,7 @@ var ModuleMgr = cc.Class.extend({
         }
         this.guiResultBattle.setInfo(this._myInfo);
         GV.SCENE_MGR.showFog();
-        this.guiResultBattle.showGui(true);
+        this.guiResultBattle.showGui(false);
     },
 
     endGame: function () {
@@ -45,7 +45,7 @@ var ModuleMgr = cc.Class.extend({
         ))
     },
     restartGame: function () {
-        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.BATTLE);
+        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.BATTLE,true);
         this.resetValues();
     },
     continueGame: function () {

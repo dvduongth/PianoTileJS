@@ -13,9 +13,11 @@ var res = {
     circle_light_png: "res/resource/Animation/circle_light.png",
     crazy_circle_png: "res/resource/Animation/crazy_circle.png",
     glow_png: "res/resource/GameImage/glow.png",
+    bg_share_png: "res/resource/UIPlist/bg_share.png",
 
     //plist
     plist_1: "res/plist/1.plist",
+    plist_resource: "res/resource/UIPlist/Plist_resource.plist",
     plist_band: "res/resource/UIPlist/Plist_band.plist",
     plist_content: "res/resource/UIPlist/Plist_content.plist",
     plist_battle_result: "res/resource/UIPlist/Battle_Result/Battle_Result.plist",

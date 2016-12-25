@@ -38,7 +38,7 @@ var BaseGUI = cc.Node.extend({
             if (nameChild && this[nameChild]) {
                 if (nameChild.indexOf("btn") != -1) {
                     if(!this[nameChild].getTitleRenderer()) {
-                        this[nameChild].setTitleText("    ");
+                        this[nameChild].setTitleText(" ");
                         var btnSize = this[nameChild]["contentSize"];
                         if(btnSize) {
                             this[nameChild].setContentSize(btnSize);

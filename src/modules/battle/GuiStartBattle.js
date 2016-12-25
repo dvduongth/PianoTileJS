@@ -8,6 +8,8 @@ var GuiStartBattle = BaseGUI.extend({
             width: GV.WIN_SIZE.width,
             height: GV.WIN_SIZE.height * 0.25
         };
+        this.marginLeftIcon = 30;
+        this.marginLeftText = 100;
         this.initGui();
     },
 
@@ -31,7 +33,7 @@ var GuiStartBattle = BaseGUI.extend({
         icon.attr({
             anchorX: 0,
             anchorY: 0,
-            x: 20 - GV.WIN_SIZE.width * 0.5,
+            x: this.marginLeftIcon - GV.WIN_SIZE.width * 0.5,
             y: y
         });
         return icon;
@@ -67,9 +69,9 @@ var GuiStartBattle = BaseGUI.extend({
         this.addChild(this._lbNoticeTitle);
         var bgSize = this.BACK_GROUND_SIZE;
         this._lbNoticeTitle.attr({
-            anchorX: 0.5,
+            anchorX: 0,
             anchorY: 0,
-            x: 0,
+            x: this.marginLeftText - GV.WIN_SIZE.width * 0.5,
             y: bgSize.height * 5 /7
         });
         this.setNoticeTitleText("Best With Headphones");
@@ -89,9 +91,9 @@ var GuiStartBattle = BaseGUI.extend({
         this._lbMusiceTitle = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 36,Utility.getColorByName("black"),true);
         this.addChild(this._lbMusiceTitle);
         this._lbMusiceTitle.attr({
-            anchorX: 0.5,
+            anchorX: 0,
             anchorY: 0,
-            x: 0,
+            x: this.marginLeftText - GV.WIN_SIZE.width * 0.5,
             y: this.BACK_GROUND_SIZE.height * 3 /7
         });
         this.setMusicTitleText("Music: Ngay Tet Que Em");
@@ -111,9 +113,9 @@ var GuiStartBattle = BaseGUI.extend({
         this._lbBestScore = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 36,Utility.getColorByName("black"),true);
         this.addChild(this._lbBestScore);
         this._lbBestScore.attr({
-            anchorX: 0.5,
+            anchorX: 0,
             anchorY: 0,
-            x: 0,
+            x: this.marginLeftText - GV.WIN_SIZE.width * 0.5,
             y: this.BACK_GROUND_SIZE.height * 1 /7
         });
         this.setBestScoreText("Best Score: 0");
