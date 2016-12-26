@@ -35,6 +35,12 @@ var SceneBattle = BaseScene.extend({
      * purpose to get list config row
      * each row: contain list_type
      * each list_type: contain type and index
+     * eg: list_type = [
+     *                  {"index": 0, "type": GV.TILE_TYPE.SHORT}
+     *                  ,
+     *                  {"index": 3, "type": GV.TILE_TYPE.SHORT},
+     *                  ... more here
+     *                  ]
      * */
     loadConfigData: function () {
         var len = this.listConfigData.length;
