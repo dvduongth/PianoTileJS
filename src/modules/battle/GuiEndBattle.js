@@ -225,8 +225,8 @@ var GuiEndBattle = BaseGUI.extend({
             y: (-this.BACK_GROUND_SIZE.height + this._btnContinue.height) * 0.5 + 50
         });
         //sprite background
-        var spr = new cc.Sprite("#btn_normal.png");
-        var sprButtonBg = new cc.Scale9Sprite(spr.getSpriteFrame());
+        var sprButtonBg = new cc.Sprite("#btn_normal.png");
+        sprButtonBg = new cc.Scale9Sprite(sprButtonBg.getSpriteFrame());
         this._btnContinue.addChild(sprButtonBg, GV.ZORDER_LEVEL.BG);
         sprButtonBg.attr({
             anchorX: 0.5,
@@ -234,9 +234,9 @@ var GuiEndBattle = BaseGUI.extend({
             x: button_size.width >> 1,
             y: button_size.height >> 1
         });
-        sprButtonBg.setContentSize(button_size.width * 2 / 5,button_size.height);
-        sprButtonBg.setScaleX(5 / 2);
-        sprButtonBg.setScaleY(0.6);
+        sprButtonBg.setContentSize(button_size);
+        //sprButtonBg.setScaleX(button_size.width / sprButtonBg.width);
+        //sprButtonBg.setScaleY(button_size.height / sprButtonBg.height);
         //text continue
         var lbText = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 36, Utility.getColorByName("white"));
         lbText.setString("Continue");
@@ -265,6 +265,9 @@ var GuiEndBattle = BaseGUI.extend({
         var d_up_star = GV.SCENE_MGR.getCurrentScene().distanceUpStar;
         var d = this.curScore % d_up_star;
         if((d != 0) || (this.myStar == 0)) {
+            if(this.myStar >= GV.MAX_NUM_STAR) {
+                cc.log("end game with max star here");
+            }
             this.updateNumStar(this.myStar + 1);
             this.setNumberScoreSuggest(d_up_star - d);
         }else{

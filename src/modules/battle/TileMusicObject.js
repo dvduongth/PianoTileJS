@@ -413,6 +413,7 @@ var TileMusicObject = cc.Node.extend({
             //run action
             dot.runAction(cc.sequence(
                 action,
+                cc.fadeOut(actionTime),
                 cc.callFunc(sprDot.removeFromParent, sprDot)
             ));
             cc.log("get dot here");
@@ -445,7 +446,7 @@ var TileMusicObject = cc.Node.extend({
         }
     },
     showEffectScoreAddMore: function (score) {
-        var lbScoreExtra = Utility.getLabel(res.FONT_ARIAL, 50, Utility.getColorByName("text_green"), true);
+        var lbScoreExtra = Utility.getLabel(res.FONT_ARIAL, 50, Utility.getColorByName("sky_blue"), true);
         lbScoreExtra.setString("+" + Utility.numToStr(score));
         lbScoreExtra.attr({
             anchorX: 0.5,

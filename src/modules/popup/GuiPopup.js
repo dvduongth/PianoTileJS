@@ -34,7 +34,7 @@ var GuiPopup = BaseGUI.extend({
 
     initGui: function () {
         //background
-        this._sprBg = new cc.Scale9Sprite(res.tile_white_png);
+        this._sprBg = new cc.Scale9Sprite(res.gui_start_battle_bg_png);
         this._sprBg.setScale9Enabled(true);
         this.addChild(this._sprBg);
         //button

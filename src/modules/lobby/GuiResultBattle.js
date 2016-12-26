@@ -86,7 +86,6 @@ var GuiResultBattle = BaseGUI.extend({
     createProgressLevel: function () {
 
     },
-
     createButtonHeart: function () {
         this._btnHeart = Utility.getButton("_btnHeart", this.sizeButtonTop);
         this.addChild(this._btnHeart, GV.ZORDER_LEVEL.GUI);
@@ -129,10 +128,79 @@ var GuiResultBattle = BaseGUI.extend({
     },
 
     createStarInfo: function () {
-
+        //music title text
+        this.createMusicTitle();
+        this.setMusicTitleText("1.Ngay Tet Que Em");
+        this.createStar();
+    },
+    createMusicTitle: function () {
+        this._lbMusiceTitle = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 50, Utility.getColorByName("white"), true);
+        this.addChild(this._lbMusiceTitle, GV.ZORDER_LEVEL.GUI);
+        this._lbMusiceTitle.attr({
+            anchorX: 0.5,
+            anchorY: 0.5,
+            x: 0,
+            y: this.BACK_GROUND_SIZE.height * 3 / 8
+        });
+    },
+    createStar: function () {
+        this._ndStar = new cc.Node();
+        this.addChild(this._ndStar, GV.ZORDER_LEVEL.GUI);
+        this._ndStar.y = this.BACK_GROUND_SIZE.height * 3 / 8 - 50;
+        this._ndStar["oldPos"] = this._ndStar.getPosition();
+    },
+    updateNumStar: function (num) {
+        if (!num) {
+            num = 0;
+        }
+        this._ndStar.removeAllChildren(true);
+        this.listStar.splice(0);
+        this.listStar = [];
+        for (var j = 0; j < GV.MAX_NUM_STAR; ++j) {
+            var sprStarIcon;
+            if (j < num) {
+                sprStarIcon = new cc.Sprite("#r_icon_star_highlight.png");
+            } else {
+                sprStarIcon = new cc.Sprite("#r_icon_star_inactive.png");
+            }
+            this._ndStar.addChild(sprStarIcon, 0);
+            this.listStar.push(sprStarIcon);
+        }
+        //update position
+        var margin = 5;
+        var firstStar = this.listStar[0];
+        var lineStarWidth = firstStar.width * GV.MAX_NUM_STAR + margin * (GV.MAX_NUM_STAR - 1);
+        this._ndStar.y = this._ndStar["oldPos"].y - firstStar.height * 0.5;
+        for (var i = 0; i < GV.MAX_NUM_STAR; ++i) {
+            var starIcon = this.listStar[i];
+            if (starIcon) {
+                starIcon.x = -(lineStarWidth - firstStar.width) * 0.5 + (firstStar.width + margin) * i;
+            }
+        }
+    },
+    setMusicTitleText: function (str) {
+        this._lbMusiceTitle.setString("" + str);
     },
     createScoreInfo: function () {
+        this.createScoreText();
+        this.createBestScore();
+    },
+    createBestScore: function () {
 
+    },
+    createScoreText: function () {
+        this._lbScore = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 200, Utility.getColorByName("white"),true);
+        this.addChild(this._lbScore, GV.ZORDER_LEVEL.GUI);
+        this._lbScore.attr({
+            anchorX: 0.5,
+            anchorY: 0.5,
+            x: 0,
+            y: 0
+        });
+        this.setScoreText("0");
+    },
+    setScoreText: function (str) {
+        this._lbScore.setString("" + str);
     },
     createButtonOnMiddle: function () {
 
@@ -177,7 +245,7 @@ var GuiResultBattle = BaseGUI.extend({
         var bg = new cc.Sprite("#btn_pressed.png");
         var originRect = cc.rect(0, 0, bg.width, bg.height);
         var offsetRect = cc.rect(bg.width * 0.3, bg.width * 0.3, bg.width * 0.4, bg.width * 0.4);
-        bg = new cc.Scale9Sprite(bg.getSpriteFrame(),originRect,offsetRect);
+        bg = new cc.Scale9Sprite(bg.getSpriteFrame(), originRect, offsetRect);
         bg.attr({
             anchorX: 0.5,
             anchorY: 0.5,
@@ -234,6 +302,8 @@ var GuiResultBattle = BaseGUI.extend({
         this.info = data;
         this.curScore = data.curScore;
         this.myStar = data.myStar;
+        this.updateNumStar(this.myStar);
+        this.setScoreText(Utility.numToStr(this.curScore));
     },
     /**
      * show gui

@@ -19,22 +19,22 @@ GV.POPUP_MGR = null;
 
 GV.NUM_COL = 4;
 GV.TILE_TYPE = {
-    UNDEFINED: "UNDEFINED",
-    START: "START",
-    SHORT: "SHORT",
-    NORMAL: "NORMAL",
-    LONG: "LONG"
+    UNDEFINED: -1,
+    START: 0,
+    SHORT: 1,
+    NORMAL: 2,
+    LONG: 3
 };
 /**
  * GV.TILE_HEIGHT_TYPE with values of GV.WIN_SIZE.height percent number
  * and calculate in main.js file on function cc.game.onStart
  * */
 GV.TILE_HEIGHT_TYPE = {
-    UNDEFINED: 25,
-    START: 25,
-    SHORT: 25,
-    NORMAL: 35,
-    LONG: 50
+    "-1": 25,
+    "0": 25,
+    "1": 25,
+    "2": 35,
+    "3": 50
 };
 /**
  * game state
