@@ -6,6 +6,8 @@ var SceneBattle = BaseScene.extend({
         //variables
         this.curScore = 0;
         this.count_time = 0;
+        this.listConfigData = [];
+        this.listCloneConfigData = [];
         this.list_node_music = [];
         this.marginTop = 0;
         this.createStartState = false;
@@ -28,6 +30,81 @@ var SceneBattle = BaseScene.extend({
         this.createNodeStar();
         //set schedule update
         this.schedule(this.update);
+    },
+    /**
+     * purpose to get list config row
+     * each row: contain list_type
+     * each list_type: contain type and index
+     * */
+    loadConfigData: function () {
+        var len = this.listConfigData.length;
+        if(len > 0) {
+            this.listConfigData.splice(0);
+            this.listConfigData = [];
+        }
+        len = GV.DISTANCE_UP_STAR_LEVEL;//suppose config has GV.DISTANCE_UP_STAR_LEVEL row
+        for(var r = 0; r < len; ++r) {
+            var numTile = 1;//each row has numTile without white tile
+            var list_type = [];
+            if (r == 0) {
+                //push info into list
+                var startInfo = {
+                    "type": GV.TILE_TYPE.START,
+                    "index": Math.floor(4 * Math.random())
+                };
+                list_type.push(startInfo);
+            } else {
+                for (var i = 0; i < numTile; ++i) {
+                    var type, index;
+                    var rd1 = Math.random();
+                    var rd2 = Math.random();
+                    //type
+                    if (rd1 > 0.6) {
+                        type = GV.TILE_TYPE.LONG;
+                    } else if (rd1 > 0.3) {
+                        type = GV.TILE_TYPE.NORMAL;
+                    } else {
+                        type = GV.TILE_TYPE.SHORT;
+                    }
+                    //index
+                    if (rd2 > 0.75) {
+                        index = 3;
+                    } else if (rd2 > 0.5) {
+                        index = 2;
+                    } else if (rd2 > 0.25) {
+                        index = 1;
+                    } else {
+                        index = 0;
+                    }
+                    //push info into list
+                    var info = {
+                        "type": type,
+                        "index": index
+                    };
+                    list_type.push(info);
+                }
+            }
+            this.listConfigData.push(list_type);
+        }
+    },
+    /**
+     * clone data to support info for show gui
+     * */
+    cloneDataFromListDataConfig: function (skipFirstData) {
+        if(!this.listConfigData) {
+            cc.error("config data is not exist");
+            return null;
+        }
+        var len = this.listCloneConfigData.length;
+        if(len > 0) {
+            this.listCloneConfigData.splice(0);
+            this.listCloneConfigData = [];
+        }
+        len = this.listConfigData.length;
+        var i = skipFirstData ? 1 : 0;
+        for(; i < len; ++i) {
+            this.listCloneConfigData.push(this.listConfigData[i]);
+        }
     },
     createBackground: function () {
         //background
@@ -101,52 +178,11 @@ var SceneBattle = BaseScene.extend({
         var rowNodeMusic = new RowNodeMusic();
         this.addChild(rowNodeMusic, GV.ZORDER_LEVEL.GUI);
         this.list_node_music.push(rowNodeMusic);
-        //set info
-        var numTile = 1;
-        var list_type = [];
-        if (!this.createStartState) {
-            this.createStartState = true;
-            //push info into list
-            var startInfo = {
-                "type": GV.TILE_TYPE.START,
-                "index": Math.floor(4 * Math.random())
-            };
-            list_type.push(startInfo);
-        } else {
-            //var numTile = Math.random() > 0.5 ? 2 : 1;
-
-            for (var i = 0; i < numTile; ++i) {
-                var type, index;
-                var rd1 = Math.random();
-                var rd2 = Math.random();
-                //type
-                if (rd1 > 0.6) {
-                    type = GV.TILE_TYPE.LONG;
-                } else if (rd1 > 0.3) {
-                    type = GV.TILE_TYPE.NORMAL;
-                } else {
-                    type = GV.TILE_TYPE.SHORT;
-                }
-                //index
-                if (rd2 > 0.75) {
-                    index = 3;
-                } else if (rd2 > 0.5) {
-                    index = 2;
-                } else if (rd2 > 0.25) {
-                    index = 1;
-                } else {
-                    index = 0;
-                }
-                //push info into list
-                var info = {
-                    "type": type,
-                    "index": index
-                };
-                list_type.push(info);
-            }
+        if(this.listCloneConfigData.length <= 0) {
+            this.cloneDataFromListDataConfig(true);
         }
-
-        rowNodeMusic.setInfo({"list_type": list_type});
+        rowNodeMusic.setInfo({"list_type": this.listCloneConfigData[0]});
+        this.listCloneConfigData.splice(0, 1);
         rowNodeMusic.attr({
             x: GV.WIN_SIZE.width * 0.5,
             y: GV.WIN_SIZE.height + rowNodeMusic.getRowHeight() * 0.5
@@ -202,6 +238,7 @@ var SceneBattle = BaseScene.extend({
         return result;
     },
     createStartGameState: function () {
+        this.cloneDataFromListDataConfig();
         //show game info
         GV.MODULE_MGR.showGuiStartBattle();
         var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
@@ -243,6 +280,7 @@ var SceneBattle = BaseScene.extend({
     },
     onEnter: function () {
         this._super();
+        this.loadConfigData();
         this.createStartGameState();
         this.createEffectBall();
     },
