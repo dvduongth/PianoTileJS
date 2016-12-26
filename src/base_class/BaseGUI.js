@@ -34,9 +34,17 @@ var BaseGUI = cc.Node.extend({
                 this.MAX_SIZE = allChildren[i].height;
             }
             nameChild = allChildren[i].getName();
-            cc.log("_syncChildrenInNode",nameChild);
-            if (this[nameChild]) {
+            //cc.log("_syncChildrenInNode",nameChild);
+            if (nameChild && this[nameChild]) {
                 if (nameChild.indexOf("btn") != -1) {
+                    if(!this[nameChild].getTitleRenderer()) {
+                        this[nameChild].setTitleText(" ");
+                        var btnSize = this[nameChild]["contentSize"];
+                        if(btnSize) {
+                            this[nameChild].setContentSize(btnSize);
+                        }
+                    }
+                    this[nameChild].setScale9Enabled(true);
                     this[nameChild].addTouchEventListener(this._onTouchUIEvent, this);
                     this[nameChild].setPressedActionEnabled(true);
                     this[nameChild].setZoomScale(-0.1);
@@ -64,6 +72,10 @@ var BaseGUI = cc.Node.extend({
 
         //if(children.length > 0 && children[0].name.indexOf("lb" == 0)){
         var titleRender = btn.getTitleRenderer();
+        if(!titleRender) {
+            cc.error("button is not exist title render");
+            return null;
+        }
         var titleSize = titleRender.getContentSize();
         var labelPos = titleRender.getPosition();
         labelPos.x -= titleSize.width * titleRender.anchorX;
@@ -163,7 +175,7 @@ var BaseGUI = cc.Node.extend({
             this._rootNode.setOpacity(255);
         }
         this._rootNode.visible = true;
-        GV.SCENE_MGR.updateParent(this._rootNode, GV.ZORDER_LEVEL.GUI);
+        GV.SCENE_MGR.updateParent(this._rootNode, GV.ZORDER_LEVEL.POPUP);
     },
     finishEffectShowGui: function () {
         /**override me**/

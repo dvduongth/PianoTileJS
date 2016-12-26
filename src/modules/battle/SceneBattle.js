@@ -1,40 +1,90 @@
 var SceneBattle = BaseScene.extend({
     ctor: function () {
         this._super();
+        //element gui
+        this._sprBg = null;
         //variables
         this.curScore = 0;
         this.count_time = 0;
-        this._sprBg = null;
         this.list_node_music = [];
+        this.marginTop = 0;
+        this.createStartState = false;
+        this.isRequireUpSpeed = false;
+        this.starLevel = 0;
+        this.upSpeedDelta = 1;
+        this.moveSpeed = GV.MOVE_SPEED;
+        this.curSpeed = this.moveSpeed;
+        this.distanceUpStar = GV.DISTANCE_UP_STAR_LEVEL;
+        this.listStar = [];
         this.initGui();
-        this.SPEED = GV.MOVE_SPEED;
         return true;
     },
     initGui: function () {
-        var size = GV.WIN_SIZE;
         //background
-        this._sprBg = new cc.Scale9Sprite(res.battle_background_png);
+        this.createBackground();
+        //label score
+        this.createTextScore();
+        //node star
+        this.createNodeStar();
+        //set schedule update
+        this.schedule(this.update);
+    },
+    createBackground: function () {
+        //background
+        this._sprBg = new cc.Sprite(res.battle_background_png);
+        this.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
         this._sprBg.attr({
             anchorX: 0.5,
             anchorY: 0.5,
-            x: size.width / 2,
-            y: size.height / 2
+            x: GV.WIN_SIZE.width / 2,
+            y: GV.WIN_SIZE.height / 2
         });
-        this._sprBg.setContentSize(size);
-        this.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
-
-        //label score
-        this._lbScore = Utility.getLabel(res.FONT_MARKER_FELT, 72, Utility.getColorByName("red"));
+        var bgSize = this._sprBg.getContentSize();
+        var delta_ratio_x = GV.WIN_SIZE.width / bgSize.width;
+        var delta_ratio_y = GV.WIN_SIZE.height / bgSize.height;
+        this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
+    },
+    createEffectBall: function () {
+        //effect ball
+        if(!this._sprEffectBall) {
+            this._sprEffectBall = new cc.Sprite(res.ball_small_dot_png);
+            this.addChild(this._sprEffectBall, GV.ZORDER_LEVEL.BG);
+            this._sprEffectBall.setBlendFunc(cc.ONE, cc.ONE);
+            this._sprEffectBall.attr({
+                anchorX: 0.5,
+                anchorY: 0.5,
+                x: GV.WIN_SIZE.width / 2,
+                y: GV.WIN_SIZE.height / 2
+            });
+            var ballSize = this._sprEffectBall.getContentSize();
+            //var delta_ratio_x = GV.WIN_SIZE.width / ballSize.width;
+            var delta_ratio_y = GV.WIN_SIZE.height / ballSize.height;
+            this._sprEffectBall.setScale(delta_ratio_y);
+            this._sprEffectBall["oldScale"] = cc.p(delta_ratio_y,delta_ratio_y);
+        }else{
+            this._sprEffectBall.stopAllActions();
+        }
+        this._sprEffectBall.runAction(cc.rotateBy(1, -10).repeatForever());
+    },
+    createTextScore: function () {
+        var fontSize = Math.floor(GV.WIN_SIZE.height * 0.1);
+        this._lbScore = Utility.getLabel(res.FONT_FUTURA_CONDENSED, fontSize, Utility.getColorByName("red"));
         this._lbScore.setString(Utility.numToStr(this.curScore));
-        this.addChild(this._lbScore, GV.ZORDER_LEVEL.GUI);
+        this.addChild(this._lbScore, GV.ZORDER_LEVEL.EFFECT);
         this._lbScore.attr({
             anchorX: 0.5,
-            anchorY: 1,
-            x: size.width >> 1,
-            y: size.height * 15 / 16
+            anchorY: 0.5,
+            x: GV.WIN_SIZE.width >> 1,
+            y: GV.WIN_SIZE.height - fontSize
         });
-
-        this.schedule(this.update);
+    },
+    createNodeStar: function () {
+        this._ndStar = new cc.Node();
+        this.addChild(this._ndStar, GV.ZORDER_LEVEL.EFFECT);
+        this._ndStar.attr({
+            x: GV.WIN_SIZE.width >> 1,
+            y: GV.WIN_SIZE.height * 7 / 8
+        });
     },
     createListNodeMusic: function () {
         var len = this.list_node_music.length;
@@ -49,41 +99,53 @@ var SceneBattle = BaseScene.extend({
     },
     nextRow: function () {
         var rowNodeMusic = new RowNodeMusic();
-        this.addChild(rowNodeMusic);
+        this.addChild(rowNodeMusic, GV.ZORDER_LEVEL.GUI);
         this.list_node_music.push(rowNodeMusic);
         //set info
-        //var numTile = Math.random() > 0.5 ? 2 : 1;
         var numTile = 1;
         var list_type = [];
-        for (var i = 0; i < numTile; ++i) {
-            var type, index;
-            var rd1 = Math.random();
-            var rd2 = Math.random();
-            //type
-            if (rd1 > 0.6) {
-                type = GV.TILE_TYPE.LONG;
-            } else if (rd1 > 0.3) {
-                type = GV.TILE_TYPE.NORMAL;
-            } else {
-                type = GV.TILE_TYPE.SHORT;
-            }
-            //index
-            if (rd2 > 0.75) {
-                index = 3;
-            } else if (rd2 > 0.5) {
-                index = 2;
-            } else if (rd2 > 0.25) {
-                index = 1;
-            } else {
-                index = 0;
-            }
+        if (!this.createStartState) {
+            this.createStartState = true;
             //push info into list
-            var info = {
-                "type": type,
-                "index": index
+            var startInfo = {
+                "type": GV.TILE_TYPE.START,
+                "index": Math.floor(4 * Math.random())
             };
-            list_type.push(info);
+            list_type.push(startInfo);
+        } else {
+            //var numTile = Math.random() > 0.5 ? 2 : 1;
+
+            for (var i = 0; i < numTile; ++i) {
+                var type, index;
+                var rd1 = Math.random();
+                var rd2 = Math.random();
+                //type
+                if (rd1 > 0.6) {
+                    type = GV.TILE_TYPE.LONG;
+                } else if (rd1 > 0.3) {
+                    type = GV.TILE_TYPE.NORMAL;
+                } else {
+                    type = GV.TILE_TYPE.SHORT;
+                }
+                //index
+                if (rd2 > 0.75) {
+                    index = 3;
+                } else if (rd2 > 0.5) {
+                    index = 2;
+                } else if (rd2 > 0.25) {
+                    index = 1;
+                } else {
+                    index = 0;
+                }
+                //push info into list
+                var info = {
+                    "type": type,
+                    "index": index
+                };
+                list_type.push(info);
+            }
         }
+
         rowNodeMusic.setInfo({"list_type": list_type});
         rowNodeMusic.attr({
             x: GV.WIN_SIZE.width * 0.5,
@@ -139,26 +201,53 @@ var SceneBattle = BaseScene.extend({
         }
         return result;
     },
-    createStartGameState: function (minPos) {
+    createStartGameState: function () {
+        //show game info
+        GV.MODULE_MGR.showGuiStartBattle();
+        var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
+        GV.MODULE_MGR._gameState = GV.GAME_STATE.START;
+        this.createStartState = false;
+        //create row tile
         var totalHeightMax = GV.WIN_SIZE.height - minPos;
         this.createListNodeMusic();
         var totalTileHeight = this.calculateTotalTileRowHeight();
-        while(totalTileHeight < totalHeightMax){
+        while (totalTileHeight < totalHeightMax) {
             this.nextRow();
             totalTileHeight += this.list_node_music[this.list_node_music.length - 1].getRowHeight();
         }
-
+        //update view row tile position
         var posY = minPos;
         posY = posY + this.list_node_music[0].getRowHeight() * 0.5;
         this.list_node_music[0].y = posY;
         this.followFirstRow();
     },
+    continuePlayGame: function () {
+        GV.MODULE_MGR._gameState = GV.GAME_STATE.START;
+        //reset state
+        var len = this.list_node_music.length;
+        var showTextStart = !this.list_node_music[0].isTouchTileSuccess();
+        for(var i = 0; i < len; ++i) {
+            var nd = this.list_node_music[i];
+            if(nd) {
+                if(showTextStart) {
+                    nd.setInfo(nd.getInfo(), i == 0);
+                }else{
+                    showTextStart = !nd.isTouchTileSuccess();
+                    nd.setInfo(nd.getInfo(), showTextStart);
+                }
+            }
+        }
+        //update view row tile position
+        this.list_node_music[0].y = this.list_node_music[0].getRowHeight() * 0.5;
+        this.followFirstRow();
+    },
     onEnter: function () {
         this._super();
-        GV.MODULE_MGR.showGuiStartBattle();
-        var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
-        //var minPos = 500;
-        this.createStartGameState(minPos);
+        this.createStartGameState();
+        this.createEffectBall();
+    },
+    onExit: function () {
+        this._super();
     },
     onEnterTransitionDidFinish: function () {
         this._super();
@@ -180,36 +269,59 @@ var SceneBattle = BaseScene.extend({
         if (!GV.MODULE_MGR._myInfo) {
             return false;
         }
-        var curScore = GV.MODULE_MGR._myInfo.curScore;
-        var d = 2;
-
-        if (this.curScore != curScore) {
-            if (curScore > this.curScore) {
+        //update score
+        this.updateScore(dt);
+        //update speed
+        this.updateMoveSpeed(dt);
+    },
+    updateScore: function (dt) {
+        var myScore = GV.MODULE_MGR._myInfo.curScore;
+        var d = 1;
+        if (this.curScore != myScore) {
+            if (myScore > this.curScore) {
                 //this.curScore += Math.round((curScore - this.curScore) / d);
-                this.curScore++;
+                this.curScore += d;
             } else {
                 //this.curScore -= Math.round((this.curScore - curScore) / d);
-                this.curScore--;
+                this.curScore -= d;
             }
             this._lbScore.setString(Utility.numToStr(this.curScore));
+            this.playEffectScore();
+        }
+        if (this.isRequireUpSpeed && (myScore % this.distanceUpStar == 0)) {
+            this.isRequireUpSpeed = false;
+            this.upSpeed();
         }
     },
-    followFirstRow: function () {
+    updateMoveSpeed: function (dt) {
+        var d = 0.1;
+        if (this.curSpeed != this.moveSpeed) {
+            if (this.curSpeed > this.moveSpeed) {
+                this.curSpeed -= d;
+            } else {
+                this.curSpeed += d;
+            }
+        }
+    },
+    followFirstRow: function (dt) {
         var ndObject, temp;
         var len = this.list_node_music.length;
+        this.list_node_music[0].updateChild(dt);
         for (var i = 1; i < len; ++i) {
             ndObject = this.list_node_music[i];
             if (ndObject) {
-                temp = this.list_node_music[i-1];
-                ndObject.y = temp.y + (temp.getRowHeight() + ndObject.getRowHeight()) * 0.5 ;
+                temp = this.list_node_music[i - 1];
+                ndObject.y = this.marginTop + temp.y + (temp.getRowHeight() + ndObject.getRowHeight()) * 0.5;
+                //update child
+                ndObject.updateChild(dt);
             }
         }
     },
     moveTile: function (dt) {
         var ndObject = this.list_node_music[0];
-        if(ndObject) {
-            ndObject.y -= GV.MOVE_SPEED;
-            this.followFirstRow();
+        if (ndObject) {
+            ndObject.y -= this.curSpeed;
+            this.followFirstRow(dt);
         }
 
         var len = this.list_node_music.length;
@@ -229,14 +341,74 @@ var SceneBattle = BaseScene.extend({
                 }
             }
         }
-        this.count_time++;
-        if (this.count_time % GV.UP_SPEED_DURATION == 0) {
-            this.count_time = 1;
-            this.upSpeed();
-        }
     },
     upSpeed: function () {
-        this.SPEED += 0.5;
+        if(this.starLevel >= GV.MAX_NUM_STAR) {
+            cc.log("get max star: ", this.starLevel, " STAR");
+            return false;
+        }
+        this.moveSpeed += this.upSpeedDelta;
+        this.starLevel++;
+        this.distanceUpStar *= 4;//up difficult hard core
+        this.playEffectUpStar();
         cc.error("up speed");
+    },
+    resetValues: function () {
+        this.moveSpeed = GV.MOVE_SPEED;
+        this.curSpeed = this.moveSpeed;
+        this.curScore = 0;
+        this.distanceUpStar = GV.DISTANCE_UP_STAR_LEVEL;
+        this._ndStar.removeAllChildren(true);
+        this.listStar = [];
+        this._lbScore.setString("0");
+    },
+    playEffectScore: function () {
+        this._lbScore.visible = true;
+        //this._ndStar.visible = false;
+        this._lbScore.runAction(Utility.getActionScaleForAppear());
+        this.playEffectBackgroundBall();
+    },
+    playEffectBackgroundBall: function () {
+        if(this._sprEffectBall) {
+            this._sprEffectBall.runAction(Utility.getActionScaleForAppear(this._sprEffectBall));
+        }
+    },
+
+    playEffectUpStar: function () {
+        this._lbScore.visible = false;
+        this._lbScore.setLocalZOrder(this._ndStar.getLocalZOrder() + 1);
+        //this._ndStar.visible = true;
+        this._ndStar.stopAllActions();
+        this._ndStar.setCascadeOpacityEnabled(true);
+        this._ndStar.setOpacity(255);
+        var sprStarIcon = new cc.Sprite(res.star_light_png);
+        this._ndStar.addChild(sprStarIcon, 0);
+        this.listStar.push(sprStarIcon);
+        var len = this.listStar.length;
+        GV.MODULE_MGR._myInfo.myStar = this.listStar.length;//save to my info
+        var margin = 5;
+        var firstStar = this.listStar[0];
+        var lineStarWidth = firstStar.width * len + margin * (len - 1);
+        for (var i = 0; i < len; ++i) {
+            var starIcon = this.listStar[i];
+            if (starIcon) {
+                starIcon.x = -(lineStarWidth - firstStar.width) * 0.5 + (firstStar.width + margin) * i;
+            }
+        }
+        sprStarIcon.setScale(10);
+        sprStarIcon.runAction(Utility.getActionScaleForAppear2(undefined, function () {
+            var starIcon = new cc.Sprite(res.star_png);
+            this._ndStar.addChild(starIcon);
+            starIcon.setPosition(sprStarIcon.getPosition());
+            this.listStar[this.listStar.length -1] = starIcon;
+            sprStarIcon.removeFromParent(true);
+            this._ndStar.runAction(cc.sequence(
+                cc.delayTime(0.5),
+                cc.fadeOut(1),
+                cc.callFunc(function () {
+                    this._lbScore.visible = true;
+                }.bind(this))
+            ));
+        }.bind(this)));
     }
 });

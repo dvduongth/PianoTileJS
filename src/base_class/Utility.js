@@ -133,7 +133,14 @@ Utility.getColorByName = function (name) {
 
     return color;
 };
-Utility.getLabel = function (fontName, fontSize, color, isSkipStroke) {
+/**
+ * @param {string} fontName
+ * @param {number} fontSize
+ * @param {cc.color} color
+ * @param {boolean} isSkipStroke
+ * @param {boolean} isSkipShadow
+ * */
+Utility.getLabel = function (fontName, fontSize, color, isSkipStroke, isSkipShadow) {
     if (!fontName) {
         fontName = res.FONT_ARIAL;
     }
@@ -147,12 +154,51 @@ Utility.getLabel = function (fontName, fontSize, color, isSkipStroke) {
     label.color = color;
     label.setTextHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
     label.setTextVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
-    label.enableShadow(Utility.getColorByName('grey'), {width: 0, height: -2}, 1);
+    if (!isSkipShadow) {
+        label.enableShadow(Utility.getColorByName('grey'), {width: 0, height: -2}, 1);
+    }
     if (!isSkipStroke) {
         label.enableOutline(Utility.getColorByName('stroke'), 1);
     }
     return label;
 };
+/**
+ * @param {String} buttonName
+ * @param {cc.Size} contentSize
+ * @param {String} fileImageNormal
+ * @param {String} fileImagePress
+ * @param {String} fileImageDisable
+ * @param {Number} typeLoadImage with one of values ccui.Widget.LOCAL_TEXTURE or ccui.Widget.PLIST_TEXTURE
+ * */
+Utility.getButton = function (buttonName, contentSize, fileImageNormal, fileImagePress, fileImageDisable, typeLoadImage) {
+    if(!buttonName) {
+        buttonName = "_btn";
+    }
+    if(!contentSize) {
+        contentSize = cc.size(30,30);
+    }
+    if(!fileImageNormal) {
+        fileImageNormal = "";
+    }
+    if(!fileImagePress) {
+        fileImagePress = "";
+    }
+    if(!fileImageDisable) {
+        fileImageDisable = "";
+    }
+    if(!typeLoadImage) {
+        typeLoadImage = ccui.Widget.LOCAL_TEXTURE;
+    }
+    var button = new ccui.Button(fileImageNormal, fileImagePress, fileImageDisable, typeLoadImage);
+    button.setTitleText(" ");
+    button.setName(buttonName);
+    button.setContentSize(contentSize);
+    button["contentSize"] = contentSize;
+    return button;
+};
+/**
+ * convert number to string
+ * */
 Utility.numToStr = function (num, separator) {
     if (num === undefined) {
         cc.error("numToStr with undefined");
@@ -243,4 +289,59 @@ Utility.getActionLoading = function (obj, content) {
         ),
         cc.delayTime(delayTime)
     ).repeatForever();
+};
+Utility.getActionScaleForAppear = function (element_, callFunction) {
+    var SMALL_SCALE_TIME = 0.2;
+    var BIG_SCALE_TIME = SMALL_SCALE_TIME * 0.75;
+    var NORMAL_SCALE_TIME = BIG_SCALE_TIME * 0.75;
+    var ratio_scale = cc.p(1,1);
+    if (element_) {
+        element_.setCascadeOpacityEnabled(true);
+        element_.setOpacity(0);
+        if(element_["oldScale"]){
+            ratio_scale = element_["oldScale"];
+        }else{
+            ratio_scale = cc.p(element_.getScaleX(), element_.getScaleY());
+        }
+        element_.setScale(1);
+        element_.setVisible(true);
+    }
+    var ratio_scale_x = ratio_scale.x;
+    var ratio_scale_y = ratio_scale.y;
+    var scaleOut = cc.scaleTo(BIG_SCALE_TIME, ratio_scale_x + 0.1, ratio_scale_y + 0.1);
+    var scaleIn = cc.scaleTo(SMALL_SCALE_TIME, ratio_scale_x - 0.1, ratio_scale_y - 0.1);
+    var scaleReverse = cc.scaleTo(NORMAL_SCALE_TIME, ratio_scale_x, ratio_scale_y);
+    return cc.spawn(
+        cc.fadeIn(BIG_SCALE_TIME),
+        cc.sequence(
+            scaleOut,
+            scaleIn,
+            scaleReverse,
+            cc.callFunc(function () {
+                Utility.executeFunction(callFunction);
+            })
+        )
+    );
+};
+Utility.getActionScaleForAppear2 = function (element_, callFunction) {
+    var BIG_SCALE_TIME = 0.6;
+    if (element_) {
+        element_.setCascadeOpacityEnabled(true);
+        element_.setOpacity(0);
+        element_.setScale(10);
+        element_.setVisible(true);
+    }
+    return cc.spawn(
+        cc.fadeIn(BIG_SCALE_TIME),
+        cc.sequence(
+            cc.scaleTo(BIG_SCALE_TIME * 0.6, 0.9),
+            cc.scaleTo(BIG_SCALE_TIME * 0.1, 1.15),
+            cc.scaleTo(BIG_SCALE_TIME * 0.1, 0.95),
+            cc.scaleTo(BIG_SCALE_TIME * 0.1, 1.1),
+            cc.scaleTo(BIG_SCALE_TIME * 0.1, 1),
+            cc.callFunc(function () {
+                Utility.executeFunction(callFunction);
+            })
+        )
+    );
 };

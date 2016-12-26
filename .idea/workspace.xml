@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4d55f2b-12a8-484d-a811-f49e89a3e91c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/base_class/BaseGUI.js" afterPath="$PROJECT_DIR$/src/base_class/BaseGUI.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GlobalVar.js" afterPath="$PROJECT_DIR$/src/GlobalVar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/battle/GuiStartBattle.js" afterPath="$PROJECT_DIR$/src/modules/battle/GuiStartBattle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/ModuleMgr.js" afterPath="$PROJECT_DIR$/src/modules/ModuleMgr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/MyInfoData.js" afterPath="$PROJECT_DIR$/src/data/MyInfoData.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/battle/RowNodeMusic.js" afterPath="$PROJECT_DIR$/src/modules/battle/RowNodeMusic.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/battle/SceneBattle.js" afterPath="$PROJECT_DIR$/src/modules/battle/SceneBattle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/loading/SceneLoading.js" afterPath="$PROJECT_DIR$/src/modules/loading/SceneLoading.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/lobby/SceneLobby.js" afterPath="$PROJECT_DIR$/src/modules/lobby/SceneLobby.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SceneMgr.js" afterPath="$PROJECT_DIR$/src/SceneMgr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/battle/TileMusicObject.js" afterPath="$PROJECT_DIR$/src/modules/battle/TileMusicObject.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/base_class/Utility.js" afterPath="$PROJECT_DIR$/src/base_class/Utility.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.json" afterPath="$PROJECT_DIR$/config.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manifest.webapp" afterPath="$PROJECT_DIR$/manifest.webapp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.json" afterPath="$PROJECT_DIR$/project.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resource.js" afterPath="$PROJECT_DIR$/src/resource.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloJavascript.iws" />
@@ -40,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="58" column="44" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="44" />
+              <caret line="62" column="44" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -50,8 +67,10 @@
         <entry file="file://$PROJECT_DIR$/src/GlobalVar.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <marker date="1482717776776" expanded="true" signature="164:187" placeholder="{&quot;BG&quot;: 0...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,8 +79,10 @@
         <entry file="file://$PROJECT_DIR$/src/resource.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
-              <folding />
+              <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+              <folding>
+                <marker date="1482717776776" expanded="true" signature="10:1445" placeholder="{&quot;battle_background_png&quot;: &quot;res/resource/UIOpenning/opening_commonplaybg2.png&quot;...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,8 +91,12 @@
         <entry file="file://$PROJECT_DIR$/src/modules/battle/SceneBattle.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="106" column="26" selection-start-line="106" selection-start-column="26" selection-end-line="106" selection-end-column="26" />
-              <folding />
+              <caret line="168" column="26" selection-start-line="168" selection-start-column="26" selection-end-line="168" selection-end-column="26" />
+              <folding>
+                <marker date="1482717776791" expanded="true" signature="35:14662" placeholder="{...}" />
+                <marker date="1482717776791" expanded="true" signature="59:94" placeholder="{...}" />
+                <marker date="1482717776791" expanded="true" signature="14652:14660" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/src/modules/ModuleMgr.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+              <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -90,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/src/modules/loading/SceneLoading.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+              <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -99,8 +124,8 @@
       <file leaf-file-name="RowNodeMusic.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/modules/battle/RowNodeMusic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32681018">
-              <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.49510762">
+              <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -109,9 +134,13 @@
       <file leaf-file-name="TileMusicObject.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/modules/battle/TileMusicObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.5172415">
-              <caret line="175" column="4" selection-start-line="175" selection-start-column="4" selection-end-line="175" selection-end-column="4" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="262" column="4" selection-start-line="262" selection-start-column="4" selection-end-line="262" selection-end-column="4" />
+              <folding>
+                <marker date="1482717776807" expanded="true" signature="37:16860" placeholder="{...}" />
+                <marker date="1482717776807" expanded="true" signature="61:96" placeholder="{...}" />
+                <marker date="1482717776807" expanded="true" signature="16852:16858" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,23 +149,8 @@
         <entry file="file://$PROJECT_DIR$/src/modules/battle/GuiStartBattle.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-              <folding>
-                <element signature="e#1065#1384#0" expanded="false" />
-                <element signature="e#1463#1536#0" expanded="false" />
-                <element signature="e#1572#1702#0" expanded="false" />
-                <element signature="e#2184#2216#0" expanded="false" />
-                <element signature="e#2374#2506#0" expanded="false" />
-                <element signature="e#2969#3000#0" expanded="false" />
-                <element signature="e#3038#3117#0" expanded="false" />
-                <element signature="e#3156#3289#0" expanded="false" />
-                <element signature="e#3736#3765#0" expanded="false" />
-                <element signature="e#3795#4352#0" expanded="false" />
-                <element signature="e#4393#4444#0" expanded="false" />
-                <element signature="e#4484#4535#0" expanded="false" />
-                <element signature="e#4574#4623#0" expanded="false" />
-                <element signature="e#4629#4658#0" expanded="false" />
-              </folding>
+              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -220,12 +234,12 @@
         <option value="$PROJECT_DIR$/src/modules/battle/GuiStartBattle.js" />
         <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/src/resource.js" />
-        <option value="$PROJECT_DIR$/src/modules/battle/RowNodeMusic.js" />
         <option value="$PROJECT_DIR$/src/GlobalVar.js" />
         <option value="$PROJECT_DIR$/src/modules/battle/TileMusicObject.js" />
         <option value="$PROJECT_DIR$/src/modules/loading/SceneLoading.js" />
         <option value="$PROJECT_DIR$/src/modules/battle/SceneBattle.js" />
         <option value="$PROJECT_DIR$/src/modules/ModuleMgr.js" />
+        <option value="$PROJECT_DIR$/src/modules/battle/RowNodeMusic.js" />
       </list>
     </option>
   </component>
@@ -276,8 +290,8 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -818,6 +832,7 @@
       <workItem from="1482378312731" duration="1631000" />
       <workItem from="1482380299319" duration="9977000" />
       <workItem from="1482458125188" duration="27673000" />
+      <workItem from="1482718977082" duration="601000" />
     </task>
     <task id="LOCAL-00001" summary="edit code">
       <created>1482404598736</created>
@@ -871,7 +886,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1657284000" />
+    <option name="totallyTimeSpent" value="1657885000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -883,35 +898,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22941822" sideWeight="0.4892704" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27553764" sideWeight="0.7275064" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293011" sideWeight="0.4974293" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2099567" sideWeight="0.22228146" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32258064" sideWeight="0.67994857" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20694087" sideWeight="0.4945946" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.26992288" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1407455" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1719243" sideWeight="0.5054054" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27553764" sideWeight="0.27249357" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27553764" sideWeight="0.27249357" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2099567" sideWeight="0.22228146" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.26992288" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1000,7 +1015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1016,7 +1030,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding />
+          <folding>
+            <marker date="1482717776776" expanded="true" signature="164:187" placeholder="{&quot;BG&quot;: 0...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1031,7 +1047,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1047,7 +1062,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-          <folding />
+          <folding>
+            <marker date="1482717776776" expanded="true" signature="10:1445" placeholder="{&quot;battle_background_png&quot;: &quot;res/resource/UIOpenning/opening_commonplaybg2.png&quot;...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1065,7 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,7 +1097,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1089,7 +1104,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1482717776776" expanded="true" signature="10:1445" placeholder="{&quot;battle_background_png&quot;: &quot;res/resource/UIOpenning/opening_commonplaybg2.png&quot;...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1097,7 +1114,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1127,7 +1143,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1135,7 +1150,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1143,7 +1157,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1217,7 +1230,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54990214">
           <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,7 +1237,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6018868">
           <caret line="76" column="36" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,7 +1244,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2309237">
           <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1241,7 +1251,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17358491">
           <caret line="4" column="21" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1249,7 +1258,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15264188">
           <caret line="157" column="31" selection-start-line="157" selection-start-column="17" selection-end-line="157" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1273,7 +1281,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.5009785">
           <caret line="129" column="4" selection-start-line="129" selection-start-column="4" selection-end-line="129" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1281,7 +1288,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46771038">
           <caret line="37" column="19" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,7 +1295,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="224" column="30" selection-start-line="224" selection-start-column="30" selection-end-line="224" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1297,14 +1302,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33268103">
           <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="44" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="44" />
+          <caret line="62" column="44" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -1312,8 +1316,10 @@
     <entry file="file://$PROJECT_DIR$/src/resource.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
-          <folding />
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+          <folding>
+            <marker date="1482717776776" expanded="true" signature="10:1445" placeholder="{&quot;battle_background_png&quot;: &quot;res/resource/UIOpenning/opening_commonplaybg2.png&quot;...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1321,15 +1327,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GlobalVar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1482717776776" expanded="true" signature="164:187" placeholder="{&quot;BG&quot;: 0...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1337,46 +1344,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6477495">
           <caret line="191" column="28" selection-start-line="191" selection-start-column="28" selection-end-line="191" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/battle/GuiStartBattle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-          <folding>
-            <element signature="e#1065#1384#0" expanded="false" />
-            <element signature="e#1463#1536#0" expanded="false" />
-            <element signature="e#1572#1702#0" expanded="false" />
-            <element signature="e#2184#2216#0" expanded="false" />
-            <element signature="e#2374#2506#0" expanded="false" />
-            <element signature="e#2969#3000#0" expanded="false" />
-            <element signature="e#3038#3117#0" expanded="false" />
-            <element signature="e#3156#3289#0" expanded="false" />
-            <element signature="e#3736#3765#0" expanded="false" />
-            <element signature="e#3795#4352#0" expanded="false" />
-            <element signature="e#4393#4444#0" expanded="false" />
-            <element signature="e#4484#4535#0" expanded="false" />
-            <element signature="e#4574#4623#0" expanded="false" />
-            <element signature="e#4629#4658#0" expanded="false" />
-          </folding>
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/loading/SceneLoading.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+          <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/battle/TileMusicObject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5172415">
-          <caret line="175" column="4" selection-start-line="175" selection-start-column="4" selection-end-line="175" selection-end-column="4" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="262" column="4" selection-start-line="262" selection-start-column="4" selection-end-line="262" selection-end-column="4" />
+          <folding>
+            <marker date="1482717776807" expanded="true" signature="37:16860" placeholder="{...}" />
+            <marker date="1482717776807" expanded="true" signature="61:96" placeholder="{...}" />
+            <marker date="1482717776807" expanded="true" signature="16852:16858" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1384,14 +1379,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22504893">
           <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/ModuleMgr.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1399,15 +1393,19 @@
     <entry file="file://$PROJECT_DIR$/src/modules/battle/SceneBattle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="106" column="26" selection-start-line="106" selection-start-column="26" selection-end-line="106" selection-end-column="26" />
-          <folding />
+          <caret line="168" column="26" selection-start-line="168" selection-start-column="26" selection-end-line="168" selection-end-column="26" />
+          <folding>
+            <marker date="1482717776791" expanded="true" signature="35:14662" placeholder="{...}" />
+            <marker date="1482717776791" expanded="true" signature="59:94" placeholder="{...}" />
+            <marker date="1482717776791" expanded="true" signature="14652:14660" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/battle/RowNodeMusic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32681018">
-          <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.49510762">
+          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
           <folding />
         </state>
       </provider>

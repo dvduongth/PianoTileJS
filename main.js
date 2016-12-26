@@ -56,7 +56,7 @@ cc.game.onStart = function(){
     // Adjust viewport meta
     cc.view.adjustViewPort(true);
     // Setup the resolution policy and design resolution size
-    cc.view.setDesignResolutionSize(540, 960, cc.ResolutionPolicy.SHOW_ALL);
+    cc.view.setDesignResolutionSize(540, 960, cc.ResolutionPolicy.EXACT_FIT);
     // The game will be resized when browser size change
     cc.view.resizeWithBrowserSize(true);
     //default values
@@ -68,7 +68,10 @@ cc.game.onStart = function(){
     GV.MODULE_MGR = new ModuleMgr();
     GV.SCENE_MGR = new SceneMgr();
     GV.POPUP_MGR = new PopupsMgr();
-
+    //calculate GV.TILE_HEIGHT_TYPE
+    for(var x in GV.TILE_HEIGHT_TYPE) {
+        GV.TILE_HEIGHT_TYPE[x] *= (GV.WIN_SIZE.height / 100);
+    }
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
         GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.LOADING, true);

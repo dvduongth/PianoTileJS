@@ -8,6 +8,8 @@ var GuiStartBattle = BaseGUI.extend({
             width: GV.WIN_SIZE.width,
             height: GV.WIN_SIZE.height * 0.25
         };
+        this.marginLeftIcon = 30;
+        this.marginLeftText = 100;
         this.initGui();
     },
 
@@ -21,7 +23,6 @@ var GuiStartBattle = BaseGUI.extend({
         this._rootNode = this;
         this._rootNode.visible = false;
         this._rootNode.retain();
-        this._rootNode.setPosition(GV.WIN_SIZE.width >> 1, 0);
     },
     getGuiHeight: function () {
         return this.BACK_GROUND_SIZE.height;
@@ -32,14 +33,14 @@ var GuiStartBattle = BaseGUI.extend({
         icon.attr({
             anchorX: 0,
             anchorY: 0,
-            x: 20 - GV.WIN_SIZE.width * 0.5,
+            x: this.marginLeftIcon - GV.WIN_SIZE.width * 0.5,
             y: y
         });
         return icon;
     },
     createBackground: function () {
         //background
-        this._sprBg = new cc.Scale9Sprite(res.gui_start_battle_bg_png);
+        this._sprBg = new cc.Sprite(res.gui_start_battle_bg_png);
         this.addChild(this._sprBg);
         this._sprBg.attr({
             anchorX: 0.5,
@@ -47,7 +48,10 @@ var GuiStartBattle = BaseGUI.extend({
             x: 0,
             y: 0
         });
-        this._sprBg.setContentSize(this.BACK_GROUND_SIZE);
+        var bgSize = this._sprBg.getContentSize();
+        var delta_ratio_x = 1.2 * this.BACK_GROUND_SIZE.width / bgSize.width;
+        var delta_ratio_y = this.BACK_GROUND_SIZE.height / bgSize.height;
+        this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
     },
     /**
      * notice title
@@ -57,7 +61,7 @@ var GuiStartBattle = BaseGUI.extend({
         this.createNoticeText();
     },
     createNoticeIcon: function () {
-        this._sprNoticeIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 0.75);
+        this._sprNoticeIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 5 / 7);
     },
     createNoticeText: function () {
         //notice text
@@ -65,10 +69,10 @@ var GuiStartBattle = BaseGUI.extend({
         this.addChild(this._lbNoticeTitle);
         var bgSize = this.BACK_GROUND_SIZE;
         this._lbNoticeTitle.attr({
-            anchorX: 0.5,
+            anchorX: 0,
             anchorY: 0,
-            x: 0,
-            y: bgSize.height * 0.75
+            x: this.marginLeftText - GV.WIN_SIZE.width * 0.5,
+            y: bgSize.height * 5 /7
         });
         this.setNoticeTitleText("Best With Headphones");
     },
@@ -80,17 +84,17 @@ var GuiStartBattle = BaseGUI.extend({
         this.createMusicTitleText();
     },
     createMusicTileIcon: function () {
-        this._sprMusicTileIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 0.5);
+        this._sprMusicTileIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 3 / 7);
     },
     createMusicTitleText: function () {
         //music title text
         this._lbMusiceTitle = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 36,Utility.getColorByName("black"),true);
         this.addChild(this._lbMusiceTitle);
         this._lbMusiceTitle.attr({
-            anchorX: 0.5,
+            anchorX: 0,
             anchorY: 0,
-            x: 0,
-            y: this.BACK_GROUND_SIZE.height * 0.5
+            x: this.marginLeftText - GV.WIN_SIZE.width * 0.5,
+            y: this.BACK_GROUND_SIZE.height * 3 /7
         });
         this.setMusicTitleText("Music: Ngay Tet Que Em");
     },
@@ -102,17 +106,17 @@ var GuiStartBattle = BaseGUI.extend({
         this.createBestScoreText();
     },
     createBestScoreIcon: function () {
-        this._sprBestScoreIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 0.25);
+        this._sprBestScoreIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 1 / 7);
     },
     createBestScoreText: function () {
         //best score text
         this._lbBestScore = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 36,Utility.getColorByName("black"),true);
         this.addChild(this._lbBestScore);
         this._lbBestScore.attr({
-            anchorX: 0.5,
+            anchorX: 0,
             anchorY: 0,
-            x: 0,
-            y: this.BACK_GROUND_SIZE.height * 0.25
+            x: this.marginLeftText - GV.WIN_SIZE.width * 0.5,
+            y: this.BACK_GROUND_SIZE.height * 1 /7
         });
         this.setBestScoreText("Best Score: 0");
 
@@ -153,6 +157,7 @@ var GuiStartBattle = BaseGUI.extend({
      * */
     showGui: function (eff) {
         if(!this.isShowGui()) {
+            this._rootNode.setPosition(GV.WIN_SIZE.width >> 1, 0);
             this._super(eff);
         }
     },
@@ -161,7 +166,13 @@ var GuiStartBattle = BaseGUI.extend({
      * */
     hideGui: function () {
         if(this.isShowGui()) {
-            this._super();
+            var time = 0.25;
+            this._rootNode.runAction(cc.sequence(
+                cc.moveBy(time, 0, -this.getGuiHeight()),
+                cc.callFunc(function () {
+                    this._rootNode.visible = false;
+                }.bind(this))
+            ));
         }
     },
     isShowGui: function () {
