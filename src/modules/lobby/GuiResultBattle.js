@@ -334,6 +334,9 @@ var GuiResultBattle = BaseGUI.extend({
                 this.hideGui();
                 GV.MODULE_MGR.restartGame();
                 break;
+            case this._btnShare:
+                GV.MODULE_MGR.showPopup("Chưa code chức năng share","THÔNG BÁO");
+                break;
         }
     }
 });

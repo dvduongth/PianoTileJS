@@ -31,6 +31,11 @@ var ModuleMgr = cc.Class.extend({
         GV.SCENE_MGR.showFog();
         this.guiResultBattle.showGui(false);
     },
+    showPopup: function (text, title) {
+        var listButton = [{btnName: 'ok', hide: true}];
+        var content = {"title": title, "text": text};
+        GV.POPUP_MGR.showPopup(content, listButton, true);
+    },
 
     endGame: function () {
         this._gameState = GV.GAME_STATE.END;

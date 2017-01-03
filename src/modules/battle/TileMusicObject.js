@@ -366,7 +366,7 @@ var TileMusicObject = cc.Node.extend({
     },
 
     updateTouchLong: function (dt) {
-        if (this._sprTouchLong && this.isTouching) {
+        if (this._sprTouchLong && this.isTouching && this._sprIcon) {
             this._sprTouchLong.y += GV.SCENE_MGR.getCurrentScene().curSpeed;
             this._sprTouchLong.height += GV.SCENE_MGR.getCurrentScene().curSpeed;
             if (this._sprTouchLong.height >= this.getSize().height) {

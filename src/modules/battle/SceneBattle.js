@@ -114,7 +114,7 @@ var SceneBattle = BaseScene.extend({
     },
     createBackground: function () {
         //background
-        this._sprBg = new cc.Sprite(res.battle_background_png);
+        this._sprBg = new cc.Sprite(res.opening_common_play_bg2_png);
         this.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
         this._sprBg.attr({
             anchorX: 0.5,

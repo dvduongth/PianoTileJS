@@ -1,1 +1,1 @@
-cocos compile -p android -m debug --ap android-14
+cocos compile -p android -m debug

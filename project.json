@@ -38,6 +38,10 @@
         "src/modules/loading/GuiPopupLoading.js",
         "src/modules/loading/SceneLoading.js",
         "src/modules/lobby/GuiResultBattle.js",
+        "src/modules/lobby/LobbyTabHall.js",
+        "src/modules/lobby/LobbyTabHome.js",
+        "src/modules/lobby/LobbyTabMusic.js",
+        "src/modules/lobby/LobbyTabSetting.js",
         "src/modules/lobby/SceneLobby.js",
         "src/modules/popup/GuiPopup.js",
         "src/modules/popup/PopupMgr.js"
