@@ -6,6 +6,27 @@ var BaseGUI = cc.Node.extend({
         this.listBtnOnBaseGui = [];
         this.scaleRatio = 1;
         this.MAX_SIZE = 1;
+        this.contentSize = cc.size(0, 0);
+    },
+    setSize: function (size, height) {
+        if (size) {
+            if (size.width) {
+                this.contentSize.width = size.width;
+                this.contentSize.height = size.height;
+            } else {
+                this.contentSize.width = size;
+                if (height) {
+                    this.contentSize.height = height;
+                } else {
+                    this.contentSize.height = 0;
+                }
+            }
+        } else {
+            this.contentSize = cc.size(0, 0);
+        }
+    },
+    getSize: function () {
+        return this.contentSize;
     },
 
     getClassName: function () {
@@ -27,20 +48,20 @@ var BaseGUI = cc.Node.extend({
         var nameChild;
         //cc.log("length",allChildren.length);
         for (var i = 0; i < allChildren.length; i++) {
-            if(allChildren[i].width > this.MAX_SIZE) {
+            if (allChildren[i].width > this.MAX_SIZE) {
                 this.MAX_SIZE = allChildren[i].width;
             }
-            if(allChildren[i].height > this.MAX_SIZE) {
+            if (allChildren[i].height > this.MAX_SIZE) {
                 this.MAX_SIZE = allChildren[i].height;
             }
             nameChild = allChildren[i].getName();
             //cc.log("_syncChildrenInNode",nameChild);
             if (nameChild && this[nameChild]) {
                 if (nameChild.indexOf("btn") != -1) {
-                    if(!this[nameChild].getTitleRenderer()) {
+                    if (!this[nameChild].getTitleRenderer()) {
                         this[nameChild].setTitleText(" ");
                         var btnSize = this[nameChild]["contentSize"];
-                        if(btnSize) {
+                        if (btnSize) {
                             this[nameChild].setContentSize(btnSize);
                         }
                     }
@@ -56,23 +77,23 @@ var BaseGUI = cc.Node.extend({
         }
     },
 
-    enableAllActionPressedButton: function(){
-        for(var i = 0; i < this.listBtnOnBaseGui.length; i++){
+    enableAllActionPressedButton: function () {
+        for (var i = 0; i < this.listBtnOnBaseGui.length; i++) {
             this.enableActionPressedButton(this.listBtnOnBaseGui[i]);
         }
     },
-    disableAllActionPressedButton: function(){
-        for(var i = 0; i < this.listBtnOnBaseGui.length; i++){
+    disableAllActionPressedButton: function () {
+        for (var i = 0; i < this.listBtnOnBaseGui.length; i++) {
             this.disableActionPressedButton(this.listBtnOnBaseGui[i]);
         }
     },
 
-    enableActionPressedButton: function(btn){
+    enableActionPressedButton: function (btn) {
         var children = btn.getChildren();
 
         //if(children.length > 0 && children[0].name.indexOf("lb" == 0)){
         var titleRender = btn.getTitleRenderer();
-        if(!titleRender) {
+        if (!titleRender) {
             cc.error("button is not exist title render");
             return null;
         }
@@ -80,24 +101,24 @@ var BaseGUI = cc.Node.extend({
         var labelPos = titleRender.getPosition();
         labelPos.x -= titleSize.width * titleRender.anchorX;
         labelPos.y -= titleSize.height * titleRender.anchorY;
-        for(var i = 0; i < children.length; i++){
-            if(children[i] === undefined)
+        for (var i = 0; i < children.length; i++) {
+            if (children[i] === undefined)
                 continue;
             children[i].removeFromParent(false);
             var textPos = children[i].getPosition();
             titleRender.addChild(children[i]);
             btn.offsetChildPos = {
-                x: - labelPos.x,
-                y: - labelPos.y
+                x: -labelPos.x,
+                y: -labelPos.y
             };
             children[i].setPosition(textPos.x - labelPos.x, textPos.y - labelPos.y);
         }
     },
-    disableActionPressedButton: function(btn){
+    disableActionPressedButton: function (btn) {
         var children = btn.getTitleRenderer().getChildren();
         //if(children.length > 0 && children[0].name.indexOf("lb" == 0)){
-        for(var i = 0; i < children.length; i++){
-            if(children[i] === undefined)
+        for (var i = 0; i < children.length; i++) {
+            if (children[i] === undefined)
                 continue;
             children[i].removeFromParent(false);
             var labelPos = btn.getTitleRenderer().getPosition();
@@ -141,7 +162,7 @@ var BaseGUI = cc.Node.extend({
     },
     showGui: function (eff) {
         var SIZE_MAX = 917;
-        if(this.MAX_SIZE > SIZE_MAX){
+        if (this.MAX_SIZE > SIZE_MAX) {
             this.MAX_SIZE = SIZE_MAX;
         }
         var SMALL_SCALE_TIME = 0.1;
@@ -190,7 +211,7 @@ var BaseGUI = cc.Node.extend({
     },
     removeAllListenerOnBaseGui: function () {
         for (var i = 0; i < this.listListenerOnBaseGui.length; i++) {
-            if(this.listListenerOnBaseGui[i])
+            if (this.listListenerOnBaseGui[i])
                 cc.eventManager.removeListener(this.listListenerOnBaseGui[i]);
         }
         this.listListenerOnBaseGui.splice(0);

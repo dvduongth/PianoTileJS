@@ -40,7 +40,7 @@ var GuiStartBattle = BaseGUI.extend({
     },
     createBackground: function () {
         //background
-        this._sprBg = new cc.Sprite(res.gui_start_battle_bg_png);
+        this._sprBg = new cc.Sprite(res.team_music_bg_white_png);
         this.addChild(this._sprBg);
         this._sprBg.attr({
             anchorX: 0.5,

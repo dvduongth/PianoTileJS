@@ -17,7 +17,7 @@ var PopupsMgr = cc.Class.extend({
      *       GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.BATTLE);
      *  };
      * var list_button = [
-     * {"btnName": "OK","callback": cb},
+     * {"btnName": "OK","callback": cb, "btnTitle": "Đồng Ý"},
      * {"btnName": "Cancel","callback": null}
      * ];
      * GV.POPUP_MGR.showPopup("test",list_button);

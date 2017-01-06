@@ -155,7 +155,7 @@ Utility.getLabel = function (fontName, fontSize, color, isSkipStroke, isSkipShad
     label.setTextHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
     label.setTextVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
     if (!isSkipShadow) {
-        label.enableShadow(Utility.getColorByName('grey'), {width: 0, height: -2}, 1);
+        label.enableShadow(Utility.getColorByName('black'), {width: 0, height: -2}, 1);
     }
     if (!isSkipStroke) {
         label.enableOutline(Utility.getColorByName('stroke'), 1);

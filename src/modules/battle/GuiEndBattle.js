@@ -31,7 +31,7 @@ var GuiEndBattle = BaseGUI.extend({
     },
     createBackground: function () {
         //background
-        this._sprBg = new cc.Scale9Sprite(res.gui_start_battle_bg_png);
+        this._sprBg = new cc.Scale9Sprite(res.team_music_bg_white_png);
         this.addChild(this._sprBg,GV.ZORDER_LEVEL.BG);
         this._sprBg.attr({
             anchorX: 0.5,

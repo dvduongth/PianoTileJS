@@ -88,10 +88,10 @@ var GuiPopup = BaseGUI.extend({
         sprButtonBg.setScale(this.buttonSize.width / sprButtonBg.width, this.buttonSize.height / sprButtonBg.height);
 
         //text
-        var lbText = Utility.getLabel(res.FONT_MARKER_FELT, 28, Utility.getColorByName("white"));
-        lbText.setString("Other");
-        this._btnOther.addChild(lbText, GV.ZORDER_LEVEL.GUI);
-        lbText.attr({
+        this._lbOther = Utility.getLabel(res.FONT_MARKER_FELT, 28, Utility.getColorByName("white"));
+        this._lbOther.setString("Other");
+        this._btnOther.addChild(this._lbOther, GV.ZORDER_LEVEL.GUI);
+        this._lbOther.attr({
             anchorX: 0.5,
             anchorY: 0.5,
             x: this.buttonSize.width >> 1,
@@ -116,10 +116,10 @@ var GuiPopup = BaseGUI.extend({
         sprButtonBg.setScale(this.buttonSize.width / sprButtonBg.width, this.buttonSize.height / sprButtonBg.height);
 
         //text
-        var lbText = Utility.getLabel(res.FONT_MARKER_FELT, 28, Utility.getColorByName("white"));
-        lbText.setString("Cancel");
-        this._btnCancel.addChild(lbText, GV.ZORDER_LEVEL.GUI);
-        lbText.attr({
+        this._lbCancel = Utility.getLabel(res.FONT_MARKER_FELT, 28, Utility.getColorByName("white"));
+        this._lbCancel.setString("Cancel");
+        this._btnCancel.addChild(this._lbCancel, GV.ZORDER_LEVEL.GUI);
+        this._lbCancel.attr({
             anchorX: 0.5,
             anchorY: 0.5,
             x: this.buttonSize.width >> 1,
@@ -142,10 +142,10 @@ var GuiPopup = BaseGUI.extend({
         });
         sprButtonBg.setScale(this.buttonSize.width / sprButtonBg.width, this.buttonSize.height / sprButtonBg.height);
         //text
-        var lbText = Utility.getLabel(res.FONT_MARKER_FELT, 28, Utility.getColorByName("white"));
-        lbText.setString("OK");
-        this._btnOk.addChild(lbText, GV.ZORDER_LEVEL.GUI);
-        lbText.attr({
+        this._lbOK = Utility.getLabel(res.FONT_MARKER_FELT, 28, Utility.getColorByName("white"));
+        this._lbOK.setString("OK");
+        this._btnOk.addChild(this._lbOK, GV.ZORDER_LEVEL.GUI);
+        this._lbOK.attr({
             anchorX: 0.5,
             anchorY: 0.5,
             x: this.buttonSize.width >> 1,
@@ -234,7 +234,7 @@ var GuiPopup = BaseGUI.extend({
 
     /**
      * listButtonObj:
-     *  ex: [{btnName: 'ok', hide: true, callback: {caller: .., funcName: ..., args: [...]}},
+     *  ex: [{btnName: 'ok', btnTitle: "ok", hide: true, callback: {caller: .., funcName: ..., args: [...]}},
      *      ...
      *      ]
      *      btnName: name of button will added and execute the callback when clicked end
@@ -255,7 +255,7 @@ var GuiPopup = BaseGUI.extend({
         if (content.title !== undefined) {
             this._lbTitle.setString(content.title);
         } else {
-            this._lbTitle.setString("THONG BAO");
+            this._lbTitle.setString("THÔNG BÁO");
         }
         //set button
         if (listButtonObj !== undefined) {
@@ -289,6 +289,7 @@ var GuiPopup = BaseGUI.extend({
             var btnName = '';
             var len = listBtn.length;
             var numButton = len;
+            var title;
             for (var i = 0; i < len; ++i) {
                 obj = listBtn[i];
                 btnName = obj.btnName.toLowerCase();
@@ -300,6 +301,10 @@ var GuiPopup = BaseGUI.extend({
                             this._btnOk.hideGui = obj.hide;
                         } else {
                             this._btnOk.hideGui = true;
+                        }
+                        title = obj["btnTitle"];
+                        if(title) {
+                            this._lbOK.setString(title);
                         }
                         break;
                     case 'close':
@@ -320,6 +325,10 @@ var GuiPopup = BaseGUI.extend({
                         } else {
                             this._btnCancel.hideGui = true;
                         }
+                        title = obj["btnTitle"];
+                        if(title) {
+                            this._lbCancel.setString(title);
+                        }
                         break;
                     case 'other':
                         this._otherCallbackFunc = obj.callback;
@@ -328,6 +337,10 @@ var GuiPopup = BaseGUI.extend({
                             this._btnOther.hideGui = obj.hide;
                         } else {
                             this._btnOther.hideGui = true;
+                        }
+                        title = obj["btnTitle"];
+                        if(title) {
+                            this._lbOther.setString(title);
                         }
                         break;
                 }
@@ -339,15 +352,22 @@ var GuiPopup = BaseGUI.extend({
     resetViewButton: function () {
         this._btnClose.visible = true;
         this._btnClose.hideGui = true;
+        this._closeCallbackFunc = null;
 
         this._btnOk.visible = true;
         this._btnOk.hideGui = true;
+        this._lbOK.setString("OK");
+        this._okCallbackFunc = null;
 
         this._btnCancel.visible = false;
         this._btnCancel.hideGui = true;
+        this._lbCancel.setString("Cancel");
+        this._cancelCallbackFunc = null;
 
         this._btnOther.visible = false;
         this._btnOther.hideGui = true;
+        this._lbOther.setString("Other");
+        this._otherCallbackFunc = null;
     },
 
     _checkViewButton: function (numButton) {

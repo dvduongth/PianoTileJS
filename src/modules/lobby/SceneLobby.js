@@ -2,7 +2,7 @@ var SceneLobby = BaseScene.extend({
     ctor: function () {
         this._super();
         this.BACK_GROUND_SIZE = GV.WIN_SIZE;
-        this.NUM_TAB_LOBBY = 4;
+        this.NUM_TAB_LOBBY = 3;
         this.marginButtonTop = 5;
         this.sizeButtonTop = cc.size(
             (GV.WIN_SIZE.width - 5 * this.marginButtonTop) / 4,
@@ -36,12 +36,14 @@ var SceneLobby = BaseScene.extend({
             if (tabObj != null) {
                 layout.addChild(tabObj);
                 tabObj.attr({
-                    x: contentSize.width >> 1,
-                    y: contentSize.height >> 1
+                    x: 0,
+                    y: 0
                 });
+                tabObj.setSize(contentSize);
             }
             this._pageView.addPage(layout);
         }
+        this._pageView.setCurPageIndex(0);
         this._checkCurrentTab();
     },
     createPageView: function () {
@@ -49,7 +51,7 @@ var SceneLobby = BaseScene.extend({
             GV.WIN_SIZE.width,
             GV.WIN_SIZE.height - (
                 //2 * this.marginButtonTop
-                + this.sizeButtonTop.height
+                +this.sizeButtonTop.height
                 + this.sizeBottomTab.height
                 //+ this.sizeBottomButtonTab.height
             )
@@ -69,25 +71,19 @@ var SceneLobby = BaseScene.extend({
         var guiObj = null;
         switch (index) {
             case 0:
-                if(!this.lobbyTabHome) {
+                if (!this.lobbyTabHome) {
                     this.lobbyTabHome = new LobbyTabHome(this.sizePageView);
                 }
                 guiObj = this.lobbyTabHome;
                 break;
             case 1:
-                if(!this.lobbyTabMusic) {
+                if (!this.lobbyTabMusic) {
                     this.lobbyTabMusic = new LobbyTabMusic(this.sizePageView);
                 }
                 guiObj = this.lobbyTabMusic;
                 break;
             case 2:
-                if(!this.lobbyTabHall) {
-                    this.lobbyTabHall = new LobbyTabHall(this.sizePageView);
-                }
-                guiObj = this.lobbyTabHall;
-                break;
-            case 3:
-                if(!this.lobbyTabSetting) {
+                if (!this.lobbyTabSetting) {
                     this.lobbyTabSetting = new LobbyTabSetting(this.sizePageView);
                 }
                 guiObj = this.lobbyTabSetting;
@@ -97,9 +93,8 @@ var SceneLobby = BaseScene.extend({
     },
     createBottomTab: function () {
         this.createBgBottomTab();
-        this.createButtonTabHome();
         this.createButtonTabMusic();
-        this.createButtonTabHall();
+        this.createButtonTabHome();
         this.createButtonTabSetting();
     },
     createBgBottomTab: function () {
@@ -116,7 +111,7 @@ var SceneLobby = BaseScene.extend({
             y: 0
         });
         this.sizeBottomButtonTab.height = this.sizeBottomTab.height;
-        this.sizeBottomButtonTab.width = this.sizeBottomTab.width / 4;
+        this.sizeBottomButtonTab.width = this.sizeBottomTab.width / this.NUM_TAB_LOBBY;
     },
     createButtonTabHome: function () {
         this._btnTabHome = Utility.getButton("_btnTabHome", this.sizeBottomButtonTab);
@@ -129,22 +124,22 @@ var SceneLobby = BaseScene.extend({
         });
         //bg icon
         this._bgTabHome = new cc.Sprite("#home_1.png");
-        this._btnTabHome.addChild(this._bgTabHome,GV.ZORDER_LEVEL.BG);
+        this._btnTabHome.addChild(this._bgTabHome, GV.ZORDER_LEVEL.BG);
         this._bgTabHome.attr({
             anchorX: 0.5,
             anchorY: 1,
             x: 0.5 * this.sizeBottomButtonTab.width,
-            y: this.sizeBottomButtonTab.height
+            y: 0.9 * this.sizeBottomButtonTab.height
         });
         //text
-        var lb = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32,Utility.getColorByName("blue"),true,true);
-        lb.setString("Home");
-        this._btnTabHome.addChild(lb,GV.ZORDER_LEVEL.GUI);
-        lb.attr({
+        this._lbTabHome = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("blue"), true, true);
+        this._lbTabHome.setString("Home");
+        this._btnTabHome.addChild(this._lbTabHome, GV.ZORDER_LEVEL.GUI);
+        this._lbTabHome.attr({
             anchorX: 0.5,
             anchorY: 0,
             x: 0.5 * this.sizeBottomButtonTab.width,
-            y: - 0.25 * this.sizeBottomButtonTab.height
+            y: -0.25 * this.sizeBottomButtonTab.height
         });
     },
     createButtonTabMusic: function () {
@@ -158,51 +153,22 @@ var SceneLobby = BaseScene.extend({
         });
         //bg icon
         this._bgTabMusic = new cc.Sprite("#music_1.png");
-        this._btnTabMusic.addChild(this._bgTabMusic,GV.ZORDER_LEVEL.BG);
+        this._btnTabMusic.addChild(this._bgTabMusic, GV.ZORDER_LEVEL.BG);
         this._bgTabMusic.attr({
             anchorX: 0.5,
             anchorY: 1,
             x: 0.5 * this.sizeBottomButtonTab.width,
-            y: this.sizeBottomButtonTab.height
+            y: 0.9 * this.sizeBottomButtonTab.height
         });
         //text
-        var lb = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32,Utility.getColorByName("blue"),true,true);
-        lb.setString("Music");
-        this._btnTabMusic.addChild(lb,GV.ZORDER_LEVEL.GUI);
-        lb.attr({
+        this._lbTabMusic = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("blue"), true, true);
+        this._lbTabMusic.setString("Music");
+        this._btnTabMusic.addChild(this._lbTabMusic, GV.ZORDER_LEVEL.GUI);
+        this._lbTabMusic.attr({
             anchorX: 0.5,
             anchorY: 0,
             x: 0.5 * this.sizeBottomButtonTab.width,
-            y: - 0.25 * this.sizeBottomButtonTab.height
-        });
-    },
-    createButtonTabHall: function () {
-        this._btnTabHall = Utility.getButton("_btnTabHall", this.sizeBottomButtonTab);
-        this.addChild(this._btnTabHall, GV.ZORDER_LEVEL.GUI);
-        this._btnTabHall.attr({
-            anchorX: 0.5,
-            anchorY: 0.5,
-            x: 2.5 * this.sizeBottomButtonTab.width,
-            y: 0.75 * this.sizeBottomTab.height
-        });
-        //bg icon
-        this._bgTabHall = new cc.Sprite("#hall_1.png");
-        this._btnTabHall.addChild(this._bgTabHall,GV.ZORDER_LEVEL.BG);
-        this._bgTabHall.attr({
-            anchorX: 0.5,
-            anchorY: 1,
-            x: 0.5 * this.sizeBottomButtonTab.width,
-            y: this.sizeBottomButtonTab.height
-        });
-        //text
-        var lb = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32,Utility.getColorByName("blue"),true,true);
-        lb.setString("Hall");
-        this._btnTabHall.addChild(lb,GV.ZORDER_LEVEL.GUI);
-        lb.attr({
-            anchorX: 0.5,
-            anchorY: 0,
-            x: 0.5 * this.sizeBottomButtonTab.width,
-            y: - 0.25 * this.sizeBottomButtonTab.height
+            y: -0.25 * this.sizeBottomButtonTab.height
         });
     },
     createButtonTabSetting: function () {
@@ -211,27 +177,27 @@ var SceneLobby = BaseScene.extend({
         this._btnTabSetting.attr({
             anchorX: 0.5,
             anchorY: 0.5,
-            x: 3.5 * this.sizeBottomButtonTab.width,
+            x: 2.5 * this.sizeBottomButtonTab.width,
             y: 0.75 * this.sizeBottomTab.height
         });
         //bg icon
         this._bgTabSetting = new cc.Sprite("#setting_1.png");
-        this._btnTabSetting.addChild(this._bgTabSetting,GV.ZORDER_LEVEL.BG);
+        this._btnTabSetting.addChild(this._bgTabSetting, GV.ZORDER_LEVEL.BG);
         this._bgTabSetting.attr({
             anchorX: 0.5,
             anchorY: 1,
             x: 0.5 * this.sizeBottomButtonTab.width,
-            y: this.sizeBottomButtonTab.height
+            y: 0.9 * this.sizeBottomButtonTab.height
         });
         //text
-        var lb = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32,Utility.getColorByName("blue"),true,true);
-        lb.setString("Settings");
-        this._btnTabSetting.addChild(lb,GV.ZORDER_LEVEL.GUI);
-        lb.attr({
+        this._lbTabSetting = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("blue"), true, true);
+        this._lbTabSetting.setString("Setting");
+        this._btnTabSetting.addChild(this._lbTabSetting, GV.ZORDER_LEVEL.GUI);
+        this._lbTabSetting.attr({
             anchorX: 0.5,
             anchorY: 0,
             x: 0.5 * this.sizeBottomButtonTab.width,
-            y: - 0.25 * this.sizeBottomButtonTab.height
+            y: -0.25 * this.sizeBottomButtonTab.height
         });
     },
 
@@ -327,7 +293,7 @@ var SceneLobby = BaseScene.extend({
         var bg = this.getBackgroundTopIcon();
         this._btnDiamondCoin.addChild(bg, GV.ZORDER_LEVEL.BG);
     },
-    onEnter:function () {
+    onEnter: function () {
         this._super();
     },
     onExit: function () {
@@ -336,26 +302,16 @@ var SceneLobby = BaseScene.extend({
     onEnterTransitionDidFinish: function () {
         this._super();
     },
-    createLabelTest: function () {
-        this._lbText = Utility.getLabel(res.FONT_MARKER_FELT, 72);
-        this.addChild(this._lbText);
-        this._lbText.attr({
-            x: GV.WIN_SIZE.width >>1,
-            y: GV.WIN_SIZE.height >>1
-        });
-        this._lbText.setString("Scene Lobby Here");
-    },
     onTouchUIEndEvent: function (sender) {
         switch (sender) {
-            case this._btnLevel:
-                //break;
-            case this._btnHeart:
-                //break;
-            case this._btnDiamondCoin:
-                //break;
-            case this._btnMusic:
-                GV.MODULE_MGR.restartGame();
-                break;
+            //case this._btnLevel:
+            //break;
+            //case this._btnHeart:
+            //break;
+            //case this._btnDiamondCoin:
+            //break;
+            //case this._btnMusic:
+            //    break;
             case this._btnTabHome:
                 this._pageView.setCurPageIndex(0);
                 this._checkCurrentTab();
@@ -364,12 +320,8 @@ var SceneLobby = BaseScene.extend({
                 this._pageView.setCurPageIndex(1);
                 this._checkCurrentTab();
                 break;
-            case this._btnTabHall:
-                this._pageView.setCurPageIndex(2);
-                this._checkCurrentTab();
-                break;
             case this._btnTabSetting:
-                this._pageView.setCurPageIndex(3);
+                this._pageView.setCurPageIndex(2);
                 this._checkCurrentTab();
                 break;
 
@@ -378,18 +330,57 @@ var SceneLobby = BaseScene.extend({
     },
     _checkCurrentTab: function () {
         var index = this._pageView.getCurPageIndex();
-        //tab 0
-        var enable = index != 0;
+        //tab 0 _btnTabHome
+        enable = index != 0;
         this._btnTabHome.enabled = enable;
-        //tab 1
-        enable = index != 1;
+        this.setBrightBottomTabButton("Home", enable);
+        //tab 1 _btnTabMusic
+        var enable = index != 1;
         this._btnTabMusic.enabled = enable;
-        //tab 2
+        this.setBrightBottomTabButton("Music", enable);
+        //tab 2 _btnTabSetting
         enable = index != 2;
-        this._btnTabHall.enabled = enable;
-        //tab 3
-        enable = index != 3;
         this._btnTabSetting.enabled = enable;
+        this.setBrightBottomTabButton("Setting", enable);
+    },
+    setBrightBottomTabButton: function (type, enable) {
+        if (!type || !this["_bgTab" + type]) {
+            cc.error("set bright for button with null args");
+            return null;
+        }
+        //this["_lbTab" + type].visible = enable;
+        this["_bgTab" + type].stopAllActions();
+        var imgName = type.toLowerCase() + "_";
+        var action;
+        if (!enable) {
+            //var animCache = cc.animationCache;
+            var animation;
+            var actionTime = 0.01;
+            //animation = animCache.getAnimation(type);
+            if (animation) {
+                animation.setRestoreOriginalFrame(true);
+            } else {
+                var animFrames = [];
+                var str, frame;
+                for (var i = 1; i <= 7; ++i) {
+                    str = imgName + i + ".png";
+                    frame = cc.spriteFrameCache.getSpriteFrame(str);
+                    animFrames.push(frame);
+                }
+                animation = new cc.Animation(animFrames, actionTime);
+                animation.retain();
+                // Add an animation to the Cache
+                cc.animationCache.addAnimation(animation, type);
+            }
+            action = cc.animate(animation);
+            this["_bgTab" + type].runAction(action);
+            //this["_bgTab" + type].y = 0.5 * this.sizeBottomTab.height;
+        } else {
+            action = new cc.Animation([cc.spriteFrameCache.getSpriteFrame(imgName + "1.png")], 0.01);
+            action = cc.animate(action);
+            this["_bgTab" + type].runAction(action);
+            //this["_bgTab" + type].y = 0.75 * this.sizeBottomTab.height;
+        }
     }
 });
 

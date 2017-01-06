@@ -9,22 +9,41 @@ var LobbyTabMusic = BaseGUI.extend({
         }else {
             this.BACK_GROUND_SIZE = cc.size(GV.WIN_SIZE.width, GV.WIN_SIZE.height);
         }
+        this.tableViewMusicSize = cc.size(this.BACK_GROUND_SIZE.width * 0.98, this.BACK_GROUND_SIZE.height);
         this.initGui();
     },
 
     initGui: function () {
         this.createBackground();
-        this.createLabelTest();
+        this.createListMusicView();
         //update view
         this.syncAllChildren();
+    },
+    createListMusicView: function () {
+        if (!this.musicTableView) {
+            this.musicTableView = new MusicTableView(1, this.tableViewMusicSize.width, this.tableViewMusicSize.height, cc.SCROLLVIEW_DIRECTION_VERTICAL);
+            this.musicTableView.setClassName("musicTableView");
+            this.addChild(this.musicTableView, GV.ZORDER_LEVEL.GUI);
+            this.musicTableView.attr({
+                anchorX: 0,
+                anchorY: 0,
+                x: (this.BACK_GROUND_SIZE.width - this.tableViewMusicSize.width) * 0.5,
+                y: 0
+            });
+        }
+        var arr = [];
+        for (var i = 0; i < 10; ++i) {
+            arr.push(i +"");
+        }
+        this.musicTableView.setElementList(arr);
     },
     createBackground: function () {
         //background
         this._sprBg = new cc.Sprite(res.opening_common_play_bg3_png);
         this.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
         this._sprBg.attr({
-            anchorX: 0.5,
-            anchorY: 0.5,
+            anchorX: 0,
+            anchorY: 0,
             x: 0,
             y: 0
         });
@@ -32,15 +51,6 @@ var LobbyTabMusic = BaseGUI.extend({
         var delta_ratio_x = this.BACK_GROUND_SIZE.width / bgSize.width;
         var delta_ratio_y = this.BACK_GROUND_SIZE.height / bgSize.height;
         this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
-    },
-    createLabelTest: function () {
-        this._lbText = Utility.getLabel(res.FONT_MARKER_FELT, 72);
-        this.addChild(this._lbText);
-        this._lbText.attr({
-            x: 0,
-            y: 0
-        });
-        this._lbText.setString("Lobby Tab Music");
     },
     /**
      * set info

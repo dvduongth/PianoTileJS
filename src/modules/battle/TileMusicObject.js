@@ -411,10 +411,13 @@ var TileMusicObject = cc.Node.extend({
             animation.setRestoreOriginalFrame(true);
             var action = cc.animate(animation);
             //run action
-            dot.runAction(cc.sequence(
+            dot.runAction(cc.spawn(
                 action,
-                cc.fadeOut(actionTime),
-                cc.callFunc(sprDot.removeFromParent, sprDot)
+                cc.sequence(
+                    cc.delayTime(actionTime),
+                    cc.fadeOut(actionTime),
+                    cc.callFunc(sprDot.removeFromParent, sprDot)
+                )
             ));
             cc.log("get dot here");
         } else {

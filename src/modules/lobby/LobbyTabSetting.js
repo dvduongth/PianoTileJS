@@ -20,11 +20,11 @@ var LobbyTabSetting = BaseGUI.extend({
     },
     createBackground: function () {
         //background
-        this._sprBg = new cc.Sprite(res.banner_first_charge_png);
+        this._sprBg = new cc.Sprite(res.bg_share_png);
         this.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
         this._sprBg.attr({
-            anchorX: 0.5,
-            anchorY: 0.5,
+            anchorX: 0,
+            anchorY: 0,
             x: 0,
             y: 0
         });
@@ -37,8 +37,8 @@ var LobbyTabSetting = BaseGUI.extend({
         this._lbText = Utility.getLabel(res.FONT_MARKER_FELT, 72);
         this.addChild(this._lbText);
         this._lbText.attr({
-            x: 0,
-            y: 0
+            x: GV.WIN_SIZE.width >> 1,
+            y: GV.WIN_SIZE.height >> 1
         });
         this._lbText.setString("Lobby Tab Setting");
     },
