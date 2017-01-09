@@ -16,7 +16,7 @@ var LobbyTabHome = BaseGUI.extend({
     },
 
     initGui: function () {
-        this.createBackground();
+        //this.createBackground();
         this.createMusicNodeInfo();
         this.createListMusicView();
         //update view
@@ -146,7 +146,7 @@ var LobbyTabHome = BaseGUI.extend({
     onTouchUIEndEvent: function (sender) {
         switch (sender) {
             case this._btnPlay:
-                GV.MODULE_MGR.restartGame();
+                GV.MODULE_MGR.startGame();
                 break;
         }
     }

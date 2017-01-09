@@ -23,6 +23,7 @@ var SceneMgr = cc.Class.extend({
         }
         if (scene) {
             this._currentScene = scene;
+            this._currentScene.sceneId = sceneId;
             if (skipTransition) {
                 cc.director.runScene(this._currentScene);
             } else {

@@ -7,6 +7,7 @@ var res = {
     team_music_bg_white_png : "res/resource/UITeam/classroom/teammusic_bg_white.png",
     item_bg_png : "res/resource/UITeam/classroom/item_bg.png",
     item_rand_bg_png : "res/resource/UITeam/classroom/item_rand_bg.png",
+    item_like_bg_png : "res/resource/UITeam/classroom/item_like_bg.png",
     bg_loading_png: "res/resource/UIOpenning/bg_small.jpg",
     bg_lobby_png: "res/resource/UIOpenning/bg_small_f.png",
     opening_cd_7_png: "res/resource/UIOpenning/opening_cd7.png",
@@ -28,10 +29,12 @@ var res = {
     plist_resource: "res/resource/UIPlist/Plist_resource.plist",
     plist_band: "res/resource/UIPlist/Plist_band.plist",
     plist_content: "res/resource/UIPlist/Plist_content.plist",
+    plist_content2: "res/resource/UIPlist/Plist_content2.plist",
     plist_content3: "res/resource/UIPlist/Plist_content3.plist",
     plist_content_new: "res/resource/UIPlist/Plist_content_new.plist",
     plist_bottom_tab_new: "res/resource/UIPlist/Plist_bottomtab.plist",
     plist_battle_result: "res/resource/UIPlist/Battle_Result/Battle_Result.plist",
+    plist_battle_result_2: "res/resource/UIPlist/Plist_battle_result2.plist",
     plist_opening: "res/resource/UIOpenning/Plist_openning.plist",
 
     //font

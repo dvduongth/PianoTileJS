@@ -6,7 +6,12 @@ var ModuleMgr = cc.Class.extend({
         return true;
     },
     resetValues: function () {
-        this._myInfo = new MyInfoData();
+        if(!this._myInfo) {
+            this._myInfo = new MyInfoData();
+        }else{
+            this._myInfo.curScore = 0;
+            this._myInfo.myStar = 0;
+        }
         this._gameState = GV.GAME_STATE.START;
     },
     showGuiStartBattle: function () {
@@ -36,7 +41,10 @@ var ModuleMgr = cc.Class.extend({
         var content = {"title": title, "text": text};
         GV.POPUP_MGR.showPopup(content, listButton, true);
     },
-
+    startGame: function () {
+        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.BATTLE);
+        this.resetValues();
+    },
     endGame: function () {
         this._gameState = GV.GAME_STATE.END;
         cc.log("Game Over");
@@ -56,5 +64,19 @@ var ModuleMgr = cc.Class.extend({
     continueGame: function () {
         var curScene = GV.SCENE_MGR.getCurrentScene();
         curScene.continuePlayGame();
+    },
+    /**
+     * @param {Number} numMusicGold
+     * @param {Number} numDiamondCoin
+     * */
+    updateMyTopInfo: function (numMusicGold, numDiamondCoin) {
+        if(!numMusicGold) {
+            numMusicGold = 0;
+        }
+        if(!numDiamondCoin) {
+            numDiamondCoin = 0;
+        }
+        this._myInfo.myMusicGold = numMusicGold;
+        this._myInfo.myDiamondCoin = numDiamondCoin;
     }
 });

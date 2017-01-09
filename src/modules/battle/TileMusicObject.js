@@ -41,32 +41,38 @@ var TileMusicObject = cc.Node.extend({
         this.createBackground(urlBg);
     },
     updateIcon: function () {
-        this._isRequireScale = true;
+        this._isRequireScale = false;
         var urlIcon;
         switch (this.type) {
+            case GV.TILE_TYPE.UNDEFINED:
+                this._isRequireScale = true;
+                break;
             case GV.TILE_TYPE.START:
                 cc.log("tile start here");
                 urlIcon = "#tile_start.png";
+                this._isRequireScale = true;
                 break;
             case GV.TILE_TYPE.SHORT:
                 cc.log("tile short here");
                 urlIcon = "#tile_black.png";
+                this._isRequireScale = true;
                 break;
             case GV.TILE_TYPE.NORMAL:
                 cc.log("tile normal here");
                 urlIcon = "#long_head.png";
-                this._isRequireScale = false;
                 this.extraScore = 2;
                 break;
             case GV.TILE_TYPE.LONG:
                 cc.log("tile long here");
                 urlIcon = "#long_head.png";
-                this._isRequireScale = false;
                 this.extraScore = 3;
                 break;
-            case GV.TILE_TYPE.UNDEFINED:
-                //urlIcon = res.tile_white_png;
+            /*case GV.TILE_TYPE.abc:
+                cc.log("loại nốt gì đó ở đây");
+                urlIcon = "#long_head.png";//nếu k muốn đổi ảnh thì dùng luôn urlIcon này
+                this.extraScore = 3;//thay đổi số dot có trong 1 nốt nhạc
                 break;
+            */
             default :
                 cc.error("create tile music with type null");
                 return false;
@@ -233,6 +239,10 @@ var TileMusicObject = cc.Node.extend({
         this.increaseMyScore(this.getExtraScore);
         this.getExtraScore = 0;
         cc.log("touch end end");
+        if(this._sprTouchSuccess) {
+            this._sprTouchSuccess.removeFromParent(true);
+            this._sprTouchSuccess = null;
+        }
     },
     /**
      * @param data with type
@@ -292,7 +302,34 @@ var TileMusicObject = cc.Node.extend({
         } else {
             this.fadeOutIcon();
         }
+        this.actionTouchSuccess(touch, event);
         return true;
+    },
+    actionTouchSuccess: function (touch, event) {
+        var ACTION_TIME = 0.05;
+        if(this._sprTouchSuccess) {
+            this._sprTouchSuccess.removeFromParent(true);
+            this._sprTouchSuccess = null;
+        }
+        this._sprTouchSuccess = new cc.Sprite(res.crazy_circle_png);
+        this.addChild(this._sprTouchSuccess, GV.ZORDER_LEVEL.CURSOR);
+        var target = event.getCurrentTarget();
+        var locationInNode = this.convertToNodeSpace(touch.getLocation());
+        this._sprTouchSuccess.attr({
+            anchorX: 0.5,
+            anchorY: 0.5,
+            x: locationInNode.x,
+            y: locationInNode.y + this._sprTouchSuccess.height * 0.2
+        });
+        //this._sprTouchSuccess.setScale(0);
+        this._sprTouchSuccess.setOpacity(0);
+        this._sprTouchSuccess.runAction(cc.sequence(
+            cc.fadeTo(ACTION_TIME,150),
+            cc.callFunc(function () {
+                this._sprTouchSuccess.removeFromParent(true);
+                this._sprTouchSuccess = null;
+            }.bind(this))
+        ));
     },
     increaseMyScore: function (num) {
         if (!num) {
@@ -397,35 +434,34 @@ var TileMusicObject = cc.Node.extend({
         this.getExtraScore++;
         if (isGet) {
             sprDot.setTexture(res.dot_light_png);
-            var dot = new cc.Sprite(res.dot_light_png);
-            dot.attr({
-                x: sprDot.width >> 1,
-                y: sprDot.height >> 1
-            });
-            sprDot.addChild(dot);
             var actionTime = 0.1;
             var animation = new cc.Animation();
             animation.addSpriteFrameWithFile(res.circle_light_png);
             animation.addSpriteFrameWithFile(res.glow_png);
-            animation.setDelayPerUnit(actionTime);
+            animation.setDelayPerUnit(actionTime * 0.5);
             animation.setRestoreOriginalFrame(true);
             var action = cc.animate(animation);
             //run action
-            dot.runAction(cc.spawn(
+            sprDot.setCascadeOpacityEnabled(true);
+            sprDot.runAction(cc.sequence(
                 action,
-                cc.sequence(
-                    cc.delayTime(actionTime),
-                    cc.fadeOut(actionTime),
-                    cc.callFunc(sprDot.removeFromParent, sprDot)
-                )
+                cc.callFunc(function () {
+                    sprDot.removeFromParent(true);
+                })
             ));
-            cc.log("get dot here");
+            this.actionGetDot();
         } else {
             sprDot.removeFromParent(true);
         }
         //clear data
         this.listDotScore[i] = null;
         this.listDotScore.splice(i, 1);
+    },
+    /**
+     * to do action get dot here
+     * */
+    actionGetDot: function () {
+
     },
 
     actionFocusMiss: function () {

@@ -1,5 +1,5 @@
 /**
- * custom table view
+ * music table view
  * */
 var MusicTableView = CustomTableView.extend({
     _className: "MusicTableView",
@@ -22,8 +22,8 @@ var MusicTableView = CustomTableView.extend({
         if (!cell) {
             cell = new MusicCell(this);
         }
-        var guiRankElement = cell.getChildByTag(121);
-        guiRankElement.setInfo(this._elementList[idx],idx);
+        var element = cell.getChildByTag(121);
+        element.setInfo(this._elementList[idx],idx);
 
         return cell;
     },
@@ -31,7 +31,7 @@ var MusicTableView = CustomTableView.extend({
         cc.log("touch here", cell.getIdx());
         var cb = {};
         cb["caller"] = GV.MODULE_MGR;
-        cb["funcName"] = GV.MODULE_MGR.restartGame;
+        cb["funcName"] = GV.MODULE_MGR.startGame;
         cb["args"] = [];
         var listButton = [{btnName: 'ok',btnTitle:"PLAY", hide: true, callback: cb}];
         var content = {"title": "THÔNG BÁO", "text": "Bạn muốn chơi bài " + (cell.getIdx() + 1) + "?"};
@@ -102,13 +102,14 @@ var MusicElement = BaseGUI.extend({
     createIconGoldGift: function () {
         this._sprIconGoldGift = new cc.Sprite("#result_icon_coin.png");
         this._btnElement.addChild(this._sprIconGoldGift, GV.ZORDER_LEVEL.BG);
+        this._sprIconGoldGift.setScale(this.sizeIconGoldGift / this._sprIconGoldGift.width);
+
         this._sprIconGoldGift.attr({
             anchorX: 0,
             anchorY: 0.5,
             x: this._sprIconMusic.width * 2 * this._sprIconMusic.getScaleX(),
             y: this.contentSize.height >> 1
         });
-        this._sprIconGoldGift.setScale(this.sizeIconGoldGift / this._sprIconGoldGift.width);
     },
     createLabelNumberGold: function () {
         this._lbNumberGold = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("black"), true, true);
@@ -169,7 +170,7 @@ var MusicElement = BaseGUI.extend({
         }
     },
     createBackground: function () {
-        this._sprBg = new cc.Sprite(res.item_rand_bg_png);
+        this._sprBg = new cc.Sprite(res.item_bg_png);
         this._btnElement.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
 
         var deltaRatioWidth = this.contentSize.width / this._sprBg.width;

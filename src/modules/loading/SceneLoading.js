@@ -14,6 +14,29 @@ var SceneLoading = BaseScene.extend({
             return false;
         }
         this.inited = true;
+        this.createBackground();
+        //add label
+        this.createLabelLoading();
+        //load global var before loadTextures
+        this.loadGlobalResource();
+    },
+    loadGlobalResource: function () {
+        this.listFilePNG = [];
+        for(var x in res) {
+            if(res[x].indexOf("png") >= 0) {
+                this.listFilePNG.push(res[x]);
+            }
+        }
+    },
+    createLabelLoading: function () {
+        this._lbLoading = Utility.getLabel(res.FONT_MARKER_FELT, 72);
+        this.addChild(this._lbLoading);
+        this._lbLoading.attr({
+            x: GV.WIN_SIZE.width >>1,
+            y: GV.WIN_SIZE.height >>1
+        });
+    },
+    createBackground: function () {
         this._sprBg = new cc.Sprite(res.bg_loading_png);
         this.addChild(this._sprBg);
         this._sprBg.attr({
@@ -24,22 +47,8 @@ var SceneLoading = BaseScene.extend({
         var delta_ratio_x = GV.WIN_SIZE.width / bgSize.width;
         var delta_ratio_y = GV.WIN_SIZE.height / bgSize.height;
         this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
-
-        //add label
-        this._lbLoading = Utility.getLabel(res.FONT_MARKER_FELT, 72);
-        this.addChild(this._lbLoading);
-        this._lbLoading.attr({
-            x: GV.WIN_SIZE.width >>1,
-            y: GV.WIN_SIZE.height >>1
-        });
-        //load global var before loadTextures
-        this.listFilePNG = [];
-        for(var x in res) {
-            if(res[x].indexOf("png") >= 0) {
-                this.listFilePNG.push(res[x]);
-            }
-        }
     },
+
     /**
      *load texture array by String
      * @param {Array} textureArr

@@ -13,6 +13,8 @@ var GuiResultBattle = BaseGUI.extend({
             (GV.WIN_SIZE.width - 5 * this.marginButtonTop) / 4,
             50
         );
+        this.sizeIconMusicGold = this.sizeButtonTop.height * 0.7;
+        this.sizeIconDiamondCoin = this.sizeButtonTop.height * 0.7;
         this.heightButtonBottom = 100;
         this.initGui();
     },
@@ -47,8 +49,8 @@ var GuiResultBattle = BaseGUI.extend({
         this._sprBg.setContentSize(this.BACK_GROUND_SIZE);
     },
     createTopButtonInfo: function () {
-        this.createButtonLevel();
-        this.createButtonHeart();
+        //this.createButtonLevel();
+        //this.createButtonHeart();
         this.createButtonMusic();
         this.createButtonDiamondCoin();
     },
@@ -106,12 +108,37 @@ var GuiResultBattle = BaseGUI.extend({
         this._btnMusic.attr({
             anchorX: 0.5,
             anchorY: 0.5,
-            x: 3 * this.marginButtonTop + 2.5 * this.sizeButtonTop.width - 0.5 * this.BACK_GROUND_SIZE.width,
+            x: 2 * this.marginButtonTop + 1.5 * this.sizeButtonTop.width - 0.5 * this.BACK_GROUND_SIZE.width,
             y: (this.BACK_GROUND_SIZE.height - this.sizeButtonTop.height) * 0.5 - this.marginButtonTop * 2
         });
         //background button
         var bg = this.getBackgroundTopIcon();
         this._btnMusic.addChild(bg, GV.ZORDER_LEVEL.BG);
+        this.createIconMusicGold(this._btnMusic);
+        this.createLabelNumberMusicGold(this._btnMusic);
+    },
+    createIconMusicGold: function (btnObj) {
+        this._sprIconMusicGold = new cc.Sprite("#result_icon_coin.png");
+        btnObj.addChild(this._sprIconMusicGold, GV.ZORDER_LEVEL.BG);
+        this._sprIconMusicGold.setScale(this.sizeIconMusicGold / this._sprIconMusicGold.width);
+
+        this._sprIconMusicGold.attr({
+            anchorX: 0,
+            anchorY: 0.5,
+            x: 10,
+            y: this.sizeButtonTop.height >> 1
+        });
+    },
+    createLabelNumberMusicGold: function (btnObj) {
+        this._lbNumberGold = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("black"), true, true);
+        btnObj.addChild(this._lbNumberGold, GV.ZORDER_LEVEL.GUI);
+        this._lbNumberGold.setString("2.017");
+        this._lbNumberGold.attr({
+            anchorX: 0,
+            anchorY: 0.5,
+            x: this._sprIconMusicGold.x + (1.1 - this._sprIconMusicGold.anchorX) * this._sprIconMusicGold.width * this._sprIconMusicGold.getScaleX(),
+            y: this.sizeButtonTop.height >> 1
+        });
     },
     createButtonDiamondCoin: function () {
         this._btnDiamondCoin = Utility.getButton("_btnDiamondCoin", this.sizeButtonTop);
@@ -119,12 +146,37 @@ var GuiResultBattle = BaseGUI.extend({
         this._btnDiamondCoin.attr({
             anchorX: 0.5,
             anchorY: 0.5,
-            x: 4 * this.marginButtonTop + 3.5 * this.sizeButtonTop.width - 0.5 * this.BACK_GROUND_SIZE.width,
+            x: 3 * this.marginButtonTop + 2.5 * this.sizeButtonTop.width - 0.5 * this.BACK_GROUND_SIZE.width,
             y: (this.BACK_GROUND_SIZE.height - this.sizeButtonTop.height) * 0.5 - this.marginButtonTop * 2
         });
         //background button
         var bg = this.getBackgroundTopIcon();
         this._btnDiamondCoin.addChild(bg, GV.ZORDER_LEVEL.BG);
+        this.createIconDiamondCoin(this._btnDiamondCoin);
+        this.createLabelNumberDiamondCoin(this._btnDiamondCoin);
+    },
+    createIconDiamondCoin: function (btnObj) {
+        this._sprIconDiamondCoin = new cc.Sprite("#icon_diamond.png");
+        btnObj.addChild(this._sprIconDiamondCoin, GV.ZORDER_LEVEL.BG);
+        this._sprIconDiamondCoin.setScale(this.sizeIconDiamondCoin / this._sprIconDiamondCoin.width);
+
+        this._sprIconDiamondCoin.attr({
+            anchorX: 0,
+            anchorY: 0.5,
+            x: 10,
+            y: this.sizeButtonTop.height >> 1
+        });
+    },
+    createLabelNumberDiamondCoin: function (btnObj) {
+        this._lbNumberGold = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("black"), true, true);
+        btnObj.addChild(this._lbNumberGold, GV.ZORDER_LEVEL.GUI);
+        this._lbNumberGold.setString("2.017");
+        this._lbNumberGold.attr({
+            anchorX: 0,
+            anchorY: 0.5,
+            x: this._sprIconDiamondCoin.x + (1.1 - this._sprIconDiamondCoin.anchorX) * this._sprIconDiamondCoin.width * this._sprIconDiamondCoin.getScaleX(),
+            y: this.sizeButtonTop.height >> 1
+        });
     },
 
     createStarInfo: function () {

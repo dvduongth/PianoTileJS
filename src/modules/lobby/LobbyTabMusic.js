@@ -14,7 +14,7 @@ var LobbyTabMusic = BaseGUI.extend({
     },
 
     initGui: function () {
-        this.createBackground();
+        //this.createBackground();
         this.createListMusicView();
         //update view
         this.syncAllChildren();

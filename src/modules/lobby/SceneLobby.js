@@ -10,6 +10,8 @@ var SceneLobby = BaseScene.extend({
         );
         this.sizeBottomTab = cc.size(0, 0);
         this.sizeBottomButtonTab = cc.size(0, 0);
+        this.sizeIconMusicGold = this.sizeButtonTop.height * 0.7;
+        this.sizeIconDiamondCoin = this.sizeButtonTop.height * 0.7;
         this.initGui();
         return true;
     },
@@ -92,9 +94,11 @@ var SceneLobby = BaseScene.extend({
         return guiObj;
     },
     createBottomTab: function () {
+        //background
         this.createBgBottomTab();
-        this.createButtonTabMusic();
+        //button tab
         this.createButtonTabHome();
+        this.createButtonTabMusic();
         this.createButtonTabSetting();
     },
     createBgBottomTab: function () {
@@ -120,7 +124,7 @@ var SceneLobby = BaseScene.extend({
             anchorX: 0.5,
             anchorY: 0.5,
             x: 0.5 * this.sizeBottomButtonTab.width,
-            y: 0.75 * this.sizeBottomTab.height
+            y: 0.7 * this.sizeBottomTab.height
         });
         //bg icon
         this._bgTabHome = new cc.Sprite("#home_1.png");
@@ -132,14 +136,14 @@ var SceneLobby = BaseScene.extend({
             y: 0.9 * this.sizeBottomButtonTab.height
         });
         //text
-        this._lbTabHome = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("blue"), true, true);
+        this._lbTabHome = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 28, Utility.getColorByName("blue"), true, true);
         this._lbTabHome.setString("Home");
         this._btnTabHome.addChild(this._lbTabHome, GV.ZORDER_LEVEL.GUI);
         this._lbTabHome.attr({
             anchorX: 0.5,
             anchorY: 0,
             x: 0.5 * this.sizeBottomButtonTab.width,
-            y: -0.25 * this.sizeBottomButtonTab.height
+            y: -0.2 * this.sizeBottomButtonTab.height
         });
     },
     createButtonTabMusic: function () {
@@ -149,7 +153,7 @@ var SceneLobby = BaseScene.extend({
             anchorX: 0.5,
             anchorY: 0.5,
             x: 1.5 * this.sizeBottomButtonTab.width,
-            y: 0.75 * this.sizeBottomTab.height
+            y: 0.7 * this.sizeBottomTab.height
         });
         //bg icon
         this._bgTabMusic = new cc.Sprite("#music_1.png");
@@ -161,14 +165,14 @@ var SceneLobby = BaseScene.extend({
             y: 0.9 * this.sizeBottomButtonTab.height
         });
         //text
-        this._lbTabMusic = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("blue"), true, true);
+        this._lbTabMusic = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 28, Utility.getColorByName("blue"), true, true);
         this._lbTabMusic.setString("Music");
         this._btnTabMusic.addChild(this._lbTabMusic, GV.ZORDER_LEVEL.GUI);
         this._lbTabMusic.attr({
             anchorX: 0.5,
             anchorY: 0,
             x: 0.5 * this.sizeBottomButtonTab.width,
-            y: -0.25 * this.sizeBottomButtonTab.height
+            y: -0.2 * this.sizeBottomButtonTab.height
         });
     },
     createButtonTabSetting: function () {
@@ -178,7 +182,7 @@ var SceneLobby = BaseScene.extend({
             anchorX: 0.5,
             anchorY: 0.5,
             x: 2.5 * this.sizeBottomButtonTab.width,
-            y: 0.75 * this.sizeBottomTab.height
+            y: 0.7 * this.sizeBottomTab.height
         });
         //bg icon
         this._bgTabSetting = new cc.Sprite("#setting_1.png");
@@ -190,17 +194,16 @@ var SceneLobby = BaseScene.extend({
             y: 0.9 * this.sizeBottomButtonTab.height
         });
         //text
-        this._lbTabSetting = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("blue"), true, true);
+        this._lbTabSetting = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 28, Utility.getColorByName("blue"), true, true);
         this._lbTabSetting.setString("Setting");
         this._btnTabSetting.addChild(this._lbTabSetting, GV.ZORDER_LEVEL.GUI);
         this._lbTabSetting.attr({
             anchorX: 0.5,
             anchorY: 0,
             x: 0.5 * this.sizeBottomButtonTab.width,
-            y: -0.25 * this.sizeBottomButtonTab.height
+            y: -0.2 * this.sizeBottomButtonTab.height
         });
     },
-
     createBackground: function () {
         this._sprBg = new cc.Sprite(res.bg_lobby_png);
         this.addChild(this._sprBg, GV.ZORDER_LEVEL.BG);
@@ -214,8 +217,8 @@ var SceneLobby = BaseScene.extend({
         this._sprBg.setScale(delta_ratio_x, delta_ratio_y);
     },
     createTopButtonInfo: function () {
-        this.createButtonLevel();
-        this.createButtonHeart();
+        //this.createButtonLevel();
+        //this.createButtonHeart();
         this.createButtonMusic();
         this.createButtonDiamondCoin();
     },
@@ -273,12 +276,38 @@ var SceneLobby = BaseScene.extend({
         this._btnMusic.attr({
             anchorX: 0.5,
             anchorY: 0.5,
-            x: 3 * this.marginButtonTop + 2.5 * this.sizeButtonTop.width,
+            x: 2 * this.marginButtonTop + 1.5 * this.sizeButtonTop.width,
             y: this.BACK_GROUND_SIZE.height - this.sizeButtonTop.height * 0.5 - this.marginButtonTop * 2
         });
         //background button
         var bg = this.getBackgroundTopIcon();
         this._btnMusic.addChild(bg, GV.ZORDER_LEVEL.BG);
+
+        this.createIconMusicGold(this._btnMusic);
+        this.createLabelNumberMusicGold(this._btnMusic);
+    },
+    createIconMusicGold: function (btnObj) {
+        this._sprIconMusicGold = new cc.Sprite("#result_icon_coin.png");
+        btnObj.addChild(this._sprIconMusicGold, GV.ZORDER_LEVEL.BG);
+        this._sprIconMusicGold.setScale(this.sizeIconMusicGold / this._sprIconMusicGold.width);
+
+        this._sprIconMusicGold.attr({
+            anchorX: 0,
+            anchorY: 0.5,
+            x: 10,
+            y: this.sizeButtonTop.height >> 1
+        });
+    },
+    createLabelNumberMusicGold: function (btnObj) {
+        this._lbNumberGold = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("black"), true, true);
+        btnObj.addChild(this._lbNumberGold, GV.ZORDER_LEVEL.GUI);
+        this._lbNumberGold.setString("2.017");
+        this._lbNumberGold.attr({
+            anchorX: 0,
+            anchorY: 0.5,
+            x: this._sprIconMusicGold.x + (1.1 - this._sprIconMusicGold.anchorX) * this._sprIconMusicGold.width * this._sprIconMusicGold.getScaleX(),
+            y: this.sizeButtonTop.height >> 1
+        });
     },
     createButtonDiamondCoin: function () {
         this._btnDiamondCoin = Utility.getButton("_btnDiamondCoin", this.sizeButtonTop);
@@ -286,12 +315,37 @@ var SceneLobby = BaseScene.extend({
         this._btnDiamondCoin.attr({
             anchorX: 0.5,
             anchorY: 0.5,
-            x: 4 * this.marginButtonTop + 3.5 * this.sizeButtonTop.width,
+            x: 3 * this.marginButtonTop + 2.5 * this.sizeButtonTop.width,
             y: this.BACK_GROUND_SIZE.height - this.sizeButtonTop.height * 0.5 - this.marginButtonTop * 2
         });
         //background button
         var bg = this.getBackgroundTopIcon();
         this._btnDiamondCoin.addChild(bg, GV.ZORDER_LEVEL.BG);
+        this.createIconDiamondCoin(this._btnDiamondCoin);
+        this.createLabelNumberDiamondCoin(this._btnDiamondCoin);
+    },
+    createIconDiamondCoin: function (btnObj) {
+        this._sprIconDiamondCoin = new cc.Sprite("#icon_diamond.png");
+        btnObj.addChild(this._sprIconDiamondCoin, GV.ZORDER_LEVEL.BG);
+        this._sprIconDiamondCoin.setScale(this.sizeIconDiamondCoin / this._sprIconDiamondCoin.width);
+
+        this._sprIconDiamondCoin.attr({
+            anchorX: 0,
+            anchorY: 0.5,
+            x: 10,
+            y: this.sizeButtonTop.height >> 1
+        });
+    },
+    createLabelNumberDiamondCoin: function (btnObj) {
+        this._lbNumberGold = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("black"), true, true);
+        btnObj.addChild(this._lbNumberGold, GV.ZORDER_LEVEL.GUI);
+        this._lbNumberGold.setString("2.017");
+        this._lbNumberGold.attr({
+            anchorX: 0,
+            anchorY: 0.5,
+            x: this._sprIconDiamondCoin.x + (1.1 - this._sprIconDiamondCoin.anchorX) * this._sprIconDiamondCoin.width * this._sprIconDiamondCoin.getScaleX(),
+            y: this.sizeButtonTop.height >> 1
+        });
     },
     onEnter: function () {
         this._super();
@@ -304,14 +358,11 @@ var SceneLobby = BaseScene.extend({
     },
     onTouchUIEndEvent: function (sender) {
         switch (sender) {
-            //case this._btnLevel:
-            //break;
-            //case this._btnHeart:
-            //break;
-            //case this._btnDiamondCoin:
-            //break;
-            //case this._btnMusic:
-            //    break;
+            case this._btnMusic:
+                break;
+            case this._btnDiamondCoin:
+            break;
+
             case this._btnTabHome:
                 this._pageView.setCurPageIndex(0);
                 this._checkCurrentTab();
@@ -374,12 +425,14 @@ var SceneLobby = BaseScene.extend({
             }
             action = cc.animate(animation);
             this["_bgTab" + type].runAction(action);
-            //this["_bgTab" + type].y = 0.5 * this.sizeBottomTab.height;
+            this["_lbTab" + type].setColor(Utility.getColorByName("white"));
+            this["_lbTab" + type].setFontSize(32);
         } else {
             action = new cc.Animation([cc.spriteFrameCache.getSpriteFrame(imgName + "1.png")], 0.01);
             action = cc.animate(action);
             this["_bgTab" + type].runAction(action);
-            //this["_bgTab" + type].y = 0.75 * this.sizeBottomTab.height;
+            this["_lbTab" + type].setColor(Utility.getColorByName("blue"));
+            this["_lbTab" + type].setFontSize(28);
         }
     }
 });
