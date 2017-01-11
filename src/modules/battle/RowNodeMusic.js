@@ -123,6 +123,29 @@ var RowNodeMusic = cc.Node.extend({
         }
         return false;
     },
+    autoTouchTile: function () {
+        var len = this.list_element.length;
+        for(var i = 0; i < len; ++i) {
+            var element = this.list_element[i];
+            if(element) {
+                if(element.type != GV.TILE_TYPE.UNDEFINED){
+                    element.isTouchSuccess = true;
+                    var touch = {};
+                    var event = {};
+                    touch.getLocation = function () {
+                        return cc.p(
+                            GV.WIN_SIZE.width * 0.5 + this.getPosition().x,
+                            GV.TILE_HEIGHT_TYPE[GV.TILE_TYPE.START] * 0.5
+                        );
+                    }.bind(element);
+                    event.getCurrentTarget = function () {
+                        return this.getChildByTag(this.listenerTag);
+                    }.bind(element);
+                    element.onTouchBeganUI(touch, event);
+                }
+            }
+        }
+    },
     runActionUpAHeight: function (height,callFunc) {
         var ACTION_TIME = 0.5;
         if(height === undefined) {

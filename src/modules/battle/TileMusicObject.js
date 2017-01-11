@@ -13,9 +13,9 @@ var TileMusicObject = cc.Node.extend({
         this.tileSize = cc.size(0, 0);
         this.listenerTag = 2017;
         this._isRequireScale = true;
-        this.extraScore = 3;
+        this.extraScore = 0;
         this.getExtraScore = 0;
-        this.deltaTouchPosY = 100;
+        this.deltaTouchPosY = 90;
         this.listDotScore = [];
         return true;
     },
@@ -98,6 +98,8 @@ var TileMusicObject = cc.Node.extend({
             var minRect = cc.rect(0, 0, this._sprIcon.width * 0.5, this._sprIcon.height * 0.5);
             var offsetRect = cc.rect(10, 10, 10, 10);
             this._sprIcon = new cc.Scale9Sprite(this._sprIcon.getSpriteFrame(), minRect, offsetRect);
+        }
+        if(this.extraScore >= 2) {
             this.createLongTileLightIcon();
         }
         this.addChild(this._sprIcon, GV.ZORDER_LEVEL.GUI);
@@ -297,7 +299,7 @@ var TileMusicObject = cc.Node.extend({
         //increase score
         this.increaseMyScore(1);
         //update icon action
-        if (this.type == GV.TILE_TYPE.NORMAL || this.type == GV.TILE_TYPE.LONG) {
+        if (this.extraScore >= 2) {
             this.createEffectTouchLong(touch, event);
         } else {
             this.fadeOutIcon();
@@ -323,8 +325,12 @@ var TileMusicObject = cc.Node.extend({
         });
         //this._sprTouchSuccess.setScale(0);
         this._sprTouchSuccess.setOpacity(0);
+        this._sprTouchSuccess.setScale(0.5);
         this._sprTouchSuccess.runAction(cc.sequence(
-            cc.fadeTo(ACTION_TIME,150),
+            cc.spawn(
+                cc.fadeTo(ACTION_TIME,100),
+                cc.scaleTo(ACTION_TIME,1)
+            ),
             cc.callFunc(function () {
                 this._sprTouchSuccess.removeFromParent(true);
                 this._sprTouchSuccess = null;
@@ -332,6 +338,9 @@ var TileMusicObject = cc.Node.extend({
         ));
     },
     increaseMyScore: function (num) {
+        if(GV.MODULE_MGR._gameMode == GV.GAME_MODE.AUTO) {
+            //cc.log("increaseMyScore with mode game auto play");
+        }
         if (!num) {
             num = 0;
         }
@@ -376,15 +385,15 @@ var TileMusicObject = cc.Node.extend({
 
     createDotScore: function () {
         this.clearSpriteDot();
-        var space = this.getSize().height * 0.5 / this.extraScore;
-        for (var i = 0; i < this.extraScore; ++i) {
+        var space = this.getSize().height / (this.extraScore + 1);
+        for (var i = 1; i <= this.extraScore; ++i) {
             var sprDot = new cc.Sprite("#dot.png");
             this.addChild(sprDot, this._sprTouchLong.getLocalZOrder() + 1);
             sprDot.attr({
                 anchorX: 0.5,
                 anchorY: 0.5,
                 x: 0,
-                y: space * i
+                y: space * (i + 0.5) - this.getSize().height * 0.5
             });
             //sprDot.setBlendFunc(cc.ONE, cc.ONE);
             this.listDotScore.push(sprDot);
@@ -422,7 +431,7 @@ var TileMusicObject = cc.Node.extend({
                 for (var i = 0; i < len; ++i) {
                     var sprDot = this.listDotScore[i];
                     if (sprDot) {
-                        if (sprDot.y <= this._sprTouchLong.y) {
+                        if (sprDot.y <= (this._sprTouchLong.y + deltaGet)) {
                             this.actionDot(sprDot.y >= (this._sprTouchLong.y - deltaGet), sprDot, i);
                         }
                     }

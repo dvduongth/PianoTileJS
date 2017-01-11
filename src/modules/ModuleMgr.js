@@ -1,7 +1,8 @@
 var ModuleMgr = cc.Class.extend({
     ctor: function(){
-        this._myInfo = null;
-        this._gameState = null;
+        this._myInfo = new MyInfoData();
+        this._gameState = GV.GAME_STATE.START;
+        this._gameMode = GV.GAME_MODE.MANUAL;
         this.resetValues();
         return true;
     },
@@ -13,6 +14,7 @@ var ModuleMgr = cc.Class.extend({
             this._myInfo.myStar = 0;
         }
         this._gameState = GV.GAME_STATE.START;
+        this._gameMode = GV.GAME_MODE.MANUAL;
     },
     showGuiStartBattle: function () {
         if(!this.guiStartBattle){
@@ -64,6 +66,11 @@ var ModuleMgr = cc.Class.extend({
     continueGame: function () {
         var curScene = GV.SCENE_MGR.getCurrentScene();
         curScene.continuePlayGame();
+    },
+    autoPlayGame: function () {
+        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.BATTLE);
+        this.resetValues();
+        this._gameMode = GV.GAME_MODE.AUTO;
     },
     /**
      * @param {Number} numMusicGold

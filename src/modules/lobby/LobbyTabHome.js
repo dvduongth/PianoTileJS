@@ -146,7 +146,8 @@ var LobbyTabHome = BaseGUI.extend({
     onTouchUIEndEvent: function (sender) {
         switch (sender) {
             case this._btnPlay:
-                GV.MODULE_MGR.startGame();
+                //GV.MODULE_MGR.startGame();
+                GV.MODULE_MGR.autoPlayGame();
                 break;
         }
     }

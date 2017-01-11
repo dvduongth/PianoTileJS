@@ -47,6 +47,13 @@ GV.GAME_STATE = {
 /**
  * distant score to require up star level
  * */
-GV.DISTANCE_UP_STAR_LEVEL = 50;
-GV.MOVE_SPEED = 15;
+GV.DISTANCE_UP_STAR_LEVEL = 100;
+GV.MOVE_SPEED = 18;
 GV.MAX_NUM_STAR = 3;
+/**
+ * game mode
+ * */
+GV.GAME_MODE = {
+    AUTO: 1,
+    MANUAL: 2
+};

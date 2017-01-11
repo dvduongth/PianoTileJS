@@ -194,6 +194,15 @@ var SceneBattle = BaseScene.extend({
             y: GV.WIN_SIZE.height + rowNodeMusic.getRowHeight() * 0.5
         });
     },
+    touchDownRow: function () {
+        if (this.list_node_music.length > 0) {
+            var nodeMusic = this.list_node_music[0];
+            if (nodeMusic && !nodeMusic.isTouched) {
+                nodeMusic.isTouched = true;
+                nodeMusic.autoTouchTile();
+            }
+        }
+    },
     deleteDownRow: function () {
         if (this.list_node_music.length > 0) {
             var nodeMusic = this.list_node_music[0];
@@ -248,7 +257,7 @@ var SceneBattle = BaseScene.extend({
         //show game info
         GV.MODULE_MGR.showGuiStartBattle();
         var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
-        GV.MODULE_MGR._gameState = GV.GAME_STATE.START;
+        //GV.MODULE_MGR._gameState = GV.GAME_STATE.START;
         this.createStartState = false;
         //create row tile
         var totalHeightMax = GV.WIN_SIZE.height - minPos;
@@ -300,7 +309,7 @@ var SceneBattle = BaseScene.extend({
         this._super();
         this.loadConfigData();
         this.createStartGameState();
-        this.createEffectBall();
+        //this.createEffectBall();
     },
     onExit: function () {
         this._super();
@@ -391,7 +400,11 @@ var SceneBattle = BaseScene.extend({
             }
             ndObj = this.list_node_music[0];
             if (ndObj) {
-                var minY = -(ndObj.getRowHeight() * 0.5);
+                var floorPosY = ndObj.getRowHeight() * 0.5;
+                if(GV.MODULE_MGR._gameMode == GV.GAME_MODE.AUTO) {
+                    this.touchDownRow();
+                }
+                var minY = -floorPosY;
                 if (ndObj.y <= minY) {
                     this.deleteDownRow();
                 }
@@ -422,7 +435,7 @@ var SceneBattle = BaseScene.extend({
         this._lbScore.visible = true;
         //this._ndStar.visible = false;
         this._lbScore.runAction(Utility.getActionScaleForAppear());
-        this.playEffectBackgroundBall();
+        //this.playEffectBackgroundBall();
     },
     playEffectBackgroundBall: function () {
         if(this._sprEffectBall) {
@@ -451,20 +464,31 @@ var SceneBattle = BaseScene.extend({
                 starIcon.x = -(lineStarWidth - firstStar.width) * 0.5 + (firstStar.width + margin) * i;
             }
         }
-        sprStarIcon.setScale(10);
-        sprStarIcon.runAction(Utility.getActionScaleForAppear2(undefined, function () {
-            var starIcon = new cc.Sprite(res.star_png);
-            this._ndStar.addChild(starIcon);
-            starIcon.setPosition(sprStarIcon.getPosition());
-            this.listStar[this.listStar.length -1] = starIcon;
-            sprStarIcon.removeFromParent(true);
-            this._ndStar.runAction(cc.sequence(
-                cc.delayTime(0.5),
-                cc.fadeOut(1),
+        //sprStarIcon.setScale(10);
+        sprStarIcon["oldPos"] = sprStarIcon.getPosition();
+        sprStarIcon.x = -sprStarIcon.width;
+        sprStarIcon.y = GV.WIN_SIZE.height * 2 / 3 - this._ndStar.y;
+        var ACTION_TIME = 0.2;
+        var action = cc.spawn(
+            cc.fadeIn(ACTION_TIME),
+            cc.sequence(
+                cc.moveTo(ACTION_TIME, sprStarIcon["oldPos"].x, sprStarIcon["oldPos"].y),
                 cc.callFunc(function () {
-                    this._lbScore.visible = true;
+                    var starIcon = new cc.Sprite(res.star_png);
+                    this._ndStar.addChild(starIcon);
+                    starIcon.setPosition(sprStarIcon.getPosition());
+                    this.listStar[this.listStar.length -1] = starIcon;
+                    sprStarIcon.removeFromParent(true);
+                    this._ndStar.runAction(cc.sequence(
+                        cc.delayTime(0.5),
+                        cc.fadeOut(1),
+                        cc.callFunc(function () {
+                            this._lbScore.visible = true;
+                        }.bind(this))
+                    ));
                 }.bind(this))
-            ));
-        }.bind(this)));
+            )
+        );
+        sprStarIcon.runAction(action);
     }
 });
