@@ -71,6 +71,7 @@ var SceneLoading = BaseScene.extend({
     loadTextureDone: function () {
         this.loadPlistTexture();
         this._lbLoading.runAction(Utility.getActionLoading(this._lbLoading, "LOADING"));
+        this.loadBaseContent();
         this.runAction(cc.sequence(
             cc.delayTime(1),
             cc.callFunc(function () {
@@ -84,6 +85,15 @@ var SceneLoading = BaseScene.extend({
                 cc.spriteFrameCache.addSpriteFrames(res[i]);
             }
         }
+    },
+    loadBaseContent: function () {
+        //cc.Texture2D.setDefaultAlphaPixelFormat(cc.Texture2D.PIXEL_FORMAT_RGBA8888);
+        var shader = cc.GLProgram.create("res/base_content/shaderGray.vsh", "res/base_content/shaderGray.fsh");
+        shader.addAttribute(cc.ATTRIBUTE_NAME_POSITION, cc.VERTEX_ATTRIB_POSITION);
+        shader.addAttribute(cc.ATTRIBUTE_NAME_TEX_COORD, cc.VERTEX_ATTRIB_TEX_COORDS);
+        shader.link();
+        shader.updateUniforms();
+        cc.shaderCache.addProgram(shader,"kShaderGrayProgram");
     },
     onEnter:function () {
         this._super();

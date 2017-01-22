@@ -345,3 +345,34 @@ Utility.getActionScaleForAppear2 = function (element_, callFunction) {
         )
     );
 };
+
+Utility.updateColorSprite = function (spriteObj, isGrayMode, isSkipDequeue) {
+    if (!spriteObj) {
+        cc.error("update color sprite with null agr", isGrayMode);
+        return false;
+    }
+    if(spriteObj instanceof cc.Sprite) {
+        var action = false;
+        if (isGrayMode) {
+            if (spriteObj.grayState != GV.ELEMENT_STATE.LOCK) {
+                spriteObj.grayState = GV.ELEMENT_STATE.LOCK;
+                spriteObj.setShaderProgram(cc.shaderCache.getProgram("kShaderGrayProgram"));
+                action = true;
+            }
+        } else if (spriteObj.grayState == GV.ELEMENT_STATE.LOCK) {
+            spriteObj.grayState = GV.ELEMENT_STATE.UNLOCK;
+            spriteObj.setShaderProgram(cc.shaderCache.getProgram("ShaderPositionTextureColor_noMVP"));
+            action = true;
+        }
+        if (isSkipDequeue) {
+            action = false;
+        }
+        if (action) {
+            var listChild = spriteObj.getChildren();
+            var len = listChild.length;
+            for (var i = 0; i < len; ++i) {
+                Utility.updateColorSprite(listChild[i], isGrayMode);
+            }
+        }
+    }
+};

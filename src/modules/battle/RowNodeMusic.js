@@ -128,7 +128,7 @@ var RowNodeMusic = cc.Node.extend({
         for(var i = 0; i < len; ++i) {
             var element = this.list_element[i];
             if(element) {
-                if(element.type != GV.TILE_TYPE.UNDEFINED){
+                if(element.type != GV.TILE_TYPE.UNDEFINED && (!element.isTouchSuccess)){
                     element.isTouchSuccess = true;
                     var touch = {};
                     var event = {};

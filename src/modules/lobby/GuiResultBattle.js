@@ -356,6 +356,7 @@ var GuiResultBattle = BaseGUI.extend({
         this.myStar = data.myStar;
         this.updateNumStar(this.myStar);
         this.setScoreText(Utility.numToStr(this.curScore));
+        this.setMusicTitleText(GV.MODULE_MGR._curSong["mName"]);
     },
     /**
      * show gui

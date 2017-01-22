@@ -6,7 +6,7 @@ var MusicTableView = CustomTableView.extend({
 
     ctor: function (colNum, contentSizeWidth, contentSizeHeight, direction, marginLeft, marginRight, marginTop, marginBottom) {
         this._super(colNum, contentSizeWidth, contentSizeHeight, direction, marginLeft, marginRight, marginTop, marginBottom);
-        this._cellHeight = GV.WIN_SIZE.height * 0.25;
+        this._cellHeight = GV.WIN_SIZE.height * 0.15;
     },
 
     tableCellSizeForIndex: function (table, idx) {
@@ -28,14 +28,19 @@ var MusicTableView = CustomTableView.extend({
         return cell;
     },
     tableCellTouched: function (table, cell) {
-        cc.log("touch here", cell.getIdx());
-        var cb = {};
-        cb["caller"] = GV.MODULE_MGR;
-        cb["funcName"] = GV.MODULE_MGR.startGame;
-        cb["args"] = [];
-        var listButton = [{btnName: 'ok',btnTitle:"PLAY", hide: true, callback: cb}];
-        var content = {"title": "THÔNG BÁO", "text": "Bạn muốn chơi bài " + (cell.getIdx() + 1) + "?"};
-        GV.POPUP_MGR.showPopup(content, listButton, true);
+        var i = Math.floor(cell.getIdx());
+        var cb;
+        if(this.functionTouch) {
+            if(!this.functionTouch["funcName"]){
+                cb = {};
+                cb["funcName"] = this.functionTouch;
+                cb["caller"] = null;
+            }else{
+                cb = this.functionTouch;
+            }
+            cb["args"] = [this._elementList[i]];
+            Utility.executeFunction(cb);
+        }
     }
 });
 
@@ -112,7 +117,7 @@ var MusicElement = BaseGUI.extend({
         });
     },
     createLabelNumberGold: function () {
-        this._lbNumberGold = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("black"), true, true);
+        this._lbNumberGold = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 28, Utility.getColorByName("black"), true, true);
         this._btnElement.addChild(this._lbNumberGold, GV.ZORDER_LEVEL.GUI);
         this._lbNumberGold.setString("2.017");
         this._lbNumberGold.attr({
@@ -135,7 +140,7 @@ var MusicElement = BaseGUI.extend({
         var widthIconStar = 0;
         var marginLeft = 10;
         for(var i = 0; i < GV.MAX_NUM_STAR; ++i) {
-            this["_sprStar_" + i] = new cc.Sprite("#star.png");
+            this["_sprStar_" + i] = new cc.Sprite("#r_icon_star_inactive.png");
             this._ndStar.addChild(this["_sprStar_" + i]);
             this.listStarIcon.push(this["_sprStar_" + i]);
             var ratioScale = this.sizeIconStar / this["_sprStar_" + i].width;
@@ -164,9 +169,9 @@ var MusicElement = BaseGUI.extend({
             });
             this._btnElement.setSwallowTouches(false);
             //config size
-            this.sizeIconMusic = this.contentSize.width / 8;
-            this.sizeIconGoldGift = this.contentSize.width / 10;
-            this.sizeIconStar = this.contentSize.width / 8;
+            this.sizeIconMusic = this.contentSize.height >> 1;
+            this.sizeIconGoldGift = this.contentSize.height >> 2;
+            this.sizeIconStar = this.contentSize.height >> 2;
         }
     },
     createBackground: function () {
@@ -184,14 +189,14 @@ var MusicElement = BaseGUI.extend({
         });
     },
     createLabelMusicTitle: function () {
-        this._lbMusicTitle = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 48, Utility.getColorByName("black"), true, true);
+        this._lbMusicTitle = Utility.getLabel(res.FONT_FUTURA_CONDENSED, 32, Utility.getColorByName("black"), true, true);
         this._btnElement.addChild(this._lbMusicTitle, GV.ZORDER_LEVEL.GUI);
         this._lbMusicTitle.setString("Ngay Tet Que Em");
         this._lbMusicTitle.attr({
             anchorX: 0.5,
             anchorY: 1,
             x: this.contentSize.width >> 1,
-            y: this.contentSize.height - 15
+            y: this.contentSize.height - 5
         });
     },
     onTouchUIEndEvent: function (sender) {
@@ -202,5 +207,63 @@ var MusicElement = BaseGUI.extend({
             return false;
         }
         this._data = info;
+        this.mId = info.mId;
+        this.enableState = this._data.mState == GV.ELEMENT_STATE.UNLOCK;
+        this._btnElement.enabled = this.enableState;
+        this.setMusicTitle(this._data.mName);
+        this.setGoldInfo(this._data.mGold);
+        if(this.enableState) {
+            this.setStarInfo(this._data.mStar);
+        }else{
+            this.resetStarView();
+        }
+        this.updateState();
+    },
+    setMusicTitle: function (mName) {
+        if(!mName) {
+            mName = "";
+            this._data.mName = mName;
+        }
+        this._lbMusicTitle.setString(mName);
+    },
+    setGoldInfo: function (mGold) {
+        if(!mGold) {
+            mGold = 0;
+            this._data.mGold = mGold;
+        }
+        this._lbNumberGold.setString(Utility.numToStr(mGold));
+    },
+    resetStarView: function () {
+        var len = this.listStarIcon.length;
+        for(var i = 0; i < len; ++i) {
+            this.listStarIcon[i].removeAllChildren();
+        }
+    },
+    setStarInfo: function (mStar) {
+        if(!mStar) {
+            mStar = 0;
+            this._data.mStar = mStar;
+        }
+        this.resetStarView();
+        for(var i = 0; i < mStar; ++i) {
+            var sprLightStar = new cc.Sprite("#r_icon_star_highlight.png");
+            var parent = this.listStarIcon[i];
+            parent.addChild(sprLightStar);
+            sprLightStar.attr({
+                anchorX: 0.5,
+                anchorY: 0.5,
+                x: 0.5 * parent.width,
+                y: 0.5 * parent.height
+            });
+        }
+    },
+    updateState: function () {
+        Utility.updateColorSprite(this._sprBg, !this.enableState);
+        Utility.updateColorSprite(this._sprIconMusic, !this.enableState);
+        Utility.updateColorSprite(this._sprIconGoldGift, !this.enableState);
+        //var len = this.listStarIcon.length;
+        //for(var i = 0; i <len; ++i) {
+        //    Utility.updateColorSprite(this.listStarIcon[i], !this.enableState);
+        //}
     }
 });

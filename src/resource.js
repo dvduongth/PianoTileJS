@@ -23,9 +23,13 @@ var res = {
     bg_red_bag_open_png: "res/resource/UIPlist/bg_red_bag_open.png",
     xmas_title_bg_png: "res/resource/UIBgEffect/holiday/xmas_title_bg.png",
     banner_first_charge_png: "res/resource/UIPause/banner_first_charge.png",
+    listening_png: "res/resource/GameImage/listening.png",
+    stop_png: "res/resource/GameImage/stop.png",
+
 
     //plist
     plist_1: "res/plist/1.plist",
+    plist_little_star: "res/resource/UIPlist/Plist_littlestar.plist",
     plist_resource: "res/resource/UIPlist/Plist_resource.plist",
     plist_band: "res/resource/UIPlist/Plist_band.plist",
     plist_content: "res/resource/UIPlist/Plist_content.plist",

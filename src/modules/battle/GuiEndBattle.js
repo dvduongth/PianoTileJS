@@ -288,7 +288,7 @@ var GuiEndBattle = BaseGUI.extend({
             var func = function (i) {
                 if(i == 0 ) {
                     this.hideGui();
-                    this.returnCity();
+                    GV.MODULE_MGR.returnCity(true);
                     return false;
                 }
                 this._lbLabelTime.setString(Utility.numToStr(i));
@@ -323,16 +323,12 @@ var GuiEndBattle = BaseGUI.extend({
         switch (sender) {
             case this._btnClose:
                 this.hideGui();
-                this.returnCity();
+                GV.MODULE_MGR.returnCity(true);
                 break;
             case this._btnContinue:
                 this.hideGui();
                 GV.MODULE_MGR.continueGame();
                 break;
         }
-    },
-    returnCity: function () {
-        GV.SCENE_MGR.viewSceneById(GV.SCENE_IDS.LOBBY);
-        GV.MODULE_MGR.showGuiResultBattle();
     }
 });

@@ -8,8 +8,11 @@ var GuiStartBattle = BaseGUI.extend({
             width: GV.WIN_SIZE.width,
             height: GV.WIN_SIZE.height * 0.25
         };
-        this.marginLeftIcon = 30;
+        this.marginLeftIcon = 20;
         this.marginLeftText = 100;
+        var sz = this.BACK_GROUND_SIZE.height * 5 / 8;
+        this.sizeAutoPlay = cc.size(sz,sz);
+        this.sizeIcon = 60;
         this.initGui();
     },
 
@@ -18,11 +21,46 @@ var GuiStartBattle = BaseGUI.extend({
         this.createNoticeTitleInfo();
         this.createMusicTitleInfo();
         this.createBestScoreInfo();
-
+        this.createButtonAutoPlay();
+        //sync all children
+        this.syncAllChildren();
         //update view
         this._rootNode = this;
         this._rootNode.visible = false;
         this._rootNode.retain();
+    },
+    createButtonAutoPlay: function () {
+        this._btnAutoPlay = Utility.getButton("_btnAutoPlay", this.sizeAutoPlay);
+        this.addChild(this._btnAutoPlay, GV.ZORDER_LEVEL.GUI);
+        this._btnAutoPlay.attr({
+            anchorX: 0.5,
+            anchorY: 0.5,
+            x: (this.BACK_GROUND_SIZE.width - this.sizeAutoPlay.width) * 0.5 - 10,
+            y: this.BACK_GROUND_SIZE.height * 0.5
+        });
+        //bg icon
+        this._bgAutoPlay = new cc.Sprite(res.listening_png);
+        this._bgAutoPlay.setBlendFunc(cc.ONE, cc.ONE_MINUS_SRC_ALPHA);
+        this._btnAutoPlay.addChild(this._bgAutoPlay, GV.ZORDER_LEVEL.BG);
+        this._bgAutoPlay.attr({
+            anchorX: 0,
+            anchorY: 0,
+            x: 0,
+            y: 0
+        });
+        var ratioWidth = this.sizeAutoPlay.width / this._bgAutoPlay.width;
+        var ratioHeight = this.sizeAutoPlay.height / this._bgAutoPlay.height;
+        this._bgAutoPlay.setScale(ratioWidth, ratioHeight);
+        //text
+        //this._lbAutoPlay = Utility.getLabel("Helvetica", 24, Utility.getColorByName("blue"), true,true);
+        //this._lbAutoPlay.setString("NGHE THỬ");
+        //this._btnAutoPlay.addChild(this._lbAutoPlay, GV.ZORDER_LEVEL.GUI);
+        //this._lbAutoPlay.attr({
+        //    anchorX: 0.5,
+        //    anchorY: 0.5,
+        //    x: 0.5 * this.sizeAutoPlay.width,
+        //    y: 0.5 * this.sizeAutoPlay.height
+        //});
     },
     getGuiHeight: function () {
         return this.BACK_GROUND_SIZE.height;
@@ -36,6 +74,7 @@ var GuiStartBattle = BaseGUI.extend({
             x: this.marginLeftIcon - GV.WIN_SIZE.width * 0.5,
             y: y
         });
+        icon.setScale(this.sizeIcon / icon.width);
         return icon;
     },
     createBackground: function () {
@@ -61,7 +100,7 @@ var GuiStartBattle = BaseGUI.extend({
         this.createNoticeText();
     },
     createNoticeIcon: function () {
-        this._sprNoticeIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 5 / 7);
+        this._sprNoticeIcon = this.createLeftIcon("#icon_star_gp.png", this.BACK_GROUND_SIZE.height * 5 / 7);
     },
     createNoticeText: function () {
         //notice text
@@ -84,7 +123,7 @@ var GuiStartBattle = BaseGUI.extend({
         this.createMusicTitleText();
     },
     createMusicTileIcon: function () {
-        this._sprMusicTileIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 3 / 7);
+        this._sprMusicTileIcon = this.createLeftIcon("#sound_quality.png", this.BACK_GROUND_SIZE.height * 3 / 7);
     },
     createMusicTitleText: function () {
         //music title text
@@ -106,7 +145,7 @@ var GuiStartBattle = BaseGUI.extend({
         this.createBestScoreText();
     },
     createBestScoreIcon: function () {
-        this._sprBestScoreIcon = this.createLeftIcon("#icon_band_loadingsuc_ubody.png", this.BACK_GROUND_SIZE.height * 1 / 7);
+        this._sprBestScoreIcon = this.createLeftIcon("#icon_crown_card.png", this.BACK_GROUND_SIZE.height * 1 / 7);
     },
     createBestScoreText: function () {
         //best score text
@@ -122,7 +161,8 @@ var GuiStartBattle = BaseGUI.extend({
 
     },
     /**
-     * set info
+     * set info is object with properties: notice, music, score
+     * eg: {notice: "nhac nho", music: "tet den roi", score: 2017}
      * */
     setInfo: function (data) {
         if(!data) {
@@ -158,8 +198,18 @@ var GuiStartBattle = BaseGUI.extend({
     showGui: function (eff) {
         if(!this.isShowGui()) {
             this._rootNode.setPosition(GV.WIN_SIZE.width >> 1, 0);
+            this.updateInfo();
             this._super(eff);
+            this.updateActionButtonAutoPlay();
         }
+    },
+    updateInfo: function () {
+        var data = {
+            "notice":"Best With Headphones",
+            "music": GV.MODULE_MGR._curSong["mName"],
+            "score": GV.MODULE_MGR._myInfo["bestScore"]
+        };
+        this.setInfo(data);
     },
     /**
      * hide gui
@@ -177,5 +227,24 @@ var GuiStartBattle = BaseGUI.extend({
     },
     isShowGui: function () {
         return this._rootNode.visible;
+    },
+    onTouchUIEndEvent: function (sender) {
+        switch (sender) {
+            case this._btnAutoPlay:
+                this._btnAutoPlay.stopAllActions();
+                this._btnAutoPlay.enabled = false;
+                GV.MODULE_MGR.autoPlayGame();
+                break;
+        }
+    },
+    updateActionButtonAutoPlay: function () {
+        this._btnAutoPlay.enabled = true;
+        this._btnAutoPlay.stopAllActions();
+        var ACTION_TIME = 1;
+        this._btnAutoPlay.runAction(cc.sequence(
+            cc.delayTime(0.1),
+            cc.scaleTo(ACTION_TIME * 0.2, 1.05),
+            cc.scaleTo(ACTION_TIME * 0.8, 0.95)
+        ).repeatForever());
     }
 });

@@ -288,13 +288,12 @@ var TileMusicObject = cc.Node.extend({
             this.lbStart = null;
         }
         //hide bottom info if has
-        if (!this.isHidePopup) {
-            this.isHidePopup = true;
+        if (GV.MODULE_MGR.guiStartBattle.isShowGui()) {
             GV.MODULE_MGR.guiStartBattle.hideGui();
         }
         //update game state
         GV.MODULE_MGR._gameState = GV.GAME_STATE.RUNNING;
-        GV.SCENE_MGR.getCurrentScene().isRequireUpSpeed = true;
+        GV.SCENE_MGR.getCurrentScene().isRequireUpStar = true;
         this.isTouchSuccess = true;
         //increase score
         this.increaseMyScore(1);
@@ -340,6 +339,7 @@ var TileMusicObject = cc.Node.extend({
     increaseMyScore: function (num) {
         if(GV.MODULE_MGR._gameMode == GV.GAME_MODE.AUTO) {
             //cc.log("increaseMyScore with mode game auto play");
+            return 0;
         }
         if (!num) {
             num = 0;
@@ -431,6 +431,9 @@ var TileMusicObject = cc.Node.extend({
                 for (var i = 0; i < len; ++i) {
                     var sprDot = this.listDotScore[i];
                     if (sprDot) {
+                        if(sprDot.actionState == GV.ACTION_STATE.RUNNING) {
+                            sprDot.y += GV.SCENE_MGR.getCurrentScene().curSpeed;
+                        }
                         if (sprDot.y <= (this._sprTouchLong.y + deltaGet)) {
                             this.actionDot(sprDot.y >= (this._sprTouchLong.y - deltaGet), sprDot, i);
                         }
@@ -442,29 +445,35 @@ var TileMusicObject = cc.Node.extend({
     actionDot: function (isGet, sprDot, i) {
         this.getExtraScore++;
         if (isGet) {
-            sprDot.setTexture(res.dot_light_png);
-            var actionTime = 0.1;
-            var animation = new cc.Animation();
-            animation.addSpriteFrameWithFile(res.circle_light_png);
-            animation.addSpriteFrameWithFile(res.glow_png);
-            animation.setDelayPerUnit(actionTime * 0.5);
-            animation.setRestoreOriginalFrame(true);
-            var action = cc.animate(animation);
-            //run action
-            sprDot.setCascadeOpacityEnabled(true);
-            sprDot.runAction(cc.sequence(
-                action,
-                cc.callFunc(function () {
-                    sprDot.removeFromParent(true);
-                })
-            ));
-            this.actionGetDot();
+            if(sprDot.actionState != GV.ACTION_STATE.RUNNING) {
+                sprDot.actionState = GV.ACTION_STATE.RUNNING;
+                sprDot.setTexture(res.dot_light_png);
+                var actionTime = 0.1;
+                var animation = new cc.Animation();
+                animation.addSpriteFrameWithFile(res.circle_light_png);
+                animation.addSpriteFrameWithFile(res.glow_png);
+                animation.setDelayPerUnit(actionTime * 0.5);
+                animation.setRestoreOriginalFrame(true);
+                var action = cc.animate(animation);
+                //run action
+                sprDot.setCascadeOpacityEnabled(true);
+                sprDot.runAction(cc.sequence(
+                    action,
+                    cc.callFunc(function () {
+                        sprDot.removeFromParent(true);
+                        //clear data
+                        this.listDotScore[i] = null;
+                        this.listDotScore.splice(i, 1);
+                    }.bind(this))
+                ));
+                this.actionGetDot();
+            }
         } else {
             sprDot.removeFromParent(true);
+            //clear data
+            this.listDotScore[i] = null;
+            this.listDotScore.splice(i, 1);
         }
-        //clear data
-        this.listDotScore[i] = null;
-        this.listDotScore.splice(i, 1);
     },
     /**
      * to do action get dot here

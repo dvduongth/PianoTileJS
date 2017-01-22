@@ -30,12 +30,11 @@ var LobbyTabMusic = BaseGUI.extend({
                 x: (this.BACK_GROUND_SIZE.width - this.tableViewMusicSize.width) * 0.5,
                 y: 0
             });
+            this.musicTableView.setTouchEventListener(this.onTouchItemMusic.bind(this));
         }
-        var arr = [];
-        for (var i = 0; i < 10; ++i) {
-            arr.push(i +"");
-        }
-        this.musicTableView.setElementList(arr);
+    },
+    updateListMusic: function (list) {
+        this.musicTableView.setElementList(list);
     },
     createBackground: function () {
         //background
@@ -66,5 +65,28 @@ var LobbyTabMusic = BaseGUI.extend({
         //switch (sender) {
         //
         //}
+    },
+    /**
+     * @param {object} data: with properties {mId, mName, mGold, mStar, mState}
+     * */
+    onTouchItemMusic: function (data) {
+        if(!data || data.mState == GV.ELEMENT_STATE.LOCK) {
+            GV.MODULE_MGR.showPopup("Mở khóa để chơi bài này");
+            return false;
+        }
+        GV.MODULE_MGR._curSong = data;
+        /**
+         * to do anything here
+         * */
+        var cb = {};
+        cb["caller"] = GV.MODULE_MGR;
+        cb["funcName"] = GV.MODULE_MGR.startGame;
+        cb["args"] = [];
+        var listButton = [{btnName: 'ok',btnTitle:"PLAY", hide: true, callback: cb}];
+        var content = {"title": "THÔNG BÁO", "text": "Bạn muốn chơi bài \n" + data.mName + "?"};
+        GV.POPUP_MGR.showPopup(content, listButton, true);
+        GV.CUR_CONTENT_OFFSET = this.musicTableView.getContentOffset();
+        GV.MODULE_MGR.requireSaveOldContentOffset = GV.TAB_LOBBY_INDEX.MUSIC;
+        GV.MODULE_MGR.curTabLobby = GV.TAB_LOBBY_INDEX.MUSIC;
     }
 });

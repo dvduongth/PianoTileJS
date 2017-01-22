@@ -45,8 +45,6 @@ var SceneLobby = BaseScene.extend({
             }
             this._pageView.addPage(layout);
         }
-        this._pageView.setCurPageIndex(0);
-        this._checkCurrentTab();
     },
     createPageView: function () {
         this.sizePageView = cc.size(
@@ -72,19 +70,19 @@ var SceneLobby = BaseScene.extend({
     _createTabGuiForIndex: function (index) {
         var guiObj = null;
         switch (index) {
-            case 0:
+            case GV.TAB_LOBBY_INDEX.HOME:
                 if (!this.lobbyTabHome) {
                     this.lobbyTabHome = new LobbyTabHome(this.sizePageView);
                 }
                 guiObj = this.lobbyTabHome;
                 break;
-            case 1:
+            case GV.TAB_LOBBY_INDEX.MUSIC:
                 if (!this.lobbyTabMusic) {
                     this.lobbyTabMusic = new LobbyTabMusic(this.sizePageView);
                 }
                 guiObj = this.lobbyTabMusic;
                 break;
-            case 2:
+            case GV.TAB_LOBBY_INDEX.SETTING:
                 if (!this.lobbyTabSetting) {
                     this.lobbyTabSetting = new LobbyTabSetting(this.sizePageView);
                 }
@@ -347,8 +345,27 @@ var SceneLobby = BaseScene.extend({
             y: this.sizeButtonTop.height >> 1
         });
     },
+    setCurTabView: function () {
+        this._pageView.setCurPageIndex(GV.MODULE_MGR.curTabLobby);
+        this._checkCurrentTab();
+        GV.MODULE_MGR.curTabLobby = GV.TAB_LOBBY_INDEX.HOME;
+    },
     onEnter: function () {
         this._super();
+        GV.MODULE_MGR.updateListMusicTabHome([]);
+        GV.MODULE_MGR.updateListMusicTabMusic([]);
+        this.schedule(this.update.bind(this), 0.04);
+        switch (GV.MODULE_MGR.requireSaveOldContentOffset){
+            case GV.TAB_LOBBY_INDEX.HOME:
+                this.lobbyTabHome.musicTableView.setContentOffset(GV.CUR_CONTENT_OFFSET);
+                break;
+            case GV.TAB_LOBBY_INDEX.MUSIC:
+                this.lobbyTabMusic.musicTableView.setContentOffset(GV.CUR_CONTENT_OFFSET);
+                break;
+        }
+        GV.MODULE_MGR.requireSaveOldContentOffset = false;
+        this.setCurTabView();
+        GV.MODULE_MGR.updateCurrentMusicTabHome(GV.MODULE_MGR._curSong);
     },
     onExit: function () {
         this._super();
@@ -364,15 +381,15 @@ var SceneLobby = BaseScene.extend({
             break;
 
             case this._btnTabHome:
-                this._pageView.setCurPageIndex(0);
+                this._pageView.setCurPageIndex(GV.TAB_LOBBY_INDEX.HOME);
                 this._checkCurrentTab();
                 break;
             case this._btnTabMusic:
-                this._pageView.setCurPageIndex(1);
+                this._pageView.setCurPageIndex(GV.TAB_LOBBY_INDEX.MUSIC);
                 this._checkCurrentTab();
                 break;
             case this._btnTabSetting:
-                this._pageView.setCurPageIndex(2);
+                this._pageView.setCurPageIndex(GV.TAB_LOBBY_INDEX.SETTING);
                 this._checkCurrentTab();
                 break;
 
@@ -382,15 +399,15 @@ var SceneLobby = BaseScene.extend({
     _checkCurrentTab: function () {
         var index = this._pageView.getCurPageIndex();
         //tab 0 _btnTabHome
-        enable = index != 0;
+        enable = index != GV.TAB_LOBBY_INDEX.HOME;
         this._btnTabHome.enabled = enable;
         this.setBrightBottomTabButton("Home", enable);
         //tab 1 _btnTabMusic
-        var enable = index != 1;
+        var enable = index != GV.TAB_LOBBY_INDEX.MUSIC;
         this._btnTabMusic.enabled = enable;
         this.setBrightBottomTabButton("Music", enable);
         //tab 2 _btnTabSetting
-        enable = index != 2;
+        enable = index != GV.TAB_LOBBY_INDEX.SETTING;
         this._btnTabSetting.enabled = enable;
         this.setBrightBottomTabButton("Setting", enable);
     },
@@ -434,6 +451,9 @@ var SceneLobby = BaseScene.extend({
             this["_lbTab" + type].setColor(Utility.getColorByName("blue"));
             this["_lbTab" + type].setFontSize(28);
         }
+    },
+    update: function (dt) {
+        this.lobbyTabHome.update(dt);
     }
 });
 

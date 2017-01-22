@@ -65,6 +65,13 @@ var CustomTableView = cc.Layer.extend({
             this.reloadData(true);
         }
     },
+    setViewSize: function (width, height) {
+        if (this._tableView) {
+            this._tableView.setViewSize(cc.size(width, height));
+            this._contentSizeWidth = width;
+            this._contentSizeHeight = height;
+        }
+    },
     setOtherDefaultValues: function () {
         this.anchorX = 0.0;
         this.anchorY = 0.0;
@@ -72,6 +79,7 @@ var CustomTableView = cc.Layer.extend({
         this._elementHeight = 100;
         this._cellHeight = 100;
         this._cellNum = Math.ceil(this.getNumberOfElement() / this._colNum);
+        this.functionTouch = null;
     },
 
     setElementList: function (listItem_) {
@@ -106,6 +114,12 @@ var CustomTableView = cc.Layer.extend({
     //        for
     //    }
     //},
+    getContentOffset: function () {
+        return this._tableView.getContentOffset();
+    },
+    getTableSize: function () {
+        return this._tableView.getContentSize();
+    },
 
     reloadData: function (isKeepOffset, isScrollToEndView, isAnimate) {
         //get old offset
@@ -161,7 +175,12 @@ var CustomTableView = cc.Layer.extend({
             }
         }
     },
-
+    setContentOffset: function (contentOffset, isAnimate) {
+        if(!contentOffset) {
+            contentOffset = cc.p(0, 0);
+        }
+        this._tableView.setContentOffset(contentOffset, isAnimate);
+    },
     scrollToBottom: function (isAnimate) {
         if (this.getNumberCell() * this._cellHeight < this._contentSizeHeight) {
             return false;
@@ -178,6 +197,10 @@ var CustomTableView = cc.Layer.extend({
     scrollViewDidScroll: function (view) {
     },
     scrollViewDidZoom: function (view) {
+    },
+
+    setTouchEventListener: function (func) {
+        this.functionTouch = func;
     },
 
     tableCellTouched: function (table, cell) {

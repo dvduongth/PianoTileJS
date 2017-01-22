@@ -16,7 +16,11 @@ GV.ZORDER_LEVEL = {
     CURSOR: 500
 };
 GV.POPUP_MGR = null;
-
+GV.TAB_LOBBY_INDEX = {
+    HOME: 0,
+    MUSIC: 1,
+    SETTING: 2
+};
 GV.NUM_COL = 4;
 GV.TILE_TYPE = {
     UNDEFINED: -1,
@@ -25,6 +29,7 @@ GV.TILE_TYPE = {
     NORMAL: 2,
     LONG: 3
 };
+GV.CUR_CONTENT_OFFSET = cc.p(0,0);
 /**
  * GV.TILE_HEIGHT_TYPE with values of GV.WIN_SIZE.height percent number
  * and calculate in main.js file on function cc.game.onStart
@@ -33,8 +38,8 @@ GV.TILE_HEIGHT_TYPE = {
     "-1": 25,
     "0": 25,
     "1": 25,
-    "2": 35,
-    "3": 50
+    "2": 70,
+    "3": 120
 };
 /**
  * game state
@@ -47,8 +52,8 @@ GV.GAME_STATE = {
 /**
  * distant score to require up star level
  * */
-GV.DISTANCE_UP_STAR_LEVEL = 100;
-GV.MOVE_SPEED = 18;
+GV.DISTANCE_UP_STAR_LEVEL = 50;
+GV.MOVE_SPEED = 25;
 GV.MAX_NUM_STAR = 3;
 /**
  * game mode
@@ -56,4 +61,12 @@ GV.MAX_NUM_STAR = 3;
 GV.GAME_MODE = {
     AUTO: 1,
     MANUAL: 2
+};
+GV.ELEMENT_STATE = {
+    LOCK: 0,
+    UNLOCK: 1
+};
+GV.ACTION_STATE = {
+    FREEDOM: 1,
+    RUNNING: 2
 };

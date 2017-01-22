@@ -10,14 +10,16 @@ var SceneBattle = BaseScene.extend({
         this.listCloneConfigData = [];
         this.list_node_music = [];
         this.marginTop = 0;
-        this.createStartState = false;
-        this.isRequireUpSpeed = false;
+        //this.createStartState = false;
+        this.isRequireUpStar = false;
         this.starLevel = 0;
-        this.upSpeedDelta = 1;
+        this.upSpeedDelta = 5;
         this.moveSpeed = GV.MOVE_SPEED;
         this.curSpeed = this.moveSpeed;
         this.distanceUpStar = GV.DISTANCE_UP_STAR_LEVEL;
         this.listStar = [];
+        var sz = GV.WIN_SIZE.height * 0.25 * 5 / 8;
+        this.sizeStopAutoPlay = cc.size(sz,sz);
         this.initGui();
         return true;
     },
@@ -28,8 +30,16 @@ var SceneBattle = BaseScene.extend({
         this.createTextScore();
         //node star
         this.createNodeStar();
+        //node stop auto play
+        this.createButtonStopAutoPlay();
         //set schedule update
-        this.schedule(this.update);
+        this.syncAllChildren();
+        this.schedule(this.update.bind(this));
+        this.showButtonStopAutoPlay(false);
+    },
+    showButtonStopAutoPlay: function (isShow) {
+        this._btnStopAutoPlay.visible = isShow;
+        this._btnStopAutoPlay.enabled = isShow;
     },
     /**
      * purpose to get list config row
@@ -101,6 +111,7 @@ var SceneBattle = BaseScene.extend({
             cc.error("config data is not exist");
             return null;
         }
+        cc.log("clone list");
         var len = this.listCloneConfigData.length;
         if(len > 0) {
             this.listCloneConfigData.splice(0);
@@ -181,18 +192,37 @@ var SceneBattle = BaseScene.extend({
         this.nextRow();
     },
     nextRow: function () {
+        if(this.listCloneConfigData.length <= 0) {
+            this.endListSong();
+            return false;
+        }
         var rowNodeMusic = new RowNodeMusic();
         this.addChild(rowNodeMusic, GV.ZORDER_LEVEL.GUI);
         this.list_node_music.push(rowNodeMusic);
-        if(this.listCloneConfigData.length <= 0) {
-            this.cloneDataFromListDataConfig(true);
-        }
         rowNodeMusic.setInfo({"list_type": this.listCloneConfigData[0]});
         this.listCloneConfigData.splice(0, 1);
         rowNodeMusic.attr({
             x: GV.WIN_SIZE.width * 0.5,
             y: GV.WIN_SIZE.height + rowNodeMusic.getRowHeight() * 0.5
         });
+    },
+    endListSong: function(){
+        if(this.list_node_music.length <= 1) {
+            if(this._rootNode.endSongState != GV.ACTION_STATE.RUNNING) {
+                this._rootNode.endSongState = GV.ACTION_STATE.RUNNING;
+                this._rootNode.runAction(cc.sequence(
+                    cc.delayTime(3),
+                    cc.callFunc(function () {
+                        this.cloneDataFromListDataConfig(true);
+                        this.nextRow();
+                        this.upSpeed();
+                    }.bind(this))
+                ));
+                this.actionEndSong();
+            }
+        }else{
+            this._rootNode.endSongState = GV.ACTION_STATE.FREEDOM;
+        }
     },
     touchDownRow: function () {
         if (this.list_node_music.length > 0) {
@@ -254,11 +284,9 @@ var SceneBattle = BaseScene.extend({
     },
     createStartGameState: function () {
         this.cloneDataFromListDataConfig();
-        //show game info
-        GV.MODULE_MGR.showGuiStartBattle();
         var minPos = GV.MODULE_MGR.guiStartBattle.getGuiHeight();
         //GV.MODULE_MGR._gameState = GV.GAME_STATE.START;
-        this.createStartState = false;
+        //this.createStartState = false;
         //create row tile
         var totalHeightMax = GV.WIN_SIZE.height - minPos;
         this.createListNodeMusic();
@@ -316,7 +344,6 @@ var SceneBattle = BaseScene.extend({
     },
     onEnterTransitionDidFinish: function () {
         this._super();
-        //GV.MODULE_MGR._gameState = GV.GAME_STATE.RUNNING;
     },
     update: function (dt) {
         this._super(dt);
@@ -353,9 +380,9 @@ var SceneBattle = BaseScene.extend({
             this._lbScore.setString(Utility.numToStr(this.curScore));
             this.playEffectScore();
         }
-        if (this.isRequireUpSpeed && (myScore % this.distanceUpStar == 0)) {
-            this.isRequireUpSpeed = false;
-            this.upSpeed();
+        if (this.isRequireUpStar && (myScore % this.distanceUpStar == 0)) {
+            this.isRequireUpStar = false;
+            this.upStar();
         }
     },
     updateMoveSpeed: function (dt) {
@@ -402,7 +429,9 @@ var SceneBattle = BaseScene.extend({
             if (ndObj) {
                 var floorPosY = ndObj.getRowHeight() * 0.5;
                 if(GV.MODULE_MGR._gameMode == GV.GAME_MODE.AUTO) {
-                    this.touchDownRow();
+                    if (ndObj.y <= floorPosY) {
+                        this.touchDownRow();
+                    }
                 }
                 var minY = -floorPosY;
                 if (ndObj.y <= minY) {
@@ -412,15 +441,26 @@ var SceneBattle = BaseScene.extend({
         }
     },
     upSpeed: function () {
+        if(GV.MODULE_MGR._gameMode == GV.GAME_MODE.AUTO) {
+            //cc.log("increaseMyScore with mode game auto play");
+            return 0;
+        }
+        this.moveSpeed += this.upSpeedDelta;
+        cc.error("up speed");
+    },
+    upStar: function () {
+        if(GV.MODULE_MGR._gameMode == GV.GAME_MODE.AUTO) {
+            //cc.log("increaseMyScore with mode game auto play");
+            return 0;
+        }
         if(this.starLevel >= GV.MAX_NUM_STAR) {
             cc.log("get max star: ", this.starLevel, " STAR");
             return false;
         }
-        this.moveSpeed += this.upSpeedDelta;
         this.starLevel++;
         this.distanceUpStar *= 4;//up difficult hard core
         this.playEffectUpStar();
-        cc.error("up speed");
+        cc.error("up star");
     },
     resetValues: function () {
         this.moveSpeed = GV.MOVE_SPEED;
@@ -490,5 +530,49 @@ var SceneBattle = BaseScene.extend({
             )
         );
         sprStarIcon.runAction(action);
+    },
+    createButtonStopAutoPlay: function () {
+        this._btnStopAutoPlay = Utility.getButton("_btnStopAutoPlay", this.sizeStopAutoPlay);
+        this.addChild(this._btnStopAutoPlay, GV.ZORDER_LEVEL.CURSOR);
+        this._btnStopAutoPlay.attr({
+            anchorX: 0.5,
+            anchorY: 0,
+            x: GV.WIN_SIZE.width >> 1,
+            y: 10
+        });
+        //bg icon
+        this._bgStopAutoPlay = new cc.Sprite(res.stop_png);
+        this._bgStopAutoPlay.setBlendFunc(cc.ONE, cc.ONE_MINUS_SRC_ALPHA);
+        this._btnStopAutoPlay.addChild(this._bgStopAutoPlay, GV.ZORDER_LEVEL.BG);
+        this._bgStopAutoPlay.attr({
+            anchorX: 0,
+            anchorY: 0,
+            x: 0,
+            y: 0
+        });
+        var ratioWidth = this.sizeStopAutoPlay.width / this._bgStopAutoPlay.width;
+        var ratioHeight = this.sizeStopAutoPlay.height / this._bgStopAutoPlay.height;
+        this._bgStopAutoPlay.setScale(ratioWidth, ratioHeight);
+        //text
+        //this._lbStopAutoPlay = Utility.getLabel("Helvetica", 24, Utility.getColorByName("blue"), true,true);
+        //this._lbStopAutoPlay.setString("DỪNG");
+        //this._btnStopAutoPlay.addChild(this._lbStopAutoPlay, GV.ZORDER_LEVEL.GUI);
+        //this._lbStopAutoPlay.attr({
+        //    anchorX: 0.5,
+        //    anchorY: 0.5,
+        //    x: 0.5 * this.sizeStopAutoPlay.width,
+        //    y: 0.5 * this.sizeStopAutoPlay.height
+        //});
+    },
+    onTouchUIEndEvent: function (sender) {
+        switch (sender) {
+            case this._btnStopAutoPlay:
+                GV.MODULE_MGR._gameState = GV.GAME_STATE.END;
+                GV.MODULE_MGR.returnCity(true);
+                break;
+        }
+    },
+    actionEndSong: function () {
+        cc.log("action end song");
     }
 });
